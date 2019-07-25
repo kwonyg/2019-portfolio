@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <window-modal v-if="showModal" @close="showModal = false">
+    <window-modal v-if="showModal" @close="toggle">
       <!--
       you can use custom content here to overwrite
       default content
@@ -64,7 +64,7 @@ export default {
 
   methods: {
     toggle() {
-      this.showModal = true;
+      this.showModal = !this.showModal;
     }
   }
 };

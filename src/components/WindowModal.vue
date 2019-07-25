@@ -3,6 +3,11 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
+          <div class="menu_bar">
+            <button class="modal-default-button" @click="$emit('close')">
+              <img src="../images/red_dot.png" alt />
+            </button>
+          </div>
           <div class="modal-header">
             <slot name="header">default header</slot>
           </div>
@@ -12,12 +17,7 @@
           </div>
 
           <div class="modal-footer">
-            <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
+            <slot name="footer">default footer</slot>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default {};
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 105%;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
   transition: opacity 0.3s ease;
@@ -48,14 +48,23 @@ export default {};
 }
 
 .modal-container {
-  width: 300px;
+  width: 70%;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 0 30px 20px 30px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+}
+
+.menu_bar {
+  position: relative;
+  height: 25px;
+  margin: 0 -30px;
+  background-color: orange;
+  border-radius: 15px;
+  /* border-top-left-radius: 15px;
+  border-top-right-radius: 15px; */
 }
 
 .modal-header h3 {
@@ -68,7 +77,14 @@ export default {};
 }
 
 .modal-default-button {
-  float: right;
+  position: absolute;
+  top: -5px;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 
 /*

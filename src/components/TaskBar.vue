@@ -4,13 +4,42 @@
       <div class="taskbar_menu" style="font-size: 2em; color: black;">
         <i class="fas fa-draw-polygon"></i>
       </div>
-      <div class="taskbar_time">02:44 AM</div>
+      <div class="taskbar_time">{{ currentTime }}</div>
     </div>
   </footer>
 </template>
 
 <script>
-export default {};
+import { setInterval } from "timers";
+export default {
+  data() {
+    return {
+      currentTime: ""
+    };
+  },
+
+  methods: {
+    refreshTime() {
+      const date = new Date();
+
+      const month = date.getMonth();
+      const clockDate = date.getDate();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+
+      this.currentTime =
+        `${month + 1}월 ${clockDate}일 ` +
+        `${hours < 10 ? `0${hours}` : hours}:${
+          minutes < 10 ? `0${minutes}` : minutes
+        }:${seconds < 10 ? `0${seconds}` : seconds}`;
+    }
+  },
+
+  mounted() {
+    setInterval(this.refreshTime, 1000);
+  }
+};
 </script>
 
 <style scoped>
@@ -49,8 +78,58 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 5%; /* 반응형으로 너비 조절해야함*/
   height: 100%;
   background-color: orange;
+  /* Large devices (desktops, less than 1200px) */
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .taskbar_menu {
+    width: 20%;
+  }
+
+  .taskbar_time {
+    width: 20%;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .taskbar_menu {
+    width: 20%;
+  }
+
+  .taskbar_time {
+    width: 20%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .taskbar_menu {
+    width: 20%;
+  }
+
+  .taskbar_time {
+    width: 20%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .taskbar_menu {
+    width: 20%;
+  }
+
+  .taskbar_time {
+    width: 20%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }
 </style>
