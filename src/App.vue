@@ -23,7 +23,7 @@ html {
   height: 100%;
 }
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   height: 100%;
 }
 </style>

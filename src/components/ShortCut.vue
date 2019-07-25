@@ -22,15 +22,19 @@ export default {
 
 <style scoped>
 .shortcut_container {
-  display: inline-block;
+  width: 100px;
   padding: 20px;
+  text-align: center;
+}
+
+.shortcut_container:hover {
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: grey;
 }
 
 .shortcut_img {
   width: 80px;
   height: 80px;
-}
-.shortcut_name {
-  text-align: center;
 }
 </style>

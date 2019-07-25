@@ -19,6 +19,7 @@ footer {
   height: 5%;
   display: flex;
   align-items: center;
+  z-index: 9999;
 }
 
 .taskbar_wrap {
@@ -37,6 +38,11 @@ footer {
   height: 100%;
   background-color: orange;
   vertical-align: middle;
+}
+
+.taskbar_menu:hover {
+  cursor: pointer;
+  background-color: rgb(207, 135, 0);
 }
 
 .taskbar_time {
