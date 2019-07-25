@@ -1,14 +1,31 @@
 <template>
   <section class="main_section">
     <div class="main_wrap">
-      <div class="main_container"></div>
+      <div class="main_container">
+        <short-cut :url="images.folder" :fileName="'About Me'"></short-cut>
+        <short-cut :url="images.folder" :fileName="'Projects'"></short-cut>
+        <short-cut :url="images.folder"></short-cut>
+        <short-cut :url="images.folder"></short-cut>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
+import ShortCut from "../components/ShortCut.vue";
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    ShortCut
+  },
+
+  data() {
+    return {
+      images: {
+        folder: require(`@/images/shortcuts/folder.png`)
+      }
+    };
+  }
 };
 </script>
 

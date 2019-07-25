@@ -1,0 +1,36 @@
+<template>
+  <div class="shortcut_container">
+    <img class="shortcut_img" :src="url" />
+    <div class="shortcut_name">{{ fileName }}</div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    url: {
+      type: String,
+      required: true
+    },
+    fileName: {
+      type: String,
+      required: true
+    }
+  }
+};
+</script>
+
+<style scoped>
+.shortcut_container {
+  display: inline-block;
+  padding: 20px;
+}
+
+.shortcut_img {
+  width: 80px;
+  height: 80px;
+}
+.shortcut_name {
+  text-align: center;
+}
+</style>
