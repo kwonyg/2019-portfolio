@@ -18,13 +18,23 @@
           @clickShortcut="toggle"
         ></short-cut>
         <short-cut
-          :url="images.github"
-          :fileName="'github'"
+          :url="images.email"
+          :fileName="'e-mail'"
           @clickShortcut="toggle"
         ></short-cut>
         <short-cut
-          :url="images.email"
-          :fileName="'email'"
+          :url="images.phone"
+          :fileName="'Phone'"
+          @clickShortcut="toggle"
+        ></short-cut>
+        <short-cut
+          :url="images.github"
+          :fileName="'Github'"
+          @clickShortcut="toggle"
+        ></short-cut>
+        <short-cut
+          :url="images.talk"
+          :fileName="'Talk'"
           @clickShortcut="toggle"
         ></short-cut>
       </div>
@@ -35,7 +45,8 @@
       you can use custom content here to overwrite
       default content
       -->
-      <h3 slot="header">custom header</h3>
+      <h3 slot="header">Hi!</h3>
+      <div slot="body">yeah~</div>
     </window-modal>
   </section>
 </template>
@@ -56,7 +67,9 @@ export default {
       images: {
         folder: require(`@/images/shortcuts/folder.png`),
         github: require(`@/images/shortcuts/github.png`),
-        email: require(`@/images/shortcuts/gmail.png`)
+        email: require(`@/images/shortcuts/gmail.png`),
+        phone: require(`@/images/shortcuts/phone.png`),
+        talk: require(`@/images/shortcuts/talk.png`)
       },
       showModal: false
     };
