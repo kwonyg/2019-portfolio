@@ -1,5 +1,5 @@
 <template>
-  <div class="shortcut_container">
+  <div class="shortcut_container" @click="$emit('clickShortcut')">
     <img class="shortcut_img" :src="url" />
     <div class="shortcut_name">{{ fileName }}</div>
   </div>
@@ -28,6 +28,11 @@ export default {
 }
 
 .shortcut_container:hover {
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: grey;
+}
+.shortcut_button:hover {
   border-radius: 20px;
   cursor: pointer;
   background-color: grey;

@@ -2,27 +2,53 @@
   <section class="main_section">
     <div class="main_wrap">
       <div class="main_container">
-        <short-cut :url="images.folder" :fileName="'About Me'"></short-cut>
-        <short-cut :url="images.folder" :fileName="'Projects'"></short-cut>
-        <short-cut :url="images.folder" :fileName="'Activities'"></short-cut>
-        <short-cut :url="images.github" :fileName="'github'"></short-cut>
-        <short-cut :url="images.email" :fileName="'email'"></short-cut>
-        <short-cut :url="images.folder" :fileName="'About Me'"></short-cut>
-        <short-cut :url="images.folder" :fileName="'Projects'"></short-cut>
-        <short-cut :url="images.folder" :fileName="'Activities'"></short-cut>
-        <short-cut :url="images.github" :fileName="'github'"></short-cut>
-        <short-cut :url="images.email" :fileName="'email'"></short-cut>
+        <short-cut
+          :url="images.folder"
+          :fileName="'About Me'"
+          @clickShortcut="toggle"
+        ></short-cut>
+        <short-cut
+          :url="images.folder"
+          :fileName="'Projects'"
+          @clickShortcut="toggle"
+        ></short-cut>
+        <short-cut
+          :url="images.folder"
+          :fileName="'Activities'"
+          @clickShortcut="toggle"
+        ></short-cut>
+        <short-cut
+          :url="images.github"
+          :fileName="'github'"
+          @clickShortcut="toggle"
+        ></short-cut>
+        <short-cut
+          :url="images.email"
+          :fileName="'email'"
+          @clickShortcut="toggle"
+        ></short-cut>
       </div>
     </div>
+
+    <window-modal v-if="showModal" @close="showModal = false">
+      <!--
+      you can use custom content here to overwrite
+      default content
+      -->
+      <h3 slot="header">custom header</h3>
+    </window-modal>
   </section>
 </template>
 
 <script>
 import ShortCut from "../components/ShortCut.vue";
+import WindowModal from "../components/WindowModal.vue";
+
 export default {
   name: "home",
   components: {
-    ShortCut
+    ShortCut,
+    WindowModal
   },
 
   data() {
@@ -31,8 +57,15 @@ export default {
         folder: require(`@/images/shortcuts/folder.png`),
         github: require(`@/images/shortcuts/github.png`),
         email: require(`@/images/shortcuts/gmail.png`)
-      }
+      },
+      showModal: false
     };
+  },
+
+  methods: {
+    toggle() {
+      this.showModal = true;
+    }
   }
 };
 </script>

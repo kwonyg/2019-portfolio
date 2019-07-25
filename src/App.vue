@@ -26,4 +26,7 @@ html {
   font-family: "Noto Sans KR", sans-serif;
   height: 100%;
 }
+.window {
+  height: 100px;
+}
 </style>
