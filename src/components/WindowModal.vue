@@ -8,10 +8,6 @@
               <img src="../images/red_dot.png" alt />
             </button>
           </div>
-          <div class="modal-header">
-            <slot name="header">default header</slot>
-          </div>
-
           <div class="modal-body">
             <slot name="body">default body</slot>
           </div>
@@ -61,14 +57,9 @@ export default {};
   border-radius: 15px;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
 .modal-body {
   margin: 20px 0;
-  max-height: 500px;
+  max-height: 700px; /* 반응형 필요*/
   overflow: scroll;
 }
 
