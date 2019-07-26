@@ -7,6 +7,7 @@
 
 <script>
 import TaskBar from "./components/TaskBar.vue";
+
 export default {
   components: {
     TaskBar
@@ -19,7 +20,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  min-height: 600px;
+  1min-height: 600px;
   height: 100%;
 }
 #app {

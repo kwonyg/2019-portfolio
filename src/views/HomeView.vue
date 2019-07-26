@@ -3,48 +3,46 @@
     <div class="main_wrap">
       <div class="main_container">
         <short-cut
+          ref="shortCut"
           :url="images.folder"
           :fileName="'About Me'"
-          @clickShortcut="toggle"
+          @clickShortcut="openWindow"
         ></short-cut>
         <short-cut
+          ref="shortCut"
           :url="images.folder"
           :fileName="'Projects'"
-          @clickShortcut="toggle"
+          @clickShortcut="openWindow"
         ></short-cut>
         <short-cut
+          ref="shortCut"
           :url="images.folder"
           :fileName="'Activities'"
-          @clickShortcut="toggle"
+          @clickShortcut="openWindow"
         ></short-cut>
         <short-cut
+          ref="shortCut"
           :url="images.email"
           :fileName="'e-mail'"
-          @clickShortcut="toggle"
+          @clickShortcut="openWindow"
         ></short-cut>
         <short-cut
+          ref="shortCut"
           :url="images.phone"
           :fileName="'Phone'"
-          @clickShortcut="toggle"
+          @clickShortcut="openWindow"
         ></short-cut>
         <short-cut
+          ref="shortCut"
           :url="images.github"
           :fileName="'Github'"
-          @clickShortcut="toggle"
+          @clickShortcut="openWindow"
         ></short-cut>
-        <short-cut
-          :url="images.talk"
-          :fileName="'Talk'"
-          @clickShortcut="toggle"
-        ></short-cut>
+        <short-cut ref="shortCut" :url="images.talk" :fileName="'Talk'" @clickShortcut="openWindow"></short-cut>
       </div>
     </div>
 
-    <window-modal v-if="showModal" @close="toggle">
-      <!--
-      you can use custom content here to overwrite
-      default content
-      -->
+    <window-modal v-if="showModal" @close="closeWindow">
       <h3 slot="header">Hi!</h3>
       <div slot="body">yeah~</div>
     </window-modal>
@@ -74,10 +72,13 @@ export default {
       showModal: false
     };
   },
-
   methods: {
-    toggle() {
+    openWindow({ fileName }) {
       this.showModal = !this.showModal;
+    },
+
+    closeWindow() {
+      this.showModal = false;
     }
   }
 };
@@ -85,18 +86,19 @@ export default {
 
 <style scoped>
 .main_section {
-  height: 95%; /* 모바일때 height를 없애기*/
+  height: 100%; /* 모바일때 height를 없애기*/
+  margin: 0 0 -50px 0;
 }
 .main_wrap {
   background-image: url("../assets/saharar.svg");
-  margin: 0;
+
   min-height: 100%;
   background-position: center;
   background-size: cover;
 }
 .main_container {
   width: 0%;
-  height: 980px;
+  height: 600px; /* 모바일 크기 정해야함*/
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

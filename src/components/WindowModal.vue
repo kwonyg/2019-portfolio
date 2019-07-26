@@ -48,7 +48,7 @@ export default {};
 }
 
 .modal-container {
-  width: 70%;
+  width: 70%; /* 고정 값으로 바꾸기*/
   margin: 0px auto;
   padding: 0 30px 20px 30px;
   background-color: #fff;
@@ -63,8 +63,6 @@ export default {};
   margin: 0 -30px;
   background-color: orange;
   border-radius: 15px;
-  /* border-top-left-radius: 15px;
-  border-top-right-radius: 15px; */
 }
 
 .modal-header h3 {
@@ -86,15 +84,6 @@ export default {};
   overflow: hidden;
   outline: none;
 }
-
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
 
 .modal-enter {
   opacity: 0;

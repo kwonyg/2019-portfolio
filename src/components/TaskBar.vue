@@ -1,9 +1,14 @@
 <template>
   <footer class="taskbar_footer">
     <div class="taskbar_wrap">
-      <div class="taskbar_menu" style="font-size: 2em; color: black;">
+      <div
+        class="taskbar_menu"
+        style="font-size: 2em; color: black;"
+        @click="toggleMenu"
+      >
         <i class="fas fa-draw-polygon"></i>
       </div>
+      <menu-bar class="menu_bar" v-if="showMenu"></menu-bar>
       <div class="taskbar_time">{{ currentTime }}</div>
     </div>
   </footer>
@@ -11,10 +16,18 @@
 
 <script>
 import { setInterval } from "timers";
+
+import MenuBar from "../components/MenuBar.vue";
+
 export default {
+  components: {
+    MenuBar
+  },
+
   data() {
     return {
-      currentTime: ""
+      currentTime: "",
+      showMenu: false
     };
   },
 
@@ -33,6 +46,10 @@ export default {
         `${hours < 10 ? `0${hours}` : hours}:${
           minutes < 10 ? `0${minutes}` : minutes
         }:${seconds < 10 ? `0${seconds}` : seconds}`;
+    },
+
+    toggleMenu() {
+      this.showMenu = !this.showMenu;
     }
   },
 
@@ -45,13 +62,14 @@ export default {
 <style scoped>
 footer {
   background-color: #de6449;
-  height: 5%;
+  height: 50px;
   display: flex;
   align-items: center;
   z-index: 9999;
 }
 
 .taskbar_wrap {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -72,6 +90,11 @@ footer {
 .taskbar_menu:hover {
   cursor: pointer;
   background-color: rgb(207, 135, 0);
+}
+
+.menu_bar {
+  position: absolute;
+  top: -400px;
 }
 
 .taskbar_time {

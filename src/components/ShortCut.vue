@@ -1,5 +1,5 @@
 <template>
-  <div class="shortcut_container" @click="$emit('clickShortcut')">
+  <div class="shortcut_container" @click="$emit('clickShortcut', { fileName })">
     <img class="shortcut_img" :src="url" />
     <div class="shortcut_name">{{ fileName }}</div>
   </div>
