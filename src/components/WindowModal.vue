@@ -15,10 +15,6 @@
           <div class="modal-body">
             <slot name="body">default body</slot>
           </div>
-
-          <div class="modal-footer">
-            <slot name="footer">default footer</slot>
-          </div>
         </div>
       </div>
     </div>
@@ -72,6 +68,8 @@ export default {};
 
 .modal-body {
   margin: 20px 0;
+  max-height: 400px;
+  overflow: scroll;
 }
 
 .modal-default-button {

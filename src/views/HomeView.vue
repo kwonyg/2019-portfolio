@@ -50,7 +50,15 @@
     <window-modal v-if="showModal" @close="closeWindow">
       <h3 slot="header">{{ windowData.header }}</h3>
       <div slot="body">
-        <div :v-html="windowData.content"></div>
+        <ul class="content_list">
+          <li
+            class="liet_item"
+            v-for="(content, $index) in windowData.contents"
+            :key="$index"
+          >
+            <vue-markdown>{{ content }}</vue-markdown>
+          </li>
+        </ul>
       </div>
     </window-modal>
   </section>
@@ -60,12 +68,14 @@
 import { mapGetters } from "vuex";
 import ShortCut from "../components/ShortCut.vue";
 import WindowModal from "../components/WindowModal.vue";
+import VueMarkdown from "vue-markdown";
 
 export default {
   name: "home",
   components: {
     ShortCut,
-    WindowModal
+    WindowModal,
+    VueMarkdown
   },
 
   data() {
