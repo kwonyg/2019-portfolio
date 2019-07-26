@@ -52,7 +52,7 @@
       <div slot="body">
         <ul class="content_list">
           <li
-            class="liet_item"
+            class="list_item"
             v-for="(content, $index) in windowData.contents"
             :key="$index"
           >
@@ -118,6 +118,11 @@ export default {
 </script>
 
 <style scoped>
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 .main_section {
   height: 100%; /* 모바일때 height를 없애기*/
   margin: 0 0 -50px 0;
@@ -138,6 +143,16 @@ export default {
 }
 
 .main_container > * {
+  /* 알아보기 */
   flex: 1 1 1;
+}
+
+.list_item {
+  color: #262626;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #262626;
+  border-radius: 10px;
 }
 </style>

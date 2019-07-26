@@ -44,7 +44,7 @@ export default {};
 }
 
 .modal-container {
-  width: 70%; /* 고정 값으로 바꾸기*/
+  width: 80%; /* 고정 값으로 바꾸기*/
   margin: 0px auto;
   padding: 0 30px 20px 30px;
   background-color: #fff;
@@ -68,7 +68,7 @@ export default {};
 
 .modal-body {
   margin: 20px 0;
-  max-height: 400px;
+  max-height: 500px;
   overflow: scroll;
 }
 
