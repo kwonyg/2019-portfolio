@@ -107,7 +107,7 @@ export default {
         this.$store.dispatch("GET_WINDOW_DATA", { fileName });
       }
 
-      this.showModal = !this.showModal;
+      this.showModal = true;
     },
 
     closeWindow() {
@@ -148,11 +148,13 @@ ul {
 }
 
 .list_item {
-  color: #262626;
+  color: #404040;
+  max-width: 980px; /* 모바일 대응 안해도 되게 선언하는 법*/
+  margin: 0 auto;
   margin-bottom: 20px;
   padding: 20px;
-  background-color: #f2f2f2;
-  border: 1px solid #262626;
+  background-color: #e5e5e5;
+  1border: 1px solid #262626;
   border-radius: 10px;
 }
 </style>
