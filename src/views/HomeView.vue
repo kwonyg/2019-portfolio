@@ -38,18 +38,26 @@
           :fileName="'Github'"
           @clickShortcut="openWindow"
         ></short-cut>
-        <short-cut ref="shortCut" :url="images.talk" :fileName="'Talk'" @clickShortcut="openWindow"></short-cut>
+        <short-cut
+          ref="shortCut"
+          :url="images.talk"
+          :fileName="'Talk'"
+          @clickShortcut="openWindow"
+        ></short-cut>
       </div>
     </div>
 
     <window-modal v-if="showModal" @close="closeWindow">
-      <h3 slot="header">Hi!</h3>
-      <div slot="body">yeah~</div>
+      <h3 slot="header">{{ windowData.header }}</h3>
+      <div slot="body">
+        <div :v-html="windowData.content"></div>
+      </div>
     </window-modal>
   </section>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import ShortCut from "../components/ShortCut.vue";
 import WindowModal from "../components/WindowModal.vue";
 
@@ -72,8 +80,23 @@ export default {
       showModal: false
     };
   },
+
+  computed: {
+    ...mapGetters({
+      windowData: "fetchedWindowData"
+    })
+  },
+
   methods: {
     openWindow({ fileName }) {
+      fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
+
+      if (fileName === "talk") {
+        console.log("not yet");
+      } else {
+        this.$store.dispatch("GET_WINDOW_DATA", { fileName });
+      }
+
       this.showModal = !this.showModal;
     },
 
