@@ -49,7 +49,7 @@
 
     <window-modal v-if="showModal" @close="closeWindow">
       <div slot="body">
-        <projects-template></projects-template>
+        <contacts-template></contacts-template>
       </div>
     </window-modal>
   </section>
@@ -60,8 +60,9 @@ import { mapGetters } from "vuex";
 // import VueMarkdown from "vue-markdown";
 import ShortCut from "../components/ShortCut.vue";
 // import AboutMeTemplate from "../components/AboutMeTemplate.vue";
-import ProjectsTemplate from "../components/ProjectsTemplate.vue";
+// import ProjectsTemplate from "../components/ProjectsTemplate.vue";
 // import ActivitiesTemplate from "../components/ActivitiesTemplate.vue";
+import ContactsTemplate from "../components/ContactsTemplate.vue";
 import WindowModal from "../components/WindowModal.vue";
 
 export default {
@@ -69,8 +70,9 @@ export default {
   components: {
     ShortCut,
     WindowModal,
+    ContactsTemplate
     // ActivitiesTemplate
-    ProjectsTemplate
+    // ProjectsTemplate
     // VueMarkdown,
     // AboutMeTemplate
   },
