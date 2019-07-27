@@ -61,6 +61,7 @@ import { mapGetters } from "vuex";
 import ShortCut from "../components/ShortCut.vue";
 // import AboutMeTemplate from "../components/AboutMeTemplate.vue";
 import ProjectsTemplate from "../components/ProjectsTemplate.vue";
+// import ActivitiesTemplate from "../components/ActivitiesTemplate.vue";
 import WindowModal from "../components/WindowModal.vue";
 
 export default {
@@ -68,6 +69,7 @@ export default {
   components: {
     ShortCut,
     WindowModal,
+    // ActivitiesTemplate
     ProjectsTemplate
     // VueMarkdown,
     // AboutMeTemplate
