@@ -94,13 +94,17 @@ export default {
     whichTemplate(fileName) {
       switch (fileName) {
         case "aboutme":
-          return () => import("../components/AboutMeTemplate.vue");
+          return () =>
+            import("../components/modalTemplate/AboutMeTemplate.vue");
         case "projects":
-          return () => import("../components/ProjectsTemplate.vue");
+          return () =>
+            import("../components/modalTemplate/ProjectsTemplate.vue");
         case "contact":
-          return () => import("../components/ContactsTemplate.vue");
+          return () =>
+            import("../components/modalTemplate/ContactsTemplate.vue");
         case "activities":
-          return () => import("../components/ActivitiesTemplate.vue");
+          return () =>
+            import("../components/modalTemplate/ActivitiesTemplate.vue");
         default:
           return null;
       }
