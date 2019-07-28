@@ -1,18 +1,11 @@
 <template>
   <div id="app">
     <router-view />
-    <task-bar></task-bar>
   </div>
 </template>
 
 <script>
-import TaskBar from "./components/TaskBar.vue";
-
-export default {
-  components: {
-    TaskBar
-  }
-};
+export default {};
 </script>
 
 <style>

@@ -17,7 +17,11 @@
       <div class="skill_container">
         <ul class="skill_list">
           <li class="list_item" v-for="skill in skills" :key="skill.name">
-            <img class="list_img skill_img" :src="skill.imgSrc" :alt="skill.alt" />
+            <img
+              class="list_img skill_img"
+              :src="skill.imgSrc"
+              :alt="skill.alt"
+            />
           </li>
         </ul>
       </div>
@@ -27,8 +31,16 @@
       <h2>Frameworks</h2>
       <div class="framework_container">
         <ul class="framework_list">
-          <li class="list_item" v-for="framework in frameworks" :key="framework.name">
-            <img class="list_img framework_img" :src="framework.imgSrc" :alt="framework.alt" />
+          <li
+            class="list_item"
+            v-for="framework in frameworks"
+            :key="framework.name"
+          >
+            <img
+              class="list_img framework_img"
+              :src="framework.imgSrc"
+              :alt="framework.alt"
+            />
           </li>
         </ul>
       </div>
@@ -38,8 +50,16 @@
       <h2>DataBase</h2>
       <div class="database_container">
         <ul class="database_list">
-          <li class="list_item" v-for="database in databases" :key="database.name">
-            <img class="list_img database_img" :src="database.imgSrc" :alt="database.alt" />
+          <li
+            class="list_item"
+            v-for="database in databases"
+            :key="database.name"
+          >
+            <img
+              class="list_img database_img"
+              :src="database.imgSrc"
+              :alt="database.alt"
+            />
           </li>
         </ul>
       </div>

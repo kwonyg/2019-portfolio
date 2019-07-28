@@ -46,6 +46,7 @@
         ></short-cut>
       </div>
     </div>
+    <task-bar></task-bar>
 
     <window-modal v-if="showModal" @close="closeWindow">
       <div slot="body">
@@ -61,12 +62,14 @@ import { mapGetters } from "vuex";
 // import VueMarkdown from "vue-markdown";
 import ShortCut from "../components/ShortCut.vue";
 import WindowModal from "../components/WindowModal.vue";
+import TaskBar from "../components/TaskBar.vue";
 
 export default {
   name: "home",
   components: {
     ShortCut,
-    WindowModal
+    WindowModal,
+    TaskBar
     // VueMarkdown,
   },
 
@@ -129,10 +132,12 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 .main_section {
   height: 100%; /* 모바일때 height를 없애기*/
-  margin: 0 0 -50px 0;
+  margin: -50px 0 0 0;
 }
+
 .main_wrap {
   background-image: url("../assets/saharar.svg");
 
@@ -140,12 +145,14 @@ ul {
   background-position: center;
   background-size: cover;
 }
+
 .main_container {
-  width: 0%;
-  height: 600px; /* 모바일 크기 정해야함*/
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 0%;
+  height: 600px; /* 모바일 크기 정해야함*/
+  padding-top: 50px;
 }
 
 .main_container > * {
