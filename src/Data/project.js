@@ -1,89 +1,87 @@
+const baseUrl = "/src/images/aboutMe";
+
 export default {
-  header: "Projects",
-  contents: [
-    `## 코딩백서
-
-   ### 요약
-   
-   누구나 쉽게 코드 관련 **질문**을 올릴 수 있고, 누구나 코드 리뷰어가 되어 자신의 지식을 공유할 수 있는 공개 코드 리뷰 사이트
-   
-   ### 사용한 기술
-   
-   HTML, CSS, JAVASCRIPT, JDK 1.8, JSP, Spring 4, MySQL
-   
-   ### 깃허브
-   
-   [자세히 보기](https://github.com/KwonYG/CodingWhitepaper)
-   `,
-    `# 코딩백서
-
-   ## summary
-   
-   누구나 쉽게 코드 관련 질문을 올릴 수 있고, 누구나 코드 리뷰어가 되어 자신의 지식을 공유할 수 있는 공개 코드 리뷰 사이트
-   
-   ## Skills
-   
-   - HTML, CSS, JAVASCRIPT, JDK 1.8, JSP, Spring 4, MySQL
-   
-   ## More
-   
-   [자세히 보기](https://github.com/KwonYG/CodingWhitepaper)
-   `,
-    `# 코딩백서
-
-   ## summary
-   
-   누구나 쉽게 코드 관련 질문을 올릴 수 있고, 누구나 코드 리뷰어가 되어 자신의 지식을 공유할 수 있는 공개 코드 리뷰 사이트
-   
-   ## Skills
-   
-   - HTML, CSS, JAVASCRIPT, JDK 1.8, JSP, Spring 4, MySQL
-   
-   ## More
-   
-   [자세히 보기](https://github.com/KwonYG/CodingWhitepaper)
-   `,
-    `# 코딩백서
-
-   ## summary
-   
-   누구나 쉽게 코드 관련 질문을 올릴 수 있고, 누구나 코드 리뷰어가 되어 자신의 지식을 공유할 수 있는 공개 코드 리뷰 사이트
-   
-   ## Skills
-   
-   - HTML, CSS, JAVASCRIPT, JDK 1.8, JSP, Spring 4, MySQL
-   
-   ## More
-   
-   [자세히 보기](https://github.com/KwonYG/CodingWhitepaper)
-   `,
-    `# 코딩백서
-
-   ## summary
-   
-   누구나 쉽게 코드 관련 질문을 올릴 수 있고, 누구나 코드 리뷰어가 되어 자신의 지식을 공유할 수 있는 공개 코드 리뷰 사이트
-   
-   ## Skills
-   
-   - HTML, CSS, JAVASCRIPT, JDK 1.8, JSP, Spring 4, MySQL
-   
-   ## More
-   
-   [자세히 보기](https://github.com/KwonYG/CodingWhitepaper)
-   `,
-    `# 코딩백서
-
-   ## summary
-   
-   누구나 쉽게 코드 관련 질문을 올릴 수 있고, 누구나 코드 리뷰어가 되어 자신의 지식을 공유할 수 있는 공개 코드 리뷰 사이트
-   
-   ## Skills
-   
-   - HTML, CSS, JAVASCRIPT, JDK 1.8, JSP, Spring 4, MySQL
-   
-   ## More
-   
-   [자세히 보기](https://github.com/KwonYG/CodingWhitepaper)
-   `
+  skills: [
+    {
+      name: "html5",
+      imgSrc: baseUrl + "html_Logo.png",
+      alt: "html 로고"
+    },
+    {
+      name: "css",
+      imgSrc: baseUrl + "css_Logo.png",
+      alt: "css 로고"
+    },
+    {
+      name: "javascript",
+      imgSrc: baseUrl + "javascript_Logo.svg",
+      alt: "javascript 로고"
+    },
+    {
+      name: "java",
+      imgSrc: baseUrl + "java_Logo.svg",
+      alt: "java 로고"
+    },
+    {
+      name: "node.js",
+      imgSrc: baseUrl + "nodejs_Logo.png",
+      alt: "node.js 로고"
+    },
+    {
+      name: "python",
+      imgSrc: baseUrl + "python_Logo.svg",
+      alt: "python 로고"
+    },
+    {
+      name: "C",
+      imgSrc: baseUrl + "c_Logo.png",
+      alt: "C 로고"
+    },
+    {
+      name: "C++",
+      imgSrc: baseUrl + "cpp_Logo.svg",
+      alt: "C++ 로고"
+    }
+  ],
+  frameworks: [
+    {
+      name: "vue.js",
+      imgSrc: baseUrl + "vue_Logo.svg",
+      alt: "vue.js 로고"
+    },
+    {
+      name: "express",
+      imgSrc: baseUrl + "express.svg",
+      alt: "express 로고"
+    },
+    {
+      name: "spring",
+      imgSrc: baseUrl + "spring_Logo.svg",
+      alt: "spring 로고"
+    }
+  ],
+  databases: [
+    {
+      name: "mysql",
+      imgSrc: baseUrl + "mysql_Logo.png",
+      alt: "mysql 로고"
+    },
+    {
+      name: "mongodb",
+      imgSrc: baseUrl + "mongodb_logo.png",
+      alt: "mongodb 로고"
+    }
+  ],
+  etcs: [
+    {
+      name: "github",
+      imgSrc: baseUrl + "github_Logo.svg",
+      alt: "github 로고"
+    },
+    {
+      name: "firebase",
+      imgSrc: baseUrl + "firebase_Logo.svg",
+      alt: "firebase 로고"
+    }
   ]
 };

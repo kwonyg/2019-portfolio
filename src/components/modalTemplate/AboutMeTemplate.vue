@@ -80,6 +80,14 @@
 
 <script>
 export default {
+  // data() {
+  //   return {
+  //     skills: AboutMeData.skills,
+  //     frameworks: AboutMeData.frameworks,
+  //     databases: AboutMeData.databases,
+  //     etcs: AboutMeData.etcs
+  //   };
+  // }
   data() {
     return {
       skills: [
