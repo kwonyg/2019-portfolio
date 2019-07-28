@@ -93,9 +93,9 @@ export default {
   methods: {
     whichTemplate(fileName) {
       switch (fileName) {
-        case "aboutme":
-          return () =>
-            import("../components/modalTemplate/AboutMeTemplate.vue");
+        // case "aboutme":
+        //   return () =>
+        //     import("../components/modalTemplate/AboutMeTemplate.vue");
         case "projects":
           return () =>
             import("../components/modalTemplate/ProjectsTemplate.vue");
