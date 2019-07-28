@@ -28,8 +28,8 @@
         ></short-cut>
         <short-cut
           ref="shortCut"
-          :url="images.phone"
-          :fileName="'Phone'"
+          :url="images.contact"
+          :fileName="'Contact'"
           @clickShortcut="openWindow"
         ></short-cut>
         <short-cut
@@ -49,7 +49,8 @@
 
     <window-modal v-if="showModal" @close="closeWindow">
       <div slot="body">
-        <contacts-template></contacts-template>
+        <component :is="template" v-if="template"></component>
+        <div v-if="!template">개발 중이에요 :)</div>
       </div>
     </window-modal>
   </section>
@@ -59,22 +60,14 @@
 import { mapGetters } from "vuex";
 // import VueMarkdown from "vue-markdown";
 import ShortCut from "../components/ShortCut.vue";
-// import AboutMeTemplate from "../components/AboutMeTemplate.vue";
-// import ProjectsTemplate from "../components/ProjectsTemplate.vue";
-// import ActivitiesTemplate from "../components/ActivitiesTemplate.vue";
-import ContactsTemplate from "../components/ContactsTemplate.vue";
 import WindowModal from "../components/WindowModal.vue";
 
 export default {
   name: "home",
   components: {
     ShortCut,
-    WindowModal,
-    ContactsTemplate
-    // ActivitiesTemplate
-    // ProjectsTemplate
+    WindowModal
     // VueMarkdown,
-    // AboutMeTemplate
   },
 
   data() {
@@ -83,9 +76,10 @@ export default {
         folder: require(`@/images/shortcuts/folder.png`),
         github: require(`@/images/shortcuts/github.png`),
         email: require(`@/images/shortcuts/gmail.png`),
-        phone: require(`@/images/shortcuts/phone.png`),
+        contact: require(`@/images/shortcuts/phone.png`),
         talk: require(`@/images/shortcuts/talk.png`)
       },
+      template: null,
       showModal: false
     };
   },
@@ -97,15 +91,24 @@ export default {
   },
 
   methods: {
+    whichTemplate(fileName) {
+      switch (fileName) {
+        case "aboutme":
+          return () => import("../components/AboutMeTemplate.vue");
+        case "projects":
+          return () => import("../components/ProjectsTemplate.vue");
+        case "contact":
+          return () => import("../components/ContactsTemplate.vue");
+        case "activities":
+          return () => import("../components/ActivitiesTemplate.vue");
+        default:
+          return null;
+      }
+    },
+
     openWindow({ fileName }) {
       fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
-
-      if (fileName === "talk") {
-        console.log("not yet");
-      } else {
-        this.$store.dispatch("GET_WINDOW_DATA", { fileName });
-      }
-
+      this.template = this.whichTemplate(fileName);
       this.showModal = true;
     },
 

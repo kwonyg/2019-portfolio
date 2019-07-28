@@ -85,83 +85,83 @@ export default {
       skills: [
         {
           name: "html5",
-          imgSrc: require(`@/images/aboutme/html_Logo.png`),
+          imgSrc: require(`@/images/aboutMe/html_Logo.png`),
           alt: "html 로고"
         },
         {
           name: "css",
-          imgSrc: require(`@/images/aboutme/css_Logo.png`),
+          imgSrc: require(`@/images/aboutMe/css_Logo.png`),
           alt: "css 로고"
         },
         {
           name: "javascript",
-          imgSrc: require(`@/images/aboutme/javascript_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/javascript_Logo.svg`),
           alt: "javascript 로고"
         },
         {
           name: "java",
-          imgSrc: require(`@/images/aboutme/java_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/java_Logo.svg`),
           alt: "java 로고"
         },
         {
           name: "node.js",
-          imgSrc: require(`@/images/aboutme/nodejs_Logo.png`),
+          imgSrc: require(`@/images/aboutMe/nodejs_Logo.png`),
           alt: "node.js 로고"
         },
         {
           name: "python",
-          imgSrc: require(`@/images/aboutme/python_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/python_Logo.svg`),
           alt: "python 로고"
         },
         {
           name: "C",
-          imgSrc: require(`@/images/aboutme/c_Logo.png`),
+          imgSrc: require(`@/images/aboutMe/c_Logo.png`),
           alt: "C 로고"
         },
         {
           name: "C++",
-          imgSrc: require(`@/images/aboutme/cpp_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/cpp_Logo.svg`),
           alt: "C++ 로고"
         }
       ],
       frameworks: [
         {
           name: "vue.js",
-          imgSrc: require(`@/images/aboutme/vue_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/vue_Logo.svg`),
           alt: "vue.js 로고"
         },
         {
           name: "express",
-          imgSrc: require(`@/images/aboutme/express.svg`),
+          imgSrc: require(`@/images/aboutMe/express.svg`),
           alt: "express 로고"
         },
         {
           name: "spring",
-          imgSrc: require(`@/images/aboutme/spring_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/spring_Logo.svg`),
           alt: "spring 로고"
         }
       ],
       databases: [
         {
           name: "mysql",
-          imgSrc: require(`@/images/aboutme/mysql_Logo.png`),
+          imgSrc: require(`@/images/aboutMe/mysql_Logo.png`),
           alt: "mysql 로고"
         },
         {
           name: "mongodb",
-          imgSrc: require(`@/images/aboutme/mongodb_logo.png`),
+          imgSrc: require(`@/images/aboutMe/mongodb_logo.png`),
           alt: "mongodb 로고"
         }
       ],
       etcs: [
         {
           name: "github",
-          imgSrc: require(`@/images/aboutme/github_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/github_Logo.svg`),
           alt: "github 로고"
         },
         {
           name: "firebase",
-          imgSrc: require(`@/images/aboutme/firebase_Logo.svg`),
+          imgSrc: require(`@/images/aboutMe/firebase_Logo.svg`),
           alt: "firebase 로고"
         }
       ]
