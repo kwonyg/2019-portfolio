@@ -18,7 +18,7 @@
           <li class="list_item" v-for="skill in skills" :key="skill.name">
             <img
               class="list_img skill_img"
-              :src="require(`../../images/aboutMe/${skill.imgSrc}`)"
+              :src="require(`@/images/aboutMe/${skill.imgSrc}`)"
               :alt="skill.alt"
             />
           </li>
@@ -37,7 +37,7 @@
           >
             <img
               class="list_img framework_img"
-              :src="require(`../../images/aboutMe/${framework.imgSrc}`)"
+              :src="require(`@/images/aboutMe/${framework.imgSrc}`)"
               :alt="framework.alt"
             />
           </li>
@@ -56,7 +56,7 @@
           >
             <img
               class="list_img database_img"
-              :src="require(`../../images/aboutMe/${database.imgSrc}`)"
+              :src="require(`@/images/aboutMe/${database.imgSrc}`)"
               :alt="database.alt"
             />
           </li>
@@ -71,7 +71,7 @@
           <li class="list_item" v-for="etc in etcs" :key="etc.name">
             <img
               class="list_img etc_img"
-              :src="require(`../../images/aboutMe/${etc.imgSrc}`)"
+              :src="require(`@/images/aboutMe/${etc.imgSrc}`)"
               :alt="etc.alt"
             />
           </li>
