@@ -70,6 +70,7 @@ export default {
     ShortCut,
     WindowModal,
     TaskBar
+
     // VueMarkdown,
   },
 
@@ -108,6 +109,8 @@ export default {
         case "activities":
           return () =>
             import("../components/modalTemplate/ActivitiesTemplate.vue");
+        case "talk":
+          return () => import("../components/modalTemplate/TalkTemplate.vue");
         default:
           return null;
       }
