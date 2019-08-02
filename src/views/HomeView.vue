@@ -38,12 +38,7 @@
           :fileName="'Github'"
           @clickShortcut="openWindow"
         ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.talk"
-          :fileName="'Talk'"
-          @clickShortcut="openWindow"
-        ></short-cut>
+        <short-cut ref="shortCut" :url="images.talk" :fileName="'Talk'" @clickShortcut="openWindow"></short-cut>
       </div>
     </div>
     <task-bar></task-bar>
@@ -142,11 +137,11 @@ ul {
 }
 
 .main_wrap {
-  background-image: url("../assets/saharar.svg");
+  1background-image: url("../assets/camping.jpg");
 
   min-height: 100%;
-  background-position: center;
-  background-size: cover;
+  1background-position: center;
+  1background-size: cover;
 }
 
 .main_container {

@@ -32,6 +32,7 @@ export default {
   cursor: pointer;
   background-color: grey;
 }
+
 .shortcut_button:hover {
   border-radius: 20px;
   cursor: pointer;
@@ -41,5 +42,9 @@ export default {
 .shortcut_img {
   width: 80px;
   height: 80px;
+}
+
+.shortcut_name {
+  color: #fff;
 }
 </style>

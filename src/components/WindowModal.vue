@@ -53,7 +53,7 @@ export default {};
   position: relative;
   height: 25px;
   margin: 0 -30px;
-  background-color: orange;
+  background-color: #ccd3d9;
   border-radius: 15px;
 }
 

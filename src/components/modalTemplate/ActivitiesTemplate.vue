@@ -42,31 +42,7 @@ ul {
 li {
   margin: 0 auto;
   max-width: 600px;
-  color: #ffffff;
-  background-color: #ff9340;
+  color: #fff;
   margin-bottom: 100px;
-  border-radius: 20px;
-
-  -webkit-box-shadow: 2px 7px 29px -12px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 2px 7px 29px -12px rgba(0, 0, 0, 0.75);
-  box-shadow: 2px 7px 29px -12px rgba(0, 0, 0, 0.75);
-}
-
-.activity_img_container {
-  margin: 0 auto;
-  width: 100%;
-}
-
-.activity_img {
-  /* border-radius: 20px; */
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom: 2px solid #fff;
-  max-width: 100%;
-  height: auto;
-}
-
-.activity_info_container {
-  padding: 20px;
 }
 </style>
