@@ -13,14 +13,20 @@ body,
 html {
   margin: 0;
   padding: 0;
-  1min-height: 600px;
   height: 100%;
 }
+
 #app {
   font-family: "Noto Sans KR", sans-serif;
   height: 100%;
 }
 .window {
   height: 100px;
+}
+
+@media (max-width: 1199.98px) {
+  #app {
+    font-size: 16px;
+  }
 }
 </style>

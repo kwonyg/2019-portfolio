@@ -1,7 +1,11 @@
 <template>
   <footer class="taskbar_footer">
     <div class="taskbar_wrap">
-      <div class="taskbar_menu" style="font-size: 2em; color: black;" @click="toggleMenu">
+      <div
+        class="taskbar_menu"
+        style="font-size: 2em; color: black;"
+        @click="toggleMenu"
+      >
         <i class="fas fa-draw-polygon"></i>
       </div>
       <menu-bar class="menu_bar" v-if="showMenu"></menu-bar>
@@ -57,7 +61,7 @@ export default {
 
 <style scoped>
 footer {
-  background-color: #626973;
+  background-color: #eaeaea;
   height: 50px;
   display: flex;
   align-items: center;
@@ -79,13 +83,13 @@ footer {
   align-items: center;
   width: 5%; /* 반응형으로 너비 조절해야함*/
   height: 100%;
-  background-color: #ccd3d9;
+  background-color: #bdbfbf;
   vertical-align: middle;
 }
 
 .taskbar_menu:hover {
   cursor: pointer;
-  background-color: #979da6;
+  background-color: #bdbfbf;
 }
 
 .menu_bar {
@@ -100,8 +104,7 @@ footer {
   text-align: center;
   width: 5%; /* 반응형으로 너비 조절해야함*/
   height: 100%;
-  background-color: #ccd3d9;
-  /* Large devices (desktops, less than 1200px) */
+  background-color: #bdbfbf;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */

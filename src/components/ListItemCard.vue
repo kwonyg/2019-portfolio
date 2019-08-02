@@ -63,11 +63,20 @@ export default {
 .item_info_container {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: #626973;
+  background-color: #d8d8d8;
+  color: #262626;
+  font-weight: bold;
+  font-size: 18px;
   padding: 20px;
 }
 
 .noimage {
   border-radius: 20px;
+}
+
+@media (max-width: 1199.98px) {
+  .item_info_container {
+    font-size: 16px;
+  }
 }
 </style>

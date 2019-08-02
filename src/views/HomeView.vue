@@ -38,7 +38,12 @@
           :fileName="'Github'"
           @clickShortcut="openWindow"
         ></short-cut>
-        <short-cut ref="shortCut" :url="images.talk" :fileName="'Talk'" @clickShortcut="openWindow"></short-cut>
+        <short-cut
+          ref="shortCut"
+          :url="images.talk"
+          :fileName="'Talk'"
+          @clickShortcut="openWindow"
+        ></short-cut>
       </div>
     </div>
     <task-bar></task-bar>
@@ -137,11 +142,11 @@ ul {
 }
 
 .main_wrap {
-  1background-image: url("../assets/camping.jpg");
+  background-image: url("../assets/Untitled.svg");
 
   min-height: 100%;
-  1background-position: center;
-  1background-size: cover;
+  background-position: top;
+  background-size: cover;
 }
 
 .main_container {
@@ -151,11 +156,7 @@ ul {
   width: 0%;
   height: 600px; /* 모바일 크기 정해야함*/
   padding-top: 50px;
-}
-
-.main_container > * {
-  /* 알아보기 */
-  flex: 1 1 1;
+  color: white;
 }
 
 .list_item {
@@ -165,7 +166,13 @@ ul {
   margin-bottom: 20px;
   padding: 20px;
   background-color: #e5e5e5;
-  1border: 1px solid #262626;
   border-radius: 10px;
 }
+
+/* Large devices (desktops, 992px and up)
+@media (max-width: 1199.98px) {
+  .main_wrap {
+    background-size: cover;
+  }
+} */
 </style>
