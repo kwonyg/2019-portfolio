@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="talk_container">
     개발중이에요~ :)
-    <ul>
-      <li v-for="message in messages" :key="message.id">{{ message.content }}</li>
+    <ul class="talk_list" style="height:400px; overflow-y: auto;">
+      <li v-for="message in messages" :key="message.id">
+        {{ message.content }}
+      </li>
     </ul>
-    <div class="form_content">
-      <input type="text" v-model="message" />
+    <div class="form_container">
+      <input type="text" v-model="message" v-on:keyup.enter="onSubmit" />
       <button @click="onSubmit">전송</button>
     </div>
   </div>
@@ -38,15 +40,35 @@ export default {
       });
     },
     onSubmit() {
-      if (this.message === "") return alert("메세지를 입력해주세요");
       this.$store
         .dispatch("ADD_MESSAGE", { message: this.message })
         .then(() => {
-          this.message = "";
+          var talkList = this.$el.querySelector(".talk_list");
+          talkList.scrollTop = talkList.scrollHeight;
         });
+      this.message = "";
     }
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 500px;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.talk_list {
+  overflow: scroll;
+}
+
+.form_container {
+  width: 100%;
+}
+</style>

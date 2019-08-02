@@ -30,11 +30,7 @@
       <h2>Frameworks</h2>
       <div class="framework_container">
         <ul class="framework_list">
-          <li
-            class="list_item"
-            v-for="framework in frameworks"
-            :key="framework.name"
-          >
+          <li class="list_item" v-for="framework in frameworks" :key="framework.name">
             <img
               class="list_img framework_img"
               :src="require(`@/images/aboutMe/${framework.imgSrc}`)"
@@ -49,11 +45,7 @@
       <h2>DataBase</h2>
       <div class="database_container">
         <ul class="database_list">
-          <li
-            class="list_item"
-            v-for="database in databases"
-            :key="database.name"
-          >
+          <li class="list_item" v-for="database in databases" :key="database.name">
             <img
               class="list_img database_img"
               :src="require(`@/images/aboutMe/${database.imgSrc}`)"

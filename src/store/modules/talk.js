@@ -1,4 +1,6 @@
 import { firestore } from "../../firebase/config.js";
+// import firebase from "firebase/app";
+
 export const talkModule = {
   state: {
     user: null,

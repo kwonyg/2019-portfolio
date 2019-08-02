@@ -2,63 +2,31 @@
   <section class="activity_section">
     <h1>Activities</h1>
     <ul class="acitivity_list">
-      <li>
-        <article>
-          <div class="activity_info_container">
-            <h2>활동 명</h2>
-            <p class="description">
-              봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.
-            </p>
-            <div class="date">2019.03.03</div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article>
-          <div class="activity_wrap">
-            <div class="activity_img_container" v-if>
-              <img
-                class="activity_img"
-                src="../../images/projects/ironmental_1.png"
-                alt
-              />
-            </div>
-            <div class="activity_info_container">
-              <h2>활동 명</h2>
-              <p class="description">
-                봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.
-              </p>
-              <div class="date">2019.03.03</div>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article>
-          <div class="activity_wrap">
-            <div class="activity_img_container" v-if>
-              <img
-                class="activity_img"
-                src="../../images/projects/ironmental_1.png"
-                alt
-              />
-            </div>
-            <div class="activity_info_container">
-              <h2>활동 명</h2>
-              <p class="description">
-                봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.봉사활동했습니다.
-              </p>
-              <div class="date">2019.03.03</div>
-            </div>
-          </div>
-        </article>
+      <li v-for="(activity, index) in activities" :key="index">
+        <list-item-card :item="activity"></list-item-card>
       </li>
     </ul>
   </section>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+import ListItemCard from "../ListItemCard.vue";
+
+export default {
+  components: {
+    ListItemCard
+  },
+
+  computed: {
+    ...mapGetters({
+      activities: "fetchedActivities"
+    })
+  },
+  created() {
+    this.$store.dispatch("FETCH_ACTIVITIES");
+  }
+};
 </script>
 
 <style scoped>

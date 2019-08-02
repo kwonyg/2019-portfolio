@@ -1,6 +1,6 @@
 <template>
   <section class="activity_section">
-    <h1>Activities</h1>
+    <h1>Projects</h1>
     <ul class="acitivity_list">
       <li>
         <article>
