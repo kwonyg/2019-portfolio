@@ -13,7 +13,6 @@ export const activityModule = {
 
   mutations: {
     SET_ACTIVITIES(state, activity) {
-      console.log(activity.datas);
       state.activities = activity.datas;
     }
   },
