@@ -47,7 +47,7 @@ export const talkModule = {
         });
     },
 
-    ADD_MESSAGE({ commit, state }, { message }) {
+    ADD_MESSAGE({ commit }, { message }) {
       return firestore
         .collection("chat")
         .doc()

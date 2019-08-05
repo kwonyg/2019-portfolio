@@ -45,8 +45,8 @@
           @clickShortcut="openWindow"
         ></short-cut>
       </div>
+      <task-bar class="task_bar"></task-bar>
     </div>
-    <task-bar></task-bar>
 
     <window-modal v-if="showModal" @close="closeWindow">
       <div slot="body">
@@ -134,13 +134,12 @@ ul {
 }
 
 .main_section {
-  height: 100%; /* 모바일때 height를 없애기*/
-  margin: -50px 0 0 0;
+  height: 100%;
 }
 
 .main_wrap {
+  position: relative;
   background-image: url("../assets/camping.jpg");
-
   min-height: 100%;
   background-position: bottom;
   background-size: cover;
@@ -150,19 +149,24 @@ ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 600px;
   width: 0%;
-  height: 600px; /* 모바일 크기 정해야함*/
-  padding-top: 50px;
-  color: white;
+  padding-bottom: 50px;
 }
 
 .list_item {
   color: #404040;
-  max-width: 980px; /* 모바일 대응 안해도 되게 선언하는 법*/
+  max-width: 980px;
   margin: 0 auto;
   margin-bottom: 20px;
   padding: 20px;
   background-color: #e5e5e5;
   border-radius: 10px;
+}
+
+.task_bar {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 </style>

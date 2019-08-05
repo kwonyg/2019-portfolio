@@ -10,12 +10,16 @@ export const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: "/",
+      redirect: "login"
+    },
+    {
       path: "/login",
       name: "login",
       component: LoginView
     },
     {
-      path: "/",
+      path: "/home",
       name: "home",
       component: HomeView
     }

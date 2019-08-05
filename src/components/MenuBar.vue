@@ -23,7 +23,7 @@ export default {
         {
           name: "로그아웃",
           image: require(`@/images/menubar/logout.png`),
-          url: "/"
+          url: "/login"
         },
         {
           name: "도움말",
