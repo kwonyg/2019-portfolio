@@ -59,7 +59,6 @@
 
 <script>
 import { mapGetters } from "vuex";
-// import VueMarkdown from "vue-markdown";
 import ShortCut from "../components/ShortCut.vue";
 import WindowModal from "../components/WindowModal.vue";
 import TaskBar from "../components/TaskBar.vue";
@@ -70,8 +69,6 @@ export default {
     ShortCut,
     WindowModal,
     TaskBar
-
-    // VueMarkdown,
   },
 
   data() {
@@ -142,10 +139,10 @@ ul {
 }
 
 .main_wrap {
-  background-image: url("../assets/Untitled.svg");
+  background-image: url("../assets/camping.jpg");
 
   min-height: 100%;
-  background-position: top;
+  background-position: bottom;
   background-size: cover;
 }
 
@@ -168,11 +165,4 @@ ul {
   background-color: #e5e5e5;
   border-radius: 10px;
 }
-
-/* Large devices (desktops, 992px and up)
-@media (max-width: 1199.98px) {
-  .main_wrap {
-    background-size: cover;
-  }
-} */
 </style>

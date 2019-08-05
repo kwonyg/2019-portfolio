@@ -30,7 +30,11 @@
       <h2>Frameworks</h2>
       <div class="framework_container">
         <ul class="framework_list">
-          <li class="list_item" v-for="framework in frameworks" :key="framework.name">
+          <li
+            class="list_item"
+            v-for="framework in frameworks"
+            :key="framework.name"
+          >
             <img
               class="list_img framework_img"
               :src="require(`@/images/aboutMe/${framework.imgSrc}`)"
@@ -45,7 +49,11 @@
       <h2>DataBase</h2>
       <div class="database_container">
         <ul class="database_list">
-          <li class="list_item" v-for="database in databases" :key="database.name">
+          <li
+            class="list_item"
+            v-for="database in databases"
+            :key="database.name"
+          >
             <img
               class="list_img database_img"
               :src="require(`@/images/aboutMe/${database.imgSrc}`)"
@@ -84,94 +92,6 @@ export default {
       etcs: AboutMeData.etcs
     };
   }
-
-  // data() {
-  //   return {
-  //     skills: [
-  //       {
-  //         name: "html5",
-  //         imgSrc: require(`@/images/aboutMe/html_Logo.png`),
-  //         alt: "html 로고"
-  //       },
-  //       {
-  //         name: "css",
-  //         imgSrc: require(`@/images/aboutMe/css_Logo.png`),
-  //         alt: "css 로고"
-  //       },
-  //       {
-  //         name: "javascript",
-  //         imgSrc: require(`@/images/aboutMe/javascript_Logo.svg`),
-  //         alt: "javascript 로고"
-  //       },
-  //       {
-  //         name: "java",
-  //         imgSrc: require(`@/images/aboutMe/java_Logo.svg`),
-  //         alt: "java 로고"
-  //       },
-  //       {
-  //         name: "node.js",
-  //         imgSrc: require(`@/images/aboutMe/nodejs_Logo.png`),
-  //         alt: "node.js 로고"
-  //       },
-  //       {
-  //         name: "python",
-  //         imgSrc: require(`@/images/aboutMe/python_Logo.svg`),
-  //         alt: "python 로고"
-  //       },
-  //       {
-  //         name: "C",
-  //         imgSrc: require(`@/images/aboutMe/c_Logo.png`),
-  //         alt: "C 로고"
-  //       },
-  //       {
-  //         name: "C++",
-  //         imgSrc: require(`@/images/aboutMe/cpp_Logo.svg`),
-  //         alt: "C++ 로고"
-  //       }
-  //     ],
-  //     frameworks: [
-  //       {
-  //         name: "vue.js",
-  //         imgSrc: require(`@/images/aboutMe/vue_Logo.svg`),
-  //         alt: "vue.js 로고"
-  //       },
-  //       {
-  //         name: "express",
-  //         imgSrc: require(`@/images/aboutMe/express.svg`),
-  //         alt: "express 로고"
-  //       },
-  //       {
-  //         name: "spring",
-  //         imgSrc: require(`@/images/aboutMe/spring_Logo.svg`),
-  //         alt: "spring 로고"
-  //       }
-  //     ],
-  //     databases: [
-  //       {
-  //         name: "mysql",
-  //         imgSrc: require(`@/images/aboutMe/mysql_Logo.png`),
-  //         alt: "mysql 로고"
-  //       },
-  //       {
-  //         name: "mongodb",
-  //         imgSrc: require(`@/images/aboutMe/mongodb_logo.png`),
-  //         alt: "mongodb 로고"
-  //       }
-  //     ],
-  //     etcs: [
-  //       {
-  //         name: "github",
-  //         imgSrc: require(`@/images/aboutMe/github_Logo.svg`),
-  //         alt: "github 로고"
-  //       },
-  //       {
-  //         name: "firebase",
-  //         imgSrc: require(`@/images/aboutMe/firebase_Logo.svg`),
-  //         alt: "firebase 로고"
-  //       }
-  //     ]
-  //   };
-  // }
 };
 </script>
 
