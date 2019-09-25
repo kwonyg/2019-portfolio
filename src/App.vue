@@ -17,6 +17,14 @@ html,
 body {
   margin: 0;
 }
+
+html{
+    background: url(./assets/wallpaper.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 #app {
   font-family: "Roboto Mono", monospace;
 }
