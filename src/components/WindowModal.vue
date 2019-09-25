@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import VueDraggableResizable from "vue-draggable-resizable";
+const VueDraggableResizable = require("vue-draggable-resizable");
 
 @Component({
   components: {
