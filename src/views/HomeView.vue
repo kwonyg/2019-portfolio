@@ -5,7 +5,7 @@
         <li
           class="list_item"
           :class="{ active : active == 1 }"
-          @click="activate($event,1)"
+          @click="activate(1)"
           @dblclick="double"
         >
           <short-cut :imageUrl="'man.svg'" :title="'About Me'"></short-cut>
@@ -13,7 +13,7 @@
         <li
           class="list_item"
           :class="{ active : active == 2 }"
-          @click="activate($event,2)"
+          @click="activate(2)"
           @dblclick="double"
         >
           <short-cut :imageUrl="'folder.svg'" :title="'Projects'"></short-cut>
@@ -21,7 +21,7 @@
         <li
           class="list_item"
           :class="{ active : active == 3 }"
-          @click="activate($event,3)"
+          @click="activate(3)"
           @dblclick="double"
         >
           <short-cut :imageUrl="'folder.svg'" :title="'Activities'"></short-cut>
@@ -31,7 +31,7 @@
         <li
           class="list_item"
           :class="{ active : active == 4 }"
-          @click="activate($event,4)"
+          @click="activate(4)"
           @dblclick="double"
         >
           <short-cut :imageUrl="'phone-call.svg'" :title="'Contacts'"></short-cut>
@@ -39,7 +39,7 @@
         <li
           class="list_item"
           :class="{ active : active == 5 }"
-          @click="activate($event,5)"
+          @click="activate(5)"
           @dblclick="double"
         >
           <short-cut :imageUrl="'web.svg'" :title="'Guest Book'"></short-cut>
@@ -47,7 +47,7 @@
         <li
           class="list_item"
           :class="{ active : active == 6 }"
-          @click="activate($event,6)"
+          @click="activate(6)"
           @dblclick="double"
         >
           <short-cut :imageUrl="'github.png'" :title="'GitHub'"></short-cut>
@@ -81,15 +81,14 @@ export default class HomeView extends Vue {
   }
 
   deActivate($event: Event) {
-    if ($event.target.className === "home_section") {
+    if (($event.target as HTMLElement).className === "home_section") {
       console.log("deActivate");
       this.active = 0;
     }
   }
 
-  activate($event: Event, elNum: number) {
+  activate(elNum: number) {
     console.log(elNum);
-
     this.active = elNum;
   }
 }
