@@ -16,10 +16,11 @@ export default class App extends Vue {}
 html,
 body {
   margin: 0;
+  overflow: hidden;
 }
 
-html{
-    background: url(./assets/wallpaper.jpg) no-repeat center center fixed; 
+html {
+  background: url(./assets/wallpaper.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -27,5 +28,8 @@ html{
 }
 #app {
   font-family: "Roboto Mono", monospace;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
 }
 </style>

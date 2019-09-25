@@ -6,10 +6,7 @@
           <span>KwonYG</span>
         </li>
         <li class="list_item menu">
-          <span>설정</span>
-        </li>
-        <li class="list_item menu">
-          <span>도움말</span>
+          <span>메뉴</span>
         </li>
       </ul>
     </nav>
