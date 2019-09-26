@@ -1,6 +1,11 @@
 <template>
   <section ref="home_section" class="home_section" @click="deActivate($event,0)">
-    <window-modal class="window_modal" :show="true"></window-modal>
+    <activities-window
+      class="window_modal"
+      :title="'Activities'"
+      :show="activitiesShow"
+      @close="closeWindow"
+    ></activities-window>
     <div class="shortcut_container">
       <ul class="shortcut_list">
         <li class="list_item" :class="{ active : active === 'aboutme' }">
@@ -30,17 +35,20 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import ShortCut from "@/components/ShortCut.vue";
-import WindowModal from "@/components/WindowModal.vue";
+import ActivitiesWindow from "@/components/windows/ActivitiesWindow.vue";
 
 @Component({
   components: {
     ShortCut,
-    WindowModal
+    ActivitiesWindow
   }
 })
 export default class HomeView extends Vue {
   active: string = "";
   clickCount: number = 0;
+
+  //windows flag
+  activitiesShow: boolean = false;
 
   deActivate($event: Event) {
     if (($event.target as HTMLElement).className === "home_section") {
@@ -65,11 +73,31 @@ export default class HomeView extends Vue {
             console.log("oneClick"); // self.active = elNum;
             break;
           default:
-            console.log("double clicked!");
+            self.whichWindow(title);
         }
         self.clickCount = 0; // reset the first click
       }, 200); // wait 0.2s
-    } // if
+    }
+  }
+
+  whichWindow(fileName: string) {
+    switch (fileName) {
+      case "activities":
+        return (this.activitiesShow = true);
+      default:
+        return null;
+    }
+  }
+
+  closeWindow(fileName: string) {
+    fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
+    console.log(fileName);
+    switch (fileName) {
+      case "activities":
+        return (this.activitiesShow = false);
+      default:
+        return null;
+    }
   }
 }
 </script>

@@ -9,11 +9,16 @@
     :z="999"
   >
     <div class="drag-handle status_bar">
-      <img class="close_img" src="../assets/close.svg" alt />
-      <span>Acitivies</span>
+      <img
+        class="close_img"
+        src="../../assets/close.svg"
+        alt="닫기 이미지"
+        @click="$emit('close',title)"
+      />
+      <span>{{title}}</span>
     </div>
     <div class="content_container">
-      <img src="../assets/close.svg" alt />
+      <img src="../../assets/close.svg" alt />
       <p>fmeklafmealkfmela</p>
       <p>fmeklafmealkfmela</p>
       <p>fmeklafmealkfmela</p>
@@ -34,6 +39,7 @@ const VueDraggableResizable = require("vue-draggable-resizable");
   }
 })
 export default class WindowModal extends Vue {
+  @Prop() readonly title!: string;
   @Prop() readonly show!: boolean;
 }
 </script>
