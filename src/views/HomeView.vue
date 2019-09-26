@@ -159,4 +159,32 @@ li.list_item.active {
   color: #fff;
   border: 1px dotted #ccc !important;
 }
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+  ul {
+    padding: 0;
+  }
+  li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
 </style>
