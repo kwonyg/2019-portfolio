@@ -46,6 +46,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import bus from "@/utils/bus";
 import ShortCut from "@/components/ShortCut.vue";
 import ActivitiesWindow from "@/components/windows/ActivitiesWindow.vue";
 import AboutmeWindow from "@/components/windows/AboutmeWindow.vue";
@@ -72,6 +73,7 @@ export default class HomeView extends Vue {
       console.log("deActivate");
       this.active = "";
     }
+    bus.$emit("close:sub_menu");
   }
 
   public activate(title: string) {
