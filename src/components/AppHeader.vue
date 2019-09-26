@@ -2,11 +2,11 @@
   <header class="app_header">
     <nav>
       <ul class="menu_list">
+        <li class="list_item menu">KwonYG&nbsp&nbsp</li>
         <li class="list_item menu">
-          <span>KwonYG</span>
-        </li>
-        <li class="list_item menu">
-          <span>메뉴</span>
+          <span>
+            <u>메</u>뉴
+          </span>
         </li>
       </ul>
     </nav>
