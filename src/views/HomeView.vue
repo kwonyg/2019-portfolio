@@ -2,6 +2,12 @@
   <section ref="home_section" class="home_section" @click="deActivate($event,0)">
     <activities-window
       class="window_modal"
+      :title="'About Me'"
+      :show="aboutmeShow"
+      @close="closeWindow"
+    ></activities-window>
+    <activities-window
+      class="window_modal"
       :title="'Activities'"
       :show="activitiesShow"
       @close="closeWindow"
@@ -48,6 +54,7 @@ export default class HomeView extends Vue {
   clickCount: number = 0;
 
   //windows flag
+  aboutmeShow: boolean = true;
   activitiesShow: boolean = false;
 
   deActivate($event: Event) {
@@ -82,6 +89,8 @@ export default class HomeView extends Vue {
 
   whichWindow(fileName: string) {
     switch (fileName) {
+      case "aboutme":
+        return (this.aboutmeShow = true);
       case "activities":
         return (this.activitiesShow = true);
       default:
@@ -91,8 +100,10 @@ export default class HomeView extends Vue {
 
   closeWindow(fileName: string) {
     fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
-    console.log(fileName);
+
     switch (fileName) {
+      case "aboutme":
+        return (this.aboutmeShow = false);
       case "activities":
         return (this.activitiesShow = false);
       default:
