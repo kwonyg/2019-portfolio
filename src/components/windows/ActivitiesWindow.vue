@@ -30,17 +30,17 @@
   </vue-draggable-resizable>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-const VueDraggableResizable = require("vue-draggable-resizable");
+import { Vue, Component, Prop } from 'vue-property-decorator';
+const VueDraggableResizable = require('vue-draggable-resizable');
 
 @Component({
   components: {
-    VueDraggableResizable
-  }
+    VueDraggableResizable,
+  },
 })
 export default class WindowModal extends Vue {
-  @Prop() readonly title!: string;
-  @Prop() readonly show!: boolean;
+  @Prop() public readonly title!: string;
+  @Prop() public readonly show!: boolean;
 }
 </script>
 <style scoped>

@@ -4,9 +4,7 @@
       <ul class="menu_list">
         <li class="list_item menu">KwonYG&nbsp&nbsp</li>
         <li class="list_item menu">
-          <span>
-            <u>메</u>뉴
-          </span>
+          <span>메뉴</span>
         </li>
       </ul>
     </nav>
@@ -20,9 +18,9 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class AppHeader extends Vue {
-  currentTime: string = "";
+  public currentTime: string = "";
 
-  refreshTime() {
+  public refreshTime() {
     const date = new Date();
     const month = date.getMonth();
     const clockDate = date.getDate();
@@ -36,7 +34,7 @@ export default class AppHeader extends Vue {
       }:${seconds < 10 ? `0${seconds}` : seconds}`;
   }
 
-  mounted() {
+  public mounted() {
     setInterval(this.refreshTime, 1000);
   }
 }

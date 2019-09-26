@@ -1,17 +1,23 @@
 <template>
   <section ref="home_section" class="home_section" @click="deActivate($event,0)">
-    <activities-window
+    <aboutme-window
       class="window_modal"
       :title="'About Me'"
       :show="aboutmeShow"
       @close="closeWindow"
-    ></activities-window>
+    ></aboutme-window>
     <activities-window
       class="window_modal"
       :title="'Activities'"
       :show="activitiesShow"
       @close="closeWindow"
     ></activities-window>
+    <contacts-window
+      class="window_modal"
+      :title="'Contacts'"
+      :show="contactsShow"
+      @close="closeWindow"
+    ></contacts-window>
     <div class="shortcut_container">
       <ul class="shortcut_list">
         <li class="list_item" :class="{ active : active === 'aboutme' }">
@@ -21,7 +27,7 @@
           <short-cut :imageUrl="'folder.svg'" :title="'Projects'" @clickedIcon="activate"></short-cut>
         </li>
         <li class="list_item" :class="{ active : active === 'activities' }">
-          <short-cut :imageUrl="'folder.svg'" :title="'Activities'" @clickedIcon="activate"></short-cut>
+          <short-cut :imageUrl="'sns.svg'" :title="'Activities'" @clickedIcon="activate"></short-cut>
         </li>
       </ul>
       <ul class="shortcut_list">
@@ -42,29 +48,33 @@
 import { Vue, Component } from "vue-property-decorator";
 import ShortCut from "@/components/ShortCut.vue";
 import ActivitiesWindow from "@/components/windows/ActivitiesWindow.vue";
-
+import AboutmeWindow from "@/components/windows/AboutmeWindow.vue";
+import ContactsWindow from "@/components/windows/ContactsWindow.vue";
 @Component({
   components: {
     ShortCut,
-    ActivitiesWindow
+    ActivitiesWindow,
+    AboutmeWindow,
+    ContactsWindow
   }
 })
 export default class HomeView extends Vue {
-  active: string = "";
-  clickCount: number = 0;
+  public active: string = "";
+  public clickCount: number = 0;
 
-  //windows flag
-  aboutmeShow: boolean = true;
-  activitiesShow: boolean = false;
+  // windows flag
+  public aboutmeShow: boolean = true;
+  public activitiesShow: boolean = false;
+  contactsShow: boolean = false;
 
-  deActivate($event: Event) {
+  public deActivate($event: Event) {
     if (($event.target as HTMLElement).className === "home_section") {
       console.log("deActivate");
       this.active = "";
     }
   }
 
-  activate(title: string) {
+  public activate(title: string) {
     title = title.replace(/(\s*)/g, "").toLowerCase();
     console.log(title);
     this.active = title;
@@ -87,18 +97,20 @@ export default class HomeView extends Vue {
     }
   }
 
-  whichWindow(fileName: string) {
+  public whichWindow(fileName: string) {
     switch (fileName) {
       case "aboutme":
         return (this.aboutmeShow = true);
       case "activities":
         return (this.activitiesShow = true);
+      case "contacts":
+        return (this.contactsShow = true);
       default:
         return null;
     }
   }
 
-  closeWindow(fileName: string) {
+  public closeWindow(fileName: string) {
     fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
 
     switch (fileName) {
@@ -106,6 +118,8 @@ export default class HomeView extends Vue {
         return (this.aboutmeShow = false);
       case "activities":
         return (this.activitiesShow = false);
+      case "contacts":
+        return (this.contactsShow = false);
       default:
         return null;
     }
