@@ -1,46 +1,55 @@
 <template>
-  <vue-draggable-resizable
-    v-if="show"
-    class="modal"
-    style="border: 1px solid black;"
-    :drag-handle="'.drag-handle'"
-    :w="300"
-    :h="450"
-    :z="999"
-  >
-    <div class="drag-handle status_bar">
-      <img
-        class="close_img"
-        src="../../assets/close.svg"
-        alt="닫기 이미지"
-        @click="$emit('close',title)"
-      />
-      <span>{{title}}</span>
-    </div>
-    <div class="content_container">
-      <img src="../../assets/close.svg" alt />
-      <p>fmeklafmealkfmela</p>
-      <p>fmeklafmealkfmela</p>
-      <p>fmeklafmealkfmela</p>
-      <p>fmeklafmealkfmela</p>
-      <p>fmeklafmealkfmela</p>
-      <p>fmeklafmealkfmela</p>
-      <p>fmeklafmealkfmela</p>
-    </div>
-  </vue-draggable-resizable>
+  <div @click="clickedWindow">
+    <vue-draggable-resizable
+      v-if="show"
+      class="modal"
+      style="border: 1px solid black;"
+      :drag-handle="'.drag-handle'"
+      :w="300"
+      :h="450"
+      :z="z"
+    >
+      <div class="drag-handle status_bar">
+        <img
+          class="close_img"
+          src="../../assets/close.svg"
+          alt="닫기 이미지"
+          @click="$emit('close',title)"
+        />
+        <span>{{title}}</span>
+      </div>
+      <div class="content_container">
+        <img src="../../assets/close.svg" alt />
+        <p>fmeklafmealkfmela</p>
+        <p>fmeklafmealkfmela</p>
+        <p>fmeklafmealkfmela</p>
+        <p>fmeklafmealkfmela</p>
+        <p>fmeklafmealkfmela</p>
+        <p>fmeklafmealkfmela</p>
+        <p>fmeklafmealkfmela</p>
+      </div>
+    </vue-draggable-resizable>
+  </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-const VueDraggableResizable = require('vue-draggable-resizable');
+import bus from "@/utils/bus";
+import { Vue, Component, Prop } from "vue-property-decorator";
+const VueDraggableResizable = require("vue-draggable-resizable");
 
 @Component({
   components: {
-    VueDraggableResizable,
-  },
+    VueDraggableResizable
+  }
 })
 export default class WindowModal extends Vue {
   @Prop() public readonly title!: string;
   @Prop() public readonly show!: boolean;
+  @Prop() public readonly z!: number;
+
+  clickedWindow() {
+    console.log("계산 이벤트!!");
+    bus.$emit("calc:zindex", this.title);
+  }
 }
 </script>
 <style scoped>

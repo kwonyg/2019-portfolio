@@ -2,20 +2,24 @@
   <section ref="home_section" class="home_section" @click="deActivate($event,0)">
     <aboutme-window
       class="window_modal"
+      ref="aboutme"
       :title="'About Me'"
       :show="aboutmeShow"
+      :z="aboutmeZindex"
       @close="closeWindow"
     ></aboutme-window>
     <activities-window
       class="window_modal"
       :title="'Activities'"
       :show="activitiesShow"
+      :z="activitiesZindex"
       @close="closeWindow"
     ></activities-window>
     <contacts-window
       class="window_modal"
       :title="'Contacts'"
       :show="contactsShow"
+      :z="contactsZindex"
       @close="closeWindow"
     ></contacts-window>
     <div class="shortcut_container">
@@ -45,7 +49,7 @@
   </section>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
 import bus from "@/utils/bus";
 import ShortCut from "@/components/ShortCut.vue";
 import ActivitiesWindow from "@/components/windows/ActivitiesWindow.vue";
@@ -68,6 +72,20 @@ export default class HomeView extends Vue {
   public activitiesShow: boolean = false;
   contactsShow: boolean = false;
 
+  // zIndex
+  mostZ: number = 3;
+  aboutmeZindex: number = 2;
+  activitiesZindex: number = 2;
+  contactsZindex: number = 2;
+
+  created() {
+    bus.$on("calc:zindex", this.calcZindex);
+  }
+
+  beforeDestory() {
+    bus.$off("calc:zindex", this.calcZindex);
+  }
+
   public deActivate($event: Event) {
     if (($event.target as HTMLElement).className === "home_section") {
       console.log("deActivate");
@@ -77,6 +95,7 @@ export default class HomeView extends Vue {
   }
 
   public activate(title: string) {
+    console.log("activate!");
     title = title.replace(/(\s*)/g, "").toLowerCase();
     console.log(title);
     this.active = title;
@@ -93,6 +112,7 @@ export default class HomeView extends Vue {
             break;
           default:
             self.whichWindow(title);
+            self.mostZ++;
         }
         self.clickCount = 0; // reset the first click
       }, 200); // wait 0.2s
@@ -122,6 +142,23 @@ export default class HomeView extends Vue {
         return (this.activitiesShow = false);
       case "contacts":
         return (this.contactsShow = false);
+      default:
+        return null;
+    }
+  }
+
+  calcZindex(title: string) {
+    title = title.replace(/(\s*)/g, "").toLowerCase();
+    console.log("계에산!: ", title);
+    this.mostZ++;
+    console.log(this.mostZ);
+    switch (title) {
+      case "aboutme":
+        return (this.aboutmeZindex = this.mostZ);
+      case "activities":
+        return (this.activitiesZindex = this.mostZ);
+      case "contacts":
+        return (this.contactsZindex = this.mostZ);
       default:
         return null;
     }

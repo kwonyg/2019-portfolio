@@ -1,39 +1,42 @@
 <template>
-  <vue-draggable-resizable
-    v-if="show"
-    class="modal"
-    style="border: 1px solid black;"
-    :drag-handle="'.drag-handle'"
-    :w="370"
-    :h="200"
-    :z="999"
-  >
-    <div class="drag-handle status_bar">
-      <img
-        class="close_img"
-        src="../../assets/close.svg"
-        alt="닫기 이미지"
-        @click="$emit('close',title)"
-      />
-      <span>{{title}}</span>
-    </div>
-    <div class="content_container">
-      <div class="contact_container phone_container">
-        <a class="contact_link phone_link" href="tel:010-9217-2117">
-          <img class="contact_image phone_image" src="../../assets/phone.svg" alt="전화" />
-          <span>010-9217-2117</span>
-        </a>
+  <div @click="clickedWindow">
+    <vue-draggable-resizable
+      v-if="show"
+      class="modal"
+      style="border: 1px solid black;"
+      :drag-handle="'.drag-handle'"
+      :w="370"
+      :h="200"
+      :z="z"
+    >
+      <div class="drag-handle status_bar">
+        <img
+          class="close_img"
+          src="../../assets/close.svg"
+          alt="닫기 이미지"
+          @click="$emit('close',title)"
+        />
+        <span>{{title}}</span>
       </div>
-      <div class="contact_container email_container">
-        <a class="contact_link email_link" href="mailto: abc@example.com">
-          <img class="contact_image email_image" src="../../assets/mail.svg" alt="이메일" />
-          <span>andamirocll@email.com</span>
-        </a>
+      <div class="content_container">
+        <div class="contact_container phone_container">
+          <a class="contact_link phone_link" href="tel:010-9217-2117">
+            <img class="contact_image phone_image" src="../../assets/phone.svg" alt="전화" />
+            <span>010-9217-2117</span>
+          </a>
+        </div>
+        <div class="contact_container email_container">
+          <a class="contact_link email_link" href="mailto: abc@example.com">
+            <img class="contact_image email_image" src="../../assets/mail.svg" alt="이메일" />
+            <span>andamirocll@email.com</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </vue-draggable-resizable>
+    </vue-draggable-resizable>
+  </div>
 </template>
 <script lang="ts">
+import bus from "@/utils/bus";
 import { Vue, Component, Prop } from "vue-property-decorator";
 const VueDraggableResizable = require("vue-draggable-resizable");
 
@@ -45,6 +48,11 @@ const VueDraggableResizable = require("vue-draggable-resizable");
 export default class WindowModal extends Vue {
   @Prop() public readonly title!: string;
   @Prop() public readonly show!: boolean;
+  @Prop() public readonly z!: number;
+
+  clickedWindow() {
+    bus.$emit("calc:zindex", this.title);
+  }
 }
 </script>
 <style scoped>
