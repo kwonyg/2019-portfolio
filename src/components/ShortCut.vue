@@ -1,50 +1,25 @@
 <template>
-  <div class="shortcut_container" @click="$emit('clickShortcut', { fileName })">
-    <img class="shortcut_img" :src="url" />
-    <div class="shortcut_name">{{ fileName }}</div>
+  <div class="short_cut" @click="$emit('clickedIcon', title )">
+    <img class="shortcut_img" :src="require(`../assets/${imageUrl}`)" />
+    <div class="shortcut_title">{{title}}</div>
   </div>
 </template>
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
-<script>
-export default {
-  props: {
-    url: {
-      type: String,
-      required: true
-    },
-    fileName: {
-      type: String,
-      required: true
-    }
-  }
-};
+@Component
+export default class ShortCut extends Vue {
+  @Prop() public readonly imageUrl!: string;
+  @Prop() public readonly title!: string;
+}
 </script>
-
 <style scoped>
-.shortcut_container {
-  width: 100px;
-  padding: 20px;
+.short_cut {
   text-align: center;
 }
 
-.shortcut_container:hover {
-  border-radius: 20px;
-  cursor: pointer;
-  background-color: grey;
-}
-
-.shortcut_button:hover {
-  border-radius: 20px;
-  cursor: pointer;
-  background-color: grey;
-}
-
-.shortcut_img {
-  width: 80px;
-  height: 80px;
-}
-
-.shortcut_name {
-  color: #fff;
+img.shortcut_img {
+  width: 40px;
+  height: 40px;
 }
 </style>

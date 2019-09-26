@@ -1,0 +1,129 @@
+<template>
+  <header class="app_header">
+    <nav>
+      <ul class="menu_list">
+        <li class="list_item menu">KwonYG&nbsp&nbsp</li>
+        <li class="list_item menu" @click="toggleMenu">
+          <span>메뉴</span>
+        </li>
+      </ul>
+    </nav>
+    <aside class="side_display">
+      <span class="display_item clock">{{currentTime}}</span>
+    </aside>
+    <div class="sub_menu" v-if="showMenu">
+      <ul class="sub_menu_list">
+        <li class="list_item sub_menu_item">
+          <span>전체화면</span>
+        </li>
+        <li class="list_item sub_menu_item">
+          <span>로그아웃</span>
+        </li>
+      </ul>
+    </div>
+  </header>
+</template>
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+import bus from "@/utils/bus";
+
+@Component
+export default class AppHeader extends Vue {
+  public currentTime: string = "";
+  showMenu: boolean = false;
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
+
+  public refreshTime() {
+    const date = new Date();
+    const month = date.getMonth();
+    const clockDate = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    this.currentTime =
+      `${month + 1}월 ${clockDate}일 ` +
+      `${hours < 10 ? `0${hours}` : hours}:${
+        minutes < 10 ? `0${minutes}` : minutes
+      }:${seconds < 10 ? `0${seconds}` : seconds}`;
+  }
+
+  closeMenu() {
+    this.showMenu = false;
+  }
+
+  created() {
+    bus.$on("close:sub_menu", this.closeMenu);
+  }
+
+  beforeDestroy() {
+    bus.$off("close:sub_menu", this.closeMenu);
+  }
+
+  public mounted() {
+    setInterval(this.refreshTime, 1000);
+  }
+}
+</script>
+
+<style scoped>
+header {
+  background-color: #ecfbfe;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header.app_header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+nav .menu_list {
+  display: flex;
+}
+
+nav .menu_list .list_item {
+  margin-left: 5px;
+}
+
+nav .menu_list .list_item span {
+  cursor: pointer;
+}
+
+aside .display_item {
+  padding: 0 6px;
+  border-left: 1px solid black;
+}
+
+.sub_menu {
+  position: absolute;
+  width: 180px;
+  top: 22px;
+  left: 85px;
+  background: #fafeff;
+  z-index: 9999;
+}
+
+ul.sub_menu_list {
+  border: 1px solid #000;
+}
+
+ul.sub_menu_list .list_item {
+  padding-left: 20px;
+}
+
+.sub_menu_item:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #2488ff;
+}
+</style>

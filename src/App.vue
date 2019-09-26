@@ -1,42 +1,35 @@
 <template>
   <div id="app">
-    <transition name="fade">
-      <router-view />
-    </transition>
+    <app-header></app-header>
+    <router-view />
   </div>
 </template>
-
-<script>
-export default {};
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import AppHeader from '@/components/AppHeader.vue';
+@Component({
+  components: { AppHeader },
+})
+export default class App extends Vue {}
 </script>
-
 <style>
-body,
-html {
+html,
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
+  overflow: hidden;
 }
 
+html {
+  background: url(./assets/wallpaper.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 #app {
-  font-family: "Noto Sans KR", sans-serif;
-  height: 100%;
-}
-.window {
-  height: 100px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0.5;
-}
-
-@media (max-width: 1199.98px) {
-  #app {
-    font-size: 16px;
-  }
+  font-family: "Roboto Mono", monospace;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
 }
 </style>

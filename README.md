@@ -1,21 +1,57 @@
-﻿# 2019-portfolio
+# 2019 포트폴리오 프로젝트
 
-웹으로 만든 포트폴리오 사이트. **현재 개발 중**
+## 개요
 
-## 구성
+![](./images/vue_ts.png)
 
-- vue.js
-- firebase
+Vue.js + TypeScript 로 진행하고 있는 포트폴리오 프로젝트입니다. 현재 **개발진행중**이며 타입스크립트에 아직 익숙치않아 코드에 어색한 부분이 존재 할 수 있습니다.
 
-## 배포
+## 배포(현재 개발중, 완성 X)
 
-- ~~netlify~~
+- kwonyg.me
 
-  - ~~쉬운 배포자동화, 무료 등 장점이 많지만 조금 느린것 같아 다른거 고민 중~~
-  - ~~https, 무중단 배포, 깃헙 연동인데도 무료~~
+## 기타
 
-- ~~https://kwonyg.netlify.com/~~
+### Project setup
 
-- firebase deploy
-  - ~~https://portfolio-9e4a9.firebaseapp.com/~~
-  - 리뉴얼중
+```
+yarn install
+```
+
+#### Compiles and hot-reloads for development
+
+```
+yarn run serve
+```
+
+#### Compiles and minifies for production
+
+```
+yarn run build
+```
+
+#### Run your tests
+
+```
+yarn run test
+```
+
+#### Lints and fixes files
+
+```
+yarn run lint
+```
+
+#### Run your unit tests
+
+```
+yarn run test:unit
+```
+
+#### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#### Icon Reference
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>

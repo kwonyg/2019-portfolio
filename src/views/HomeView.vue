@@ -1,172 +1,192 @@
 <template>
-  <section class="main_section">
-    <div class="main_wrap">
-      <div class="main_container">
-        <short-cut
-          ref="shortCut"
-          :url="images.folder"
-          :fileName="'About Me'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.folder"
-          :fileName="'Projects'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.folder"
-          :fileName="'Activities'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.email"
-          :fileName="'e-mail'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.contact"
-          :fileName="'Contact'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.github"
-          :fileName="'Github'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-        <short-cut
-          ref="shortCut"
-          :url="images.talk"
-          :fileName="'Talk'"
-          @clickShortcut="openWindow"
-        ></short-cut>
-      </div>
-      <task-bar class="task_bar"></task-bar>
+  <section ref="home_section" class="home_section" @click="deActivate($event,0)">
+    <aboutme-window
+      class="window_modal"
+      :title="'About Me'"
+      :show="aboutmeShow"
+      @close="closeWindow"
+    ></aboutme-window>
+    <activities-window
+      class="window_modal"
+      :title="'Activities'"
+      :show="activitiesShow"
+      @close="closeWindow"
+    ></activities-window>
+    <contacts-window
+      class="window_modal"
+      :title="'Contacts'"
+      :show="contactsShow"
+      @close="closeWindow"
+    ></contacts-window>
+    <div class="shortcut_container">
+      <ul class="shortcut_list">
+        <li class="list_item" :class="{ active : active === 'aboutme' }">
+          <short-cut :imageUrl="'man.svg'" :title="'About Me'" @clickedIcon="activate"></short-cut>
+        </li>
+        <li class="list_item" :class="{ active : active === 'projects' }">
+          <short-cut :imageUrl="'folder.svg'" :title="'Projects'" @clickedIcon="activate"></short-cut>
+        </li>
+        <li class="list_item" :class="{ active : active === 'activities' }">
+          <short-cut :imageUrl="'sns.svg'" :title="'Activities'" @clickedIcon="activate"></short-cut>
+        </li>
+      </ul>
+      <ul class="shortcut_list">
+        <li class="list_item" :class="{ active : active === 'contacts' }">
+          <short-cut :imageUrl="'phone-call.svg'" :title="'Contacts'" @clickedIcon="activate"></short-cut>
+        </li>
+        <li class="list_item" :class="{ active : active === 'guestbook' }">
+          <short-cut :imageUrl="'web.svg'" :title="'Guest Book'" @clickedIcon="activate"></short-cut>
+        </li>
+        <li class="list_item" :class="{ active : active == 'github' }">
+          <short-cut :imageUrl="'github.png'" :title="'GitHub'" @clickedIcon="activate"></short-cut>
+        </li>
+      </ul>
     </div>
-
-    <window-modal v-if="showModal" @close="closeWindow">
-      <div slot="body">
-        <component :is="template" v-if="template"></component>
-        <div v-if="!template">개발 중이에요 :)</div>
-      </div>
-    </window-modal>
   </section>
 </template>
-
-<script>
-import { mapGetters } from "vuex";
-import ShortCut from "../components/ShortCut.vue";
-import WindowModal from "../components/WindowModal.vue";
-import TaskBar from "../components/TaskBar.vue";
-
-export default {
-  name: "home",
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+import bus from "@/utils/bus";
+import ShortCut from "@/components/ShortCut.vue";
+import ActivitiesWindow from "@/components/windows/ActivitiesWindow.vue";
+import AboutmeWindow from "@/components/windows/AboutmeWindow.vue";
+import ContactsWindow from "@/components/windows/ContactsWindow.vue";
+@Component({
   components: {
     ShortCut,
-    WindowModal,
-    TaskBar
-  },
+    ActivitiesWindow,
+    AboutmeWindow,
+    ContactsWindow
+  }
+})
+export default class HomeView extends Vue {
+  public active: string = "";
+  public clickCount: number = 0;
 
-  data() {
-    return {
-      images: {
-        folder: require(`@/images/shortcuts/folder.png`),
-        github: require(`@/images/shortcuts/github.png`),
-        email: require(`@/images/shortcuts/gmail.png`),
-        contact: require(`@/images/shortcuts/phone.png`),
-        talk: require(`@/images/shortcuts/talk.png`)
-      },
-      template: null,
-      showModal: false
-    };
-  },
+  // windows flag
+  public aboutmeShow: boolean = true;
+  public activitiesShow: boolean = false;
+  contactsShow: boolean = false;
 
-  computed: {
-    ...mapGetters({
-      windowData: "fetchedWindowData"
-    })
-  },
+  public deActivate($event: Event) {
+    if (($event.target as HTMLElement).className === "home_section") {
+      console.log("deActivate");
+      this.active = "";
+    }
+    bus.$emit("close:sub_menu");
+  }
 
-  methods: {
-    whichTemplate(fileName) {
-      switch (fileName) {
-        case "aboutme":
-          return () =>
-            import("../components/modalTemplate/AboutMeTemplate.vue");
-        case "projects":
-          return () =>
-            import("../components/modalTemplate/ProjectsTemplate.vue");
-        case "contact":
-          return () =>
-            import("../components/modalTemplate/ContactsTemplate.vue");
-        case "activities":
-          return () =>
-            import("../components/modalTemplate/ActivitiesTemplate.vue");
-        case "talk":
-          return () => import("../components/modalTemplate/TalkTemplate.vue");
-        default:
-          return null;
-      }
-    },
-
-    openWindow({ fileName }) {
-      fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
-      this.template = this.whichTemplate(fileName);
-      this.showModal = true;
-    },
-
-    closeWindow() {
-      this.showModal = false;
+  public activate(title: string) {
+    title = title.replace(/(\s*)/g, "").toLowerCase();
+    console.log(title);
+    this.active = title;
+    this.clickCount++;
+    if (this.clickCount === 1) {
+      // the first click in .2s
+      const self = this;
+      setTimeout(function() {
+        switch (
+          self.clickCount // check the event type
+        ) {
+          case 1:
+            console.log("oneClick"); // self.active = elNum;
+            break;
+          default:
+            self.whichWindow(title);
+        }
+        self.clickCount = 0; // reset the first click
+      }, 200); // wait 0.2s
     }
   }
-};
+
+  public whichWindow(fileName: string) {
+    switch (fileName) {
+      case "aboutme":
+        return (this.aboutmeShow = true);
+      case "activities":
+        return (this.activitiesShow = true);
+      case "contacts":
+        return (this.contactsShow = true);
+      default:
+        return null;
+    }
+  }
+
+  public closeWindow(fileName: string) {
+    fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
+
+    switch (fileName) {
+      case "aboutme":
+        return (this.aboutmeShow = false);
+      case "activities":
+        return (this.activitiesShow = false);
+      case "contacts":
+        return (this.contactsShow = false);
+      default:
+        return null;
+    }
+  }
+}
 </script>
 
 <style scoped>
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+li {
+  list-style-type: none;
 }
-
-.main_section {
-  height: 100%;
-}
-
-.main_wrap {
+section.home_section {
   position: relative;
-  background-image: url("../assets/camping.jpg");
-  min-height: 100%;
-  background-position: bottom;
-  background-size: cover;
+  height: calc(100vh - 21px); /* vh: 뷰 포트의 높이 100분의 1 단위 */
 }
 
-.main_container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 600px;
-  width: 0%;
-  padding-bottom: 50px;
-}
-
-.list_item {
-  color: #404040;
-  max-width: 980px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #e5e5e5;
-  border-radius: 10px;
-}
-
-.task_bar {
-  width: 100%;
+section.home_section .shortcut_container {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
+  left: 10px;
+}
+
+ul.shortcut_list {
+  display: flex;
+  margin-top: 30px;
+  height: 70px;
+}
+
+ul.shortcut_list li.list_item {
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 25px;
+}
+
+li.list_item.active {
+  background-color: #00007b;
+  color: #fff;
+  border: 1px dotted #ccc !important;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+  ul {
+    padding: 0;
+  }
+  li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }
 </style>
