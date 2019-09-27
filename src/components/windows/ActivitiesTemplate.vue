@@ -14,7 +14,7 @@
             <div class="date">2018년 02월 02일</div>
           </div>
           <div class="image_container">
-            <img class="activity_image" :src="require(`@/assets/activities/study.png`)" alt />
+            <img class="activity_image" v-lazy="require(`@/assets/activities/study.png`)" alt />
           </div>
           <div class="banner_container">
             <span class="banner_item heart">
@@ -47,7 +47,7 @@
             <div class="date">2018년 02월 02일</div>
           </div>
           <div class="image_container">
-            <img class="activity_image" :src="require(`@/assets/activities/study.png`)" alt />
+            <img class="activity_image" v-lazy="require(`@/assets/activities/volunteer.jpeg`)" alt />
           </div>
           <div class="banner_container">
             <span class="banner_item heart">
@@ -80,7 +80,7 @@
             <div class="date">2018년 02월 02일</div>
           </div>
           <div class="image_container">
-            <img class="activity_image" :src="require(`@/assets/activities/study.png`)" alt />
+            <img class="activity_image" v-lazy="require(`@/assets/activities/boostcourse.png`)" alt />
           </div>
           <div class="banner_container">
             <span class="banner_item heart">
