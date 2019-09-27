@@ -124,6 +124,12 @@ li {
   list-style: none;
 }
 
+.activities_wrap {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 93%;
+}
+
 .activity_card {
   border-bottom: 1px solid #000;
 }

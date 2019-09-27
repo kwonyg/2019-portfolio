@@ -14,6 +14,19 @@
     </window-modal>
 
     <window-modal
+      :title="'Projects'"
+      :show="projectsShow"
+      :w="300"
+      :h="450"
+      :z="projectsZindex"
+      @close="closeWindow"
+    >
+      <template v-slot:content>
+        <aboutme-template></aboutme-template>
+      </template>
+    </window-modal>
+
+    <window-modal
       :title="'Activities'"
       :show="activitiesShow"
       :w="300"
@@ -92,12 +105,14 @@ export default class HomeView extends Vue {
   public aboutmeShow: boolean = true;
   public activitiesShow: boolean = false;
   contactsShow: boolean = false;
+  projectsShow: boolean = false;
 
   // zIndex
   mostZ: number = 3;
   aboutmeZindex: number = 2;
   activitiesZindex: number = 2;
   contactsZindex: number = 2;
+  projectsZindex: number = 2;
 
   created() {
     bus.$on("calc:zindex", this.calcZindex);
@@ -148,6 +163,9 @@ export default class HomeView extends Vue {
       case "aboutme":
         this.aboutmeZindex = this.mostZ;
         return (this.aboutmeShow = true);
+      case "projects":
+        this.projectsZindex = this.mostZ;
+        return (this.projectsShow = true);
       case "activities":
         this.activitiesZindex = this.mostZ;
         this.aboutmeZindex = this.mostZ;
@@ -157,6 +175,7 @@ export default class HomeView extends Vue {
         this.aboutmeZindex = this.mostZ;
         return (this.contactsShow = true);
       default:
+        alert("아직..개발...주...웅");
         return null;
     }
   }
@@ -167,6 +186,8 @@ export default class HomeView extends Vue {
     switch (fileName) {
       case "aboutme":
         return (this.aboutmeShow = false);
+      case "projects":
+        return (this.projectsShow = false);
       case "activities":
         return (this.activitiesShow = false);
       case "contacts":

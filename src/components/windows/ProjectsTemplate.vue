@@ -1,5 +1,5 @@
 <template>
-  <div class="aboutme_wrap">
+  <div class="projects_wrap">
     <img src="../../assets/close.svg" alt />
     <p>fmeklafmealkfmela</p>
     <p>fmeklafmealk여기야fmela</p>
@@ -14,7 +14,7 @@
 import { Vue, Component } from "vue-property-decorator";
 
 @Component
-export default class AboutmeTemplate extends Vue {}
+export default class ProjectsTemplate extends Vue {}
 </script>
 
 <style scoped>

@@ -79,8 +79,7 @@ export default class WindowModal extends Vue {
 }
 
 .content_container {
-  overflow: scroll;
-  overflow-x: hidden;
-  height: 93%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>
