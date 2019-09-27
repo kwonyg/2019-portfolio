@@ -38,41 +38,41 @@
   </section>
 </template>
 <script lang="ts">
-import { mapGetters } from "vuex";
-import { Vue, Component, Watch } from "vue-property-decorator";
+import { mapGetters } from 'vuex';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 
 @Component({
   computed: {
     ...mapGetters({
-      messages: "getMessages"
-    })
-  }
+      messages: 'getMessages',
+    }),
+  },
 })
 export default class AboutmeTemplate extends Vue {
-  charCount: number = 0;
-  maxCharCount: number = 140;
+  public charCount: number = 0;
+  public maxCharCount: number = 140;
 
-  name: string = "";
-  content: string = "";
-  password = "";
+  public name: string = '';
+  public content: string = '';
+  public password = '';
 
-  @Watch("message")
-  countChars() {
+  @Watch('content')
+  public countChars() {
     this.charCount = this.content.length;
   }
 
-  created() {
-    this.$store.dispatch("FETCT_MESSAGES");
+  public created() {
+    this.$store.dispatch('FETCT_MESSAGES');
   }
 
-  postMessage() {
-    this.$store.dispatch("POST_MESSAGE", {
+  public postMessage() {
+    this.$store.dispatch('POST_MESSAGE', {
       userName: this.name,
-      content: this.content
+      content: this.content,
     });
   }
 
-  calcDate(date: Date) {
+  public calcDate(date: Date) {
     const year = date.getFullYear();
     const month = date.getMonth();
     const clockDate = date.getDate();

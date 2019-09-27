@@ -25,14 +25,14 @@
   </div>
 </template>
 <script lang="ts">
-import bus from "@/utils/bus";
-import { Vue, Component, Prop } from "vue-property-decorator";
-const VueDraggableResizable = require("vue-draggable-resizable");
+import bus from '@/utils/bus';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+const VueDraggableResizable = require('vue-draggable-resizable');
 
 @Component({
   components: {
-    VueDraggableResizable
-  }
+    VueDraggableResizable,
+  },
 })
 export default class WindowModal extends Vue {
   @Prop() public readonly title!: string;
@@ -41,8 +41,8 @@ export default class WindowModal extends Vue {
   @Prop() public readonly h!: boolean;
   @Prop() public readonly z!: number;
 
-  clickedWindow() {
-    bus.$emit("calc:zindex", this.title);
+  public clickedWindow() {
+    bus.$emit('calc:zindex', this.title);
   }
 }
 </script>

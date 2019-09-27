@@ -30,20 +30,20 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import bus from "@/utils/bus";
+import { Vue, Component } from 'vue-property-decorator';
+import bus from '@/utils/bus';
 
 @Component
 export default class AppHeader extends Vue {
-  currentDate: string = "";
-  public currentTime: string = "";
-  showMenu: boolean = false;
+  public currentDate: string = '';
+  public currentTime: string = '';
+  public showMenu: boolean = false;
 
-  toggleMenu() {
+  public toggleMenu() {
     this.showMenu = !this.showMenu;
   }
 
-  refreshDate() {
+  public refreshDate() {
     const date = new Date();
     const month = date.getMonth();
     const clockDate = date.getDate();
@@ -61,16 +61,16 @@ export default class AppHeader extends Vue {
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
   }
 
-  closeMenu() {
+  public closeMenu() {
     this.showMenu = false;
   }
 
-  created() {
-    bus.$on("close:sub_menu", this.closeMenu);
+  public created() {
+    bus.$on('close:sub_menu', this.closeMenu);
   }
 
-  beforeDestroy() {
-    bus.$off("close:sub_menu", this.closeMenu);
+  public beforeDestroy() {
+    bus.$off('close:sub_menu', this.closeMenu);
   }
 
   public mounted() {

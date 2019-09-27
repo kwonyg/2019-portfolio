@@ -123,7 +123,7 @@ export default class HomeView extends Vue {
   public active: string = "";
   public clickCount: number = 0;
 
-  window: Window = {
+  public window: Window = {
     width: 0,
     height: 0
   };
@@ -131,39 +131,39 @@ export default class HomeView extends Vue {
   // windows flag
   public aboutmeShow: boolean = true;
   public activitiesShow: boolean = false;
-  contactsShow: boolean = false;
-  projectsShow: boolean = false;
-  guestbookShow: boolean = false;
+  public contactsShow: boolean = false;
+  public projectsShow: boolean = false;
+  public guestbookShow: boolean = false;
 
   // zIndex
-  mostZ: number = 3;
-  aboutmeZindex: number = 2;
-  activitiesZindex: number = 2;
-  contactsZindex: number = 2;
-  projectsZindex: number = 2;
-  guestbookZindex: number = 2;
+  public mostZ: number = 3;
+  public aboutmeZindex: number = 2;
+  public activitiesZindex: number = 2;
+  public contactsZindex: number = 2;
+  public projectsZindex: number = 2;
+  public guestbookZindex: number = 2;
 
   // Projects Window width, height
-  projectsWidth: number = 0;
-  projectsHeight: number = 0;
+  public projectsWidth: number = 0;
+  public projectsHeight: number = 0;
 
-  created() {
+  public created() {
     bus.$on("calc:zindex", this.calcZindex);
     this.$store.dispatch("INIT_DATAS");
     this.getViewsize();
     this.setProjectSize();
   }
 
-  beforeDestory() {
+  public beforeDestory() {
     bus.$off("calc:zindex", this.calcZindex);
   }
 
-  getViewsize() {
+  public getViewsize() {
     this.window.width = window.innerWidth;
     this.window.height = window.innerHeight;
   }
 
-  setProjectSize() {
+  public setProjectSize() {
     if (this.window.width <= 450) {
       this.projectsWidth = 350;
       this.projectsHeight = 550;
@@ -251,7 +251,7 @@ export default class HomeView extends Vue {
     }
   }
 
-  calcZindex(title: string) {
+  public calcZindex(title: string) {
     title = title.replace(/(\s*)/g, "").toLowerCase();
     this.mostZ++;
     switch (title) {
@@ -263,6 +263,8 @@ export default class HomeView extends Vue {
         return (this.activitiesZindex = this.mostZ);
       case "contacts":
         return (this.contactsZindex = this.mostZ);
+      case "guestbook":
+        return (this.guestbookZindex = this.mostZ);
       default:
         return null;
     }
