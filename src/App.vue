@@ -33,8 +33,8 @@ html {
   background-size: cover;
 }
 #app {
-  /* font-family: "Roboto Mono", monospace; */
-  font-family: "DungGeunMo", monospace;
+  font-family: "Roboto Mono", monospace;
+  /* font-family: "DungGeunMo", monospace; */
 
   -webkit-user-select: none;
   -webkit-user-drag: none;

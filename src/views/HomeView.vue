@@ -16,8 +16,8 @@
     <window-modal
       :title="'Projects'"
       :show="projectsShow"
-      :w="300"
-      :h="450"
+      :w="projectsWidth"
+      :h="projectsHeight"
       :z="projectsZindex"
       @close="closeWindow"
     >
@@ -29,8 +29,8 @@
     <window-modal
       :title="'Activities'"
       :show="activitiesShow"
-      :w="300"
-      :h="450"
+      :w="350"
+      :h="550"
       :z="activitiesZindex"
       @close="closeWindow"
     >
@@ -89,6 +89,11 @@ import ProjectsTemplate from "@/components/windows/ProjectsTemplate.vue";
 import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
 import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
 
+interface Window {
+  width: number;
+  height: number;
+}
+
 @Component({
   components: {
     ShortCut,
@@ -103,6 +108,11 @@ export default class HomeView extends Vue {
   public active: string = "";
   public clickCount: number = 0;
 
+  window: Window = {
+    width: 0,
+    height: 0
+  };
+
   // windows flag
   public aboutmeShow: boolean = true;
   public activitiesShow: boolean = false;
@@ -116,15 +126,37 @@ export default class HomeView extends Vue {
   contactsZindex: number = 2;
   projectsZindex: number = 2;
 
+  // Projects Window width, height
+  projectsWidth: number = 0;
+  projectsHeight: number = 0;
+
   created() {
     bus.$on("calc:zindex", this.calcZindex);
-
-    console.log("헙!");
     this.$store.dispatch("INIT_DATAS");
+    this.getViewsize();
+    this.setProjectSize();
   }
 
   beforeDestory() {
     bus.$off("calc:zindex", this.calcZindex);
+  }
+
+  getViewsize() {
+    this.window.width = window.innerWidth;
+    this.window.height = window.innerHeight;
+  }
+
+  setProjectSize() {
+    if (this.window.width <= 450) {
+      this.projectsWidth = 350;
+      this.projectsHeight = 550;
+    } else if (this.window.width <= 800) {
+      this.projectsWidth = 700;
+      this.projectsHeight = 600;
+    } else {
+      this.projectsWidth = 800;
+      this.projectsHeight = 600;
+    }
   }
 
   public deActivate($event: Event) {
@@ -170,11 +202,9 @@ export default class HomeView extends Vue {
         return (this.projectsShow = true);
       case "activities":
         this.activitiesZindex = this.mostZ;
-        this.aboutmeZindex = this.mostZ;
         return (this.activitiesShow = true);
       case "contacts":
         this.contactsZindex = this.mostZ;
-        this.aboutmeZindex = this.mostZ;
         return (this.contactsShow = true);
       default:
         alert("아직..개발...주...웅");
@@ -201,12 +231,12 @@ export default class HomeView extends Vue {
 
   calcZindex(title: string) {
     title = title.replace(/(\s*)/g, "").toLowerCase();
-    console.log("계에산!: ", title);
     this.mostZ++;
-    console.log(this.mostZ);
     switch (title) {
       case "aboutme":
         return (this.aboutmeZindex = this.mostZ);
+      case "projects":
+        return (this.projectsZindex = this.mostZ);
       case "activities":
         return (this.activitiesZindex = this.mostZ);
       case "contacts":

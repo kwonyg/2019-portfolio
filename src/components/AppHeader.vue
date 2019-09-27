@@ -119,7 +119,7 @@ aside .display_item {
 .sub_menu {
   position: absolute;
   width: 180px;
-  top: 22px;
+  top: 21px;
   left: 85px;
   background: #fafeff;
   z-index: 9999;
