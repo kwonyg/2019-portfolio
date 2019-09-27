@@ -9,6 +9,13 @@ const store: StoreOptions<State> = {
   state: {
     activities: []
   },
+
+  getters: {
+    getActivities(state) {
+      return state.activities;
+    }
+  },
+
   mutations: {
     SET_INIT_DATAS(state, data) {
       // set Acitivities datas
