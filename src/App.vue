@@ -5,10 +5,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import AppHeader from '@/components/AppHeader.vue';
+import { Vue, Component } from "vue-property-decorator";
+import AppHeader from "@/components/AppHeader.vue";
 @Component({
-  components: { AppHeader },
+  components: { AppHeader }
 })
 export default class App extends Vue {}
 </script>
@@ -28,6 +28,7 @@ html {
 }
 #app {
   font-family: "Roboto Mono", monospace;
+
   -webkit-user-select: none;
   -webkit-user-drag: none;
   -webkit-app-region: no-drag;

@@ -18,7 +18,7 @@ export default class ProjectsTemplate extends Vue {}
 </script>
 
 <style scoped>
-.aboutme_wrap {
+.projects_wrap {
   overflow: scroll;
   overflow-x: hidden;
   height: 93%;

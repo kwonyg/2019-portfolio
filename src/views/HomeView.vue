@@ -22,7 +22,7 @@
       @close="closeWindow"
     >
       <template v-slot:content>
-        <aboutme-template></aboutme-template>
+        <projects-template></projects-template>
       </template>
     </window-modal>
 
@@ -85,6 +85,7 @@ import ShortCut from "@/components/ShortCut.vue";
 
 import WindowModal from "@/components/windows/WindowModal.vue";
 import AboutmeTemplate from "@/components/windows/AboutmeTemplate.vue";
+import ProjectsTemplate from "@/components/windows/ProjectsTemplate.vue";
 import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
 import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
 
@@ -93,6 +94,7 @@ import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
     ShortCut,
     WindowModal,
     AboutmeTemplate,
+    ProjectsTemplate,
     ContactsTemplate,
     ActivitiesTemplate
   }
