@@ -16,7 +16,7 @@
           alt="닫기 이미지"
           @click="$emit('close',title)"
         />
-        <span>{{title}}</span>
+        <span class="title">{{title}}</span>
       </div>
       <div class="content_container">
         <slot name="content"></slot>
@@ -57,6 +57,7 @@ export default class WindowModal extends Vue {
 .status_bar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #ecfbfe;
   padding: 3px 0;
   width: 100%;
@@ -71,6 +72,10 @@ export default class WindowModal extends Vue {
 
 .close_img:hover {
   cursor: pointer;
+}
+
+.title {
+  margin-right: 8px;
 }
 
 .content_container {
