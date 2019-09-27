@@ -13,6 +13,12 @@ import AppHeader from "@/components/AppHeader.vue";
 export default class App extends Vue {}
 </script>
 <style>
+@font-face {
+  font-family: DungGeunMo;
+  src: url("/assets/fonts/DungGeunMo.eot") format("eot")
+      url("/assets/fonts/DungGeunMo.woff2") format("woff2"),
+    url("/assets/fonts/DungGeunMo.woff") format("woff");
+}
 html,
 body {
   margin: 0;
@@ -27,7 +33,8 @@ html {
   background-size: cover;
 }
 #app {
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
+  font-family: "DungGeunMo", monospace;
 
   -webkit-user-select: none;
   -webkit-user-drag: none;
