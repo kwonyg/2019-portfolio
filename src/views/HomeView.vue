@@ -52,6 +52,19 @@
       </template>
     </window-modal>
 
+    <window-modal
+      :title="'Guest Book'"
+      :show="guestbookShow"
+      :w="370"
+      :h="500"
+      :z="guestbookZindex"
+      @close="closeWindow"
+    >
+      <template v-slot:content>
+        <guestbook-template></guestbook-template>
+      </template>
+    </window-modal>
+
     <div class="shortcut_container">
       <ul class="shortcut_list">
         <li class="list_item" :class="{ active : active === 'aboutme' }">
@@ -86,8 +99,9 @@ import ShortCut from "@/components/ShortCut.vue";
 import WindowModal from "@/components/windows/WindowModal.vue";
 import AboutmeTemplate from "@/components/windows/AboutmeTemplate.vue";
 import ProjectsTemplate from "@/components/windows/ProjectsTemplate.vue";
-import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
 import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
+import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
+import GuestbookTemplate from "@/components/windows/GuestbookTemplate.vue";
 
 interface Window {
   width: number;
@@ -100,8 +114,9 @@ interface Window {
     WindowModal,
     AboutmeTemplate,
     ProjectsTemplate,
+    ActivitiesTemplate,
     ContactsTemplate,
-    ActivitiesTemplate
+    GuestbookTemplate
   }
 })
 export default class HomeView extends Vue {
@@ -118,6 +133,7 @@ export default class HomeView extends Vue {
   public activitiesShow: boolean = false;
   contactsShow: boolean = false;
   projectsShow: boolean = false;
+  guestbookShow: boolean = false;
 
   // zIndex
   mostZ: number = 3;
@@ -125,6 +141,7 @@ export default class HomeView extends Vue {
   activitiesZindex: number = 2;
   contactsZindex: number = 2;
   projectsZindex: number = 2;
+  guestbookZindex: number = 2;
 
   // Projects Window width, height
   projectsWidth: number = 0;
@@ -206,6 +223,9 @@ export default class HomeView extends Vue {
       case "contacts":
         this.contactsZindex = this.mostZ;
         return (this.contactsShow = true);
+      case "guestbook":
+        this.guestbookZindex = this.mostZ;
+        return (this.guestbookShow = true);
       default:
         alert("아직..개발...주...웅");
         return null;
@@ -224,6 +244,8 @@ export default class HomeView extends Vue {
         return (this.activitiesShow = false);
       case "contacts":
         return (this.contactsShow = false);
+      case "guestbook":
+        return (this.guestbookShow = false);
       default:
         return null;
     }

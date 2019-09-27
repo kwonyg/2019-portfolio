@@ -1,18 +1,24 @@
 import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
-import { Acitivity, State } from "./store.interface";
-import { initDatas } from "@/api/index";
+import { Acitivity, Message, State } from "./store.interface";
+import { initDatas, getIpAddress } from "@/api/index";
+import { DB } from "@/firebase/index";
 
 Vue.use(Vuex);
 
 const store: StoreOptions<State> = {
   state: {
-    activities: []
+    activities: [],
+    messages: []
   },
 
   getters: {
     getActivities(state) {
       return state.activities;
+    },
+
+    getMessages(state) {
+      return state.messages;
     }
   },
 
@@ -21,6 +27,11 @@ const store: StoreOptions<State> = {
       // set Acitivities datas
       const activities: Acitivity[] = data.activities;
       state.activities = activities;
+    },
+
+    SET_MESSAGES(state, data) {
+      const messages: Message[] = data;
+      state.messages = messages;
     }
   },
   actions: {
@@ -31,6 +42,36 @@ const store: StoreOptions<State> = {
         })
         .catch(() => {
           alert("앗.. 데이터를 불러오지 못했습니다.");
+        });
+    },
+
+    async POST_MESSAGE(
+      { commit },
+      { userName, content }: { userName: string; content: string }
+    ) {
+      const DBref = await DB.collection("guestBook");
+      const ipResult = await getIpAddress();
+      const dbResult = await DBref.add({
+        content,
+        userName,
+        createDate: new Date()
+      });
+
+      await DBref.doc(dbResult.id).update({
+        ipAddress: ipResult.data.ip,
+        id: dbResult.id
+      });
+    },
+
+    FETCT_MESSAGES({ commit }) {
+      return DB.collection("guestBook")
+        .orderBy("createDate", "desc")
+        .onSnapshot(snapshot => {
+          const data: any = []; // 타입설정 불가,  https://stackoverflow.com/questions/51606198/typescript-interface-conformance-with-firestore-queries
+          snapshot.forEach(doc => {
+            data.push(doc.data());
+          });
+          commit("SET_MESSAGES", data);
         });
     }
   }

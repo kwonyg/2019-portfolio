@@ -4,4 +4,8 @@ function initDatas() {
   return axios.get("/data.json");
 }
 
-export { initDatas };
+function getIpAddress() {
+  return axios.get("https://jsonip.com");
+}
+
+export { initDatas, getIpAddress };
