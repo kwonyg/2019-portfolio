@@ -1,27 +1,44 @@
 <template>
   <section ref="home_section" class="home_section" @click="deActivate($event,0)">
-    <aboutme-window
-      class="window_modal"
-      ref="aboutme"
+    <window-modal
       :title="'About Me'"
       :show="aboutmeShow"
+      :w="300"
+      :h="450"
       :z="aboutmeZindex"
       @close="closeWindow"
-    ></aboutme-window>
-    <activities-window
-      class="window_modal"
+    >
+      <template v-slot:content>
+        <aboutme-template></aboutme-template>
+      </template>
+    </window-modal>
+
+    <window-modal
       :title="'Activities'"
       :show="activitiesShow"
+      :w="300"
+      :h="450"
       :z="activitiesZindex"
       @close="closeWindow"
-    ></activities-window>
-    <contacts-window
-      class="window_modal"
+    >
+      <template v-slot:content>
+        <activities-template></activities-template>
+      </template>
+    </window-modal>
+
+    <window-modal
       :title="'Contacts'"
       :show="contactsShow"
+      :w="370"
+      :h="200"
       :z="contactsZindex"
       @close="closeWindow"
-    ></contacts-window>
+    >
+      <template v-slot:content>
+        <contacts-template></contacts-template>
+      </template>
+    </window-modal>
+
     <div class="shortcut_container">
       <ul class="shortcut_list">
         <li class="list_item" :class="{ active : active === 'aboutme' }">
@@ -52,15 +69,19 @@
 import { Vue, Component, Watch } from "vue-property-decorator";
 import bus from "@/utils/bus";
 import ShortCut from "@/components/ShortCut.vue";
-import ActivitiesWindow from "@/components/windows/ActivitiesWindow.vue";
-import AboutmeWindow from "@/components/windows/AboutmeWindow.vue";
-import ContactsWindow from "@/components/windows/ContactsWindow.vue";
+
+import WindowModal from "@/components/windows/WindowModal.vue";
+import AboutmeTemplate from "@/components/windows/AboutmeTemplate.vue";
+import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
+import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
+
 @Component({
   components: {
     ShortCut,
-    ActivitiesWindow,
-    AboutmeWindow,
-    ContactsWindow
+    WindowModal,
+    AboutmeTemplate,
+    ContactsTemplate,
+    ActivitiesTemplate
   }
 })
 export default class HomeView extends Vue {
@@ -122,10 +143,15 @@ export default class HomeView extends Vue {
   public whichWindow(fileName: string) {
     switch (fileName) {
       case "aboutme":
+        this.aboutmeZindex = this.mostZ;
         return (this.aboutmeShow = true);
       case "activities":
+        this.activitiesZindex = this.mostZ;
+        this.aboutmeZindex = this.mostZ;
         return (this.activitiesShow = true);
       case "contacts":
+        this.contactsZindex = this.mostZ;
+        this.aboutmeZindex = this.mostZ;
         return (this.contactsShow = true);
       default:
         return null;
