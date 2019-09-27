@@ -1,0 +1,7 @@
+{
+  "activities": [
+    { "id": 0, "title": "test1", "content": "active" },
+    { "id": 1, "title": "test2", "content": "clear" },
+    { "id": 2, "title": "test3", "content": "active" }
+  ]
+}

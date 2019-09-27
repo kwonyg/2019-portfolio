@@ -9,12 +9,18 @@
       </ul>
     </nav>
     <aside class="side_display">
-      <span class="display_item clock">{{currentTime}}</span>
+      <span class="display_item clock">
+        <span class="current_date">{{currentDate}}</span>
+        <span class="current_time">{{currentTime}}</span>
+      </span>
     </aside>
     <div class="sub_menu" v-if="showMenu">
       <ul class="sub_menu_list">
         <li class="list_item sub_menu_item">
-          <span>전체화면</span>
+          <span>도움말</span>
+        </li>
+        <li class="list_item sub_menu_item">
+          <span>개발 환경</span>
         </li>
         <li class="list_item sub_menu_item">
           <span>로그아웃</span>
@@ -29,6 +35,7 @@ import bus from "@/utils/bus";
 
 @Component
 export default class AppHeader extends Vue {
+  currentDate: string = "";
   public currentTime: string = "";
   showMenu: boolean = false;
 
@@ -36,18 +43,22 @@ export default class AppHeader extends Vue {
     this.showMenu = !this.showMenu;
   }
 
-  public refreshTime() {
+  refreshDate() {
     const date = new Date();
     const month = date.getMonth();
     const clockDate = date.getDate();
+
+    this.currentDate = `${month + 1}월 ${clockDate}일 `;
+  }
+
+  public refreshTime() {
+    const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
-    this.currentTime =
-      `${month + 1}월 ${clockDate}일 ` +
-      `${hours < 10 ? `0${hours}` : hours}:${
-        minutes < 10 ? `0${minutes}` : minutes
-      }:${seconds < 10 ? `0${seconds}` : seconds}`;
+    this.currentTime = `${hours < 10 ? `0${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }:${seconds < 10 ? `0${seconds}` : seconds}`;
   }
 
   closeMenu() {
@@ -63,6 +74,7 @@ export default class AppHeader extends Vue {
   }
 
   public mounted() {
+    setInterval(this.refreshDate, 1000);
     setInterval(this.refreshTime, 1000);
   }
 }
@@ -125,5 +137,11 @@ ul.sub_menu_list .list_item {
   cursor: pointer;
   color: #fff;
   background-color: #2488ff;
+}
+
+@media (max-width: 575px) {
+  .current_date {
+    display: none;
+  }
 }
 </style>

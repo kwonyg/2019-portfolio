@@ -101,6 +101,9 @@ export default class HomeView extends Vue {
 
   created() {
     bus.$on("calc:zindex", this.calcZindex);
+
+    console.log("헙!");
+    this.$store.dispatch("INIT_DATAS");
   }
 
   beforeDestory() {
