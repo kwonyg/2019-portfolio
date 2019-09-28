@@ -3,7 +3,7 @@
     <vue-draggable-resizable
       v-if="show"
       class="modal"
-      style="border: 1px solid black;"
+      style="border: 3px solid #C5C5C5;"
       :drag-handle="'.drag-handle'"
       :w="w"
       :h="h"
@@ -25,14 +25,14 @@
   </div>
 </template>
 <script lang="ts">
-import bus from '@/utils/bus';
-import { Vue, Component, Prop } from 'vue-property-decorator';
-const VueDraggableResizable = require('vue-draggable-resizable');
+import bus from "@/utils/bus";
+import { Vue, Component, Prop } from "vue-property-decorator";
+const VueDraggableResizable = require("vue-draggable-resizable");
 
 @Component({
   components: {
-    VueDraggableResizable,
-  },
+    VueDraggableResizable
+  }
 })
 export default class WindowModal extends Vue {
   @Prop() public readonly title!: string;
@@ -42,7 +42,7 @@ export default class WindowModal extends Vue {
   @Prop() public readonly z!: number;
 
   public clickedWindow() {
-    bus.$emit('calc:zindex', this.title);
+    bus.$emit("calc:zindex", this.title);
   }
 }
 </script>
@@ -58,10 +58,11 @@ export default class WindowModal extends Vue {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ecfbfe;
+  background-color: #eaeaea;
   padding: 3px 0;
   width: 100%;
   line-height: 20px;
+  border-bottom: 2px solid #c5c5c5;
 }
 
 .close_img {

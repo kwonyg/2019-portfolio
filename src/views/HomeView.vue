@@ -76,16 +76,16 @@
         <li class="list_item" :class="{ active : active === 'activities' }">
           <short-cut :imageUrl="'sns.svg'" :title="'Activities'" @clickedIcon="activate"></short-cut>
         </li>
-      </ul>
-      <ul class="shortcut_list">
         <li class="list_item" :class="{ active : active === 'contacts' }">
           <short-cut :imageUrl="'phone-call.svg'" :title="'Contacts'" @clickedIcon="activate"></short-cut>
         </li>
-        <li class="list_item" :class="{ active : active === 'guestbook' }">
-          <short-cut :imageUrl="'web.svg'" :title="'Guest Book'" @clickedIcon="activate"></short-cut>
-        </li>
         <li class="list_item" :class="{ active : active == 'github' }">
           <short-cut :imageUrl="'github.png'" :title="'GitHub'" @clickedIcon="activate"></short-cut>
+        </li>
+      </ul>
+      <ul class="shortcut_list">
+        <li class="list_item" :class="{ active : active === 'guestbook' }">
+          <short-cut :imageUrl="'web.svg'" :title="'Guest Book'" @clickedIcon="activate"></short-cut>
         </li>
       </ul>
     </div>
@@ -273,7 +273,10 @@ export default class HomeView extends Vue {
 </script>
 
 <style scoped>
+ul,
 li {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 section.home_section {
@@ -282,13 +285,14 @@ section.home_section {
 }
 
 section.home_section .shortcut_container {
+  display: flex;
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
 }
 
 ul.shortcut_list {
-  display: flex;
+  1display: flex;
   margin-top: 30px;
   height: 70px;
 }
@@ -296,7 +300,8 @@ ul.shortcut_list {
 ul.shortcut_list li.list_item {
   cursor: pointer;
   padding: 5px;
-  margin-right: 25px;
+  margin-bottom: 20px;
+  1margin-right: 25px;
 }
 
 li.list_item.active {

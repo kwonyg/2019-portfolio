@@ -5,19 +5,20 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import AppHeader from '@/components/AppHeader.vue';
+import { Vue, Component } from "vue-property-decorator";
+import AppHeader from "@/components/AppHeader.vue";
 @Component({
-  components: { AppHeader },
+  components: { AppHeader }
 })
 export default class App extends Vue {}
 </script>
 <style>
 @font-face {
-  font-family: DungGeunMo;
-  src: url("/assets/fonts/DungGeunMo.eot") format("eot")
-      url("/assets/fonts/DungGeunMo.woff2") format("woff2"),
-    url("/assets/fonts/DungGeunMo.woff") format("woff");
+  font-family: "DungGeunMo";
+  src: url("//tistory4.daumcdn.net/tistory/214191/skin/images/DungGeunMo.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: normal;
 }
 html,
 body {
@@ -26,7 +27,8 @@ body {
 }
 
 html {
-  background: url(./assets/wallpaper.jpg) no-repeat center center fixed;
+  /* background: url(./assets/wallpaper.jpg) no-repeat center center fixed; */
+  background-color: #008484;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,8 +36,8 @@ html {
 }
 #app {
   /* font-family: "Roboto Mono", monospace; */
-  /* font-family: "DungGeunMo", monospace; */
-  font-family: "Gothic A1", sans-serif;
+  font-family: "DungGeunMo", monospace;
+  /* font-family: "Gothic A1", sans-serif; */
 
   -webkit-user-select: none;
   -webkit-user-drag: none;

@@ -36,7 +36,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class ProjectsTemplate extends Vue {}
@@ -62,7 +62,7 @@ h1 {
   overflow: scroll;
   overflow-x: hidden;
   height: 87%;
-  background-color: #ecfbfe;
+  background-color: #fff;
 }
 
 .project_card {

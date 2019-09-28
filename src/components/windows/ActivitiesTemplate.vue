@@ -104,15 +104,15 @@
   </div>
 </template>
 <script lang="ts">
-import { mapGetters } from 'vuex';
-import { Vue, Component } from 'vue-property-decorator';
+import { mapGetters } from "vuex";
+import { Vue, Component } from "vue-property-decorator";
 
 @Component({
   computed: {
     ...mapGetters({
-      acitivies: 'getActivities',
-    }),
-  },
+      acitivies: "getActivities"
+    })
+  }
 })
 export default class AboutmeTemplate extends Vue {}
 </script>
@@ -142,7 +142,7 @@ li {
 
 .header .date {
   padding: 8px 0;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 .user_container {
@@ -185,12 +185,12 @@ li {
 }
 
 .banner_container .banner_title {
-  font-size: 0.7em;
+  font-size: 1em;
 }
 
 .content_container {
   padding: 10px;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .content_container .title {

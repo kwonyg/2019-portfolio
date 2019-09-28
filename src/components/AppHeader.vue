@@ -30,13 +30,13 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import bus from '@/utils/bus';
+import { Vue, Component } from "vue-property-decorator";
+import bus from "@/utils/bus";
 
 @Component
 export default class AppHeader extends Vue {
-  public currentDate: string = '';
-  public currentTime: string = '';
+  public currentDate: string = "";
+  public currentTime: string = "";
   public showMenu: boolean = false;
 
   public toggleMenu() {
@@ -66,11 +66,11 @@ export default class AppHeader extends Vue {
   }
 
   public created() {
-    bus.$on('close:sub_menu', this.closeMenu);
+    bus.$on("close:sub_menu", this.closeMenu);
   }
 
   public beforeDestroy() {
-    bus.$off('close:sub_menu', this.closeMenu);
+    bus.$off("close:sub_menu", this.closeMenu);
   }
 
   public mounted() {
@@ -82,7 +82,7 @@ export default class AppHeader extends Vue {
 
 <style scoped>
 header {
-  background-color: #ecfbfe;
+  background-color: #dbdbdb;
 }
 
 ul,
@@ -119,7 +119,7 @@ aside .display_item {
 .sub_menu {
   position: absolute;
   width: 180px;
-  top: 21px;
+  top: 16px;
   left: 85px;
   background: #fafeff;
   z-index: 9999;
