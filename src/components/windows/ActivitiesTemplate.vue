@@ -1,7 +1,38 @@
 <template>
   <div class="activities_wrap">
     <ul class="activity_list">
-      <li class="list_item">
+      <li class="list_item" v-for="activity in activities" :key="activity.id">
+        <div class="activity_card">
+          <div class="header">
+            <div class="user_container">
+              <img
+                class="user_image"
+                src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
+              />
+              <span class="user_nick">KwonYG</span>
+            </div>
+            <div class="date">{{activity.date}}</div>
+          </div>
+          <div class="image_container">
+            <img class="activity_image" v-lazy="require(`@/assets/activities/${activity.img}`)" alt />
+          </div>
+          <div class="banner_container">
+            <span class="banner_item heart">
+              <img class="banner_image" src="@/assets/heart.svg" alt="좋아요 마크" />
+              <span class="banner_title">likes</span>
+            </span>
+            <span class="banner_item comment">
+              <img class="banner_image" src="@/assets/comment.svg" alt="댓글   마크" />
+              <span class="banner_title">comments</span>
+            </span>
+          </div>
+          <div class="content_container">
+            <div class="title">{{activity.title}}</div>
+            <p class="description" v-html="activity.description"></p>
+          </div>
+        </div>
+      </li>
+      <!-- <li class="list_item">
         <div class="activity_card">
           <div class="header">
             <div class="user_container">
@@ -99,7 +130,7 @@
             >부산에서 진행되는 여러 개발스터디에 종종 참여하였습니다. 개인역량을 강화시킬 수 있어 좋았고, 부산 개발자 분들을 통해 현업이야기를 직접 들을 수 있어 개발 이외에 유익한 정보를 얻을 수 있어 즐거웠습니다.</p>
           </div>
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
 </template>
@@ -110,7 +141,7 @@ import { Vue, Component } from "vue-property-decorator";
 @Component({
   computed: {
     ...mapGetters({
-      acitivies: "getActivities"
+      activities: "getActivities"
     })
   }
 })
@@ -125,6 +156,7 @@ li {
 }
 
 .activities_wrap {
+  font-family: "Gothic A1", sans-serif;
   overflow: scroll;
   overflow-x: hidden;
   height: 93%;

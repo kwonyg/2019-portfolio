@@ -5,6 +5,7 @@
       class="modal"
       style="border: 3px solid #C5C5C5;"
       :drag-handle="'.drag-handle'"
+   
       :w="w"
       :h="h"
       :z="z"
