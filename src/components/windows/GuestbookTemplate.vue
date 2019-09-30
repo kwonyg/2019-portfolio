@@ -75,11 +75,20 @@ export default class AboutmeTemplate extends Vue {
     this.$store.dispatch("FETCT_MESSAGES");
   }
 
+  clearData() {
+    this.name = "";
+    this.content = "";
+  }
+
   public postMessage() {
-    this.$store.dispatch("POST_MESSAGE", {
-      userName: this.name,
-      content: this.content
-    });
+    this.$store
+      .dispatch("POST_MESSAGE", {
+        userName: this.name,
+        content: this.content
+      })
+      .then(() => {
+        this.clearData();
+      });
   }
 
   public calcDate(date: Date) {

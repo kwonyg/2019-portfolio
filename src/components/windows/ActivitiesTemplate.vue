@@ -28,109 +28,21 @@
           </div>
           <div class="content_container">
             <div class="title">{{activity.title}}</div>
-            <p class="description" v-html="activity.description"></p>
+            <div class="tag_container">
+              <span class="tag" v-for="tag in activity.tags" :key="tag">#{{tag}}</span>
+            </div>
+            <div class="desription_container">
+              <div class="more_button" @click="clickMore">내용 접기/펼치기▶</div>
+              <p
+                class="description"
+                ref="description"
+                v-html="activity.description"
+                style="display:none"
+              ></p>
+            </div>
           </div>
         </div>
       </li>
-      <!-- <li class="list_item">
-        <div class="activity_card">
-          <div class="header">
-            <div class="user_container">
-              <img
-                class="user_image"
-                src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-              />
-              <span class="user_nick">KwonYG</span>
-            </div>
-            <div class="date">2018년 02월 02일</div>
-          </div>
-          <div class="image_container">
-            <img class="activity_image" v-lazy="require(`@/assets/activities/study.png`)" alt />
-          </div>
-          <div class="banner_container">
-            <span class="banner_item heart">
-              <img class="banner_image" src="@/assets/heart.svg" alt="좋아요 마크" />
-              <span class="banner_title">likes</span>
-            </span>
-            <span class="banner_item comment">
-              <img class="banner_image" src="@/assets/comment.svg" alt="댓글   마크" />
-              <span class="banner_title">comments</span>
-            </span>
-          </div>
-          <div class="content_container">
-            <div class="title">개발자 스터디 모임</div>
-            <p
-              class="description"
-            >부산에서 진행되는 여러 개발스터디에 종종 참여하였습니다. 개인역량을 강화시킬 수 있어 좋았고, 부산 개발자 분들을 통해 현업이야기를 직접 들을 수 있어 개발 이외에 유익한 정보를 얻을 수 있어 즐거웠습니다.</p>
-          </div>
-        </div>
-      </li>
-      <li class="list_item">
-        <div class="activity_card">
-          <div class="header">
-            <div class="user_container">
-              <img
-                class="user_image"
-                src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-              />
-              <span class="user_nick">KwonYG</span>
-            </div>
-            <div class="date">2018년 02월 02일</div>
-          </div>
-          <div class="image_container">
-            <img class="activity_image" v-lazy="require(`@/assets/activities/volunteer.jpeg`)" alt />
-          </div>
-          <div class="banner_container">
-            <span class="banner_item heart">
-              <img class="banner_image" src="@/assets/heart.svg" alt="좋아요 마크" />
-              <span class="banner_title">likes</span>
-            </span>
-            <span class="banner_item comment">
-              <img class="banner_image" src="@/assets/comment.svg" alt="댓글   마크" />
-              <span class="banner_title">comments</span>
-            </span>
-          </div>
-          <div class="content_container">
-            <div class="title">개발자 스터디 모임</div>
-            <p
-              class="description"
-            >부산에서 진행되는 여러 개발스터디에 종종 참여하였습니다. 개인역량을 강화시킬 수 있어 좋았고, 부산 개발자 분들을 통해 현업이야기를 직접 들을 수 있어 개발 이외에 유익한 정보를 얻을 수 있어 즐거웠습니다.</p>
-          </div>
-        </div>
-      </li>
-      <li class="list_item">
-        <div class="activity_card">
-          <div class="header">
-            <div class="user_container">
-              <img
-                class="user_image"
-                src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-              />
-              <span class="user_nick">KwonYG</span>
-            </div>
-            <div class="date">2018년 02월 02일</div>
-          </div>
-          <div class="image_container">
-            <img class="activity_image" v-lazy="require(`@/assets/activities/boostcourse.png`)" alt />
-          </div>
-          <div class="banner_container">
-            <span class="banner_item heart">
-              <img class="banner_image" src="@/assets/heart.svg" alt="좋아요 마크" />
-              <span class="banner_title">likes</span>
-            </span>
-            <span class="banner_item comment">
-              <img class="banner_image" src="@/assets/comment.svg" alt="댓글   마크" />
-              <span class="banner_title">comments</span>
-            </span>
-          </div>
-          <div class="content_container">
-            <div class="title">개발자 스터디 모임</div>
-            <p
-              class="description"
-            >부산에서 진행되는 여러 개발스터디에 종종 참여하였습니다. 개인역량을 강화시킬 수 있어 좋았고, 부산 개발자 분들을 통해 현업이야기를 직접 들을 수 있어 개발 이외에 유익한 정보를 얻을 수 있어 즐거웠습니다.</p>
-          </div>
-        </div>
-      </li>-->
     </ul>
   </div>
 </template>
@@ -145,7 +57,17 @@ import { Vue, Component } from "vue-property-decorator";
     })
   }
 })
-export default class AboutmeTemplate extends Vue {}
+export default class AboutmeTemplate extends Vue {
+  clickMore($event: Event) {
+    let target = $event.target.nextElementSibling;
+
+    if (target.style.display === "none") {
+      target.style.display = "block";
+    } else {
+      target.style.display = "none";
+    }
+  }
+}
 </script>
 <style scoped>
 ul,
@@ -226,6 +148,17 @@ li {
 }
 
 .content_container .title {
+  font-weight: bold;
   font-size: 1.2em;
+}
+
+.tag_container {
+  margin-bottom: 10px;
+}
+.tag {
+  margin-right: 2px;
+}
+.more_button:hover {
+  cursor: pointer;
 }
 </style>
