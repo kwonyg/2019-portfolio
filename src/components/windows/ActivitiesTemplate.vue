@@ -59,7 +59,7 @@ import { Vue, Component } from "vue-property-decorator";
 })
 export default class AboutmeTemplate extends Vue {
   clickMore($event: Event) {
-    let target = $event.target.nextElementSibling;
+    let target = <HTMLElement>($event.target as HTMLElement).nextElementSibling;
 
     if (target.style.display === "none") {
       target.style.display = "block";
