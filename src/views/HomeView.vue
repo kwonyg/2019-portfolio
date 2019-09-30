@@ -2,9 +2,12 @@
   <section ref="home_section" class="home_section" @click="deActivate($event,0)">
     <window-modal
       :title="'About Me'"
+      ref="aboutme"
       :show="aboutmeShow"
       :w="300"
       :h="450"
+      :x="aboutmeX"
+      :y="aboutmeY"
       :z="aboutmeZindex"
       @close="closeWindow"
     >
@@ -18,6 +21,8 @@
       :show="projectsShow"
       :w="projectsWidth"
       :h="projectsHeight"
+      :x="projectsX"
+      :y="projectsY"
       :z="projectsZindex"
       @close="closeWindow"
     >
@@ -31,6 +36,8 @@
       :show="activitiesShow"
       :w="350"
       :h="550"
+      :x="activitiesX"
+      :y="activitiesY"
       :z="activitiesZindex"
       @close="closeWindow"
     >
@@ -44,6 +51,8 @@
       :show="contactsShow"
       :w="370"
       :h="200"
+      :x="contactsX"
+      :y="contactsY"
       :z="contactsZindex"
       @close="closeWindow"
     >
@@ -57,6 +66,8 @@
       :show="guestbookShow"
       :w="370"
       :h="500"
+      :x="guestbookX"
+      :y="guestbookY"
       :z="guestbookZindex"
       @close="closeWindow"
     >
@@ -147,11 +158,24 @@ export default class HomeView extends Vue {
   public projectsWidth: number = 0;
   public projectsHeight: number = 0;
 
+  // Modal positions
+  aboutmeX: number = 0;
+  aboutmeY: number = 0;
+  projectsX: number = 0;
+  projectsY: number = 0;
+  activitiesX: number = 0;
+  activitiesY: number = 0;
+  contactsX: number = 0;
+  contactsY: number = 0;
+  guestbookX: number = 0;
+  guestbookY: number = 0;
+
   public created() {
     bus.$on("calc:zindex", this.calcZindex);
     this.$store.dispatch("INIT_DATAS");
     this.getViewsize();
-    this.setProjectSize();
+    this.setProjectWindowSize();
+    this.setWindowPositions();
   }
 
   public beforeDestory() {
@@ -163,16 +187,44 @@ export default class HomeView extends Vue {
     this.window.height = window.innerHeight;
   }
 
-  public setProjectSize() {
+  public setProjectWindowSize() {
     if (this.window.width <= 450) {
       this.projectsWidth = 350;
       this.projectsHeight = 550;
     } else if (this.window.width <= 800) {
       this.projectsWidth = 700;
-      this.projectsHeight = 600;
+      this.projectsHeight = this.window.height - 100;
     } else {
       this.projectsWidth = 800;
-      this.projectsHeight = 900;
+      this.projectsHeight = this.window.height - 100;
+    }
+  }
+
+  setWindowPositions() {
+    if (this.window.width <= 450) {
+      return;
+    } else if (this.window.width <= 800) {
+      this.aboutmeX = this.window.width / 50;
+      this.aboutmeY = this.window.height / 50;
+      this.projectsX = this.window.width / 15;
+      this.projectsY = this.window.height / 15;
+      this.activitiesX = this.window.width / 10;
+      this.activitiesY = this.window.width / 10;
+      this.contactsX = this.window.width / 30;
+      this.contactsY = this.window.height / 30;
+      this.guestbookX = this.window.width / 2;
+      this.guestbookY = this.window.height / 5;
+    } else {
+      this.aboutmeX = this.window.width / 50;
+      this.aboutmeY = this.window.height / 50;
+      this.projectsX = this.window.width / 4;
+      this.projectsY = this.window.height / 50;
+      this.activitiesX = this.window.width / 10;
+      this.activitiesY = this.window.width / 10;
+      this.contactsX = this.window.width / 30;
+      this.contactsY = this.window.height / 30;
+      this.guestbookX = this.window.width / 1.5;
+      this.guestbookY = this.window.height / 5;
     }
   }
 
@@ -212,6 +264,7 @@ export default class HomeView extends Vue {
   public whichWindow(fileName: string) {
     switch (fileName) {
       case "aboutme":
+        console.log(this.$refs.aboutme);
         this.aboutmeZindex = this.mostZ;
         return (this.aboutmeShow = true);
       case "projects":

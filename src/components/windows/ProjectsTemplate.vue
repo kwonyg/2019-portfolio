@@ -94,10 +94,11 @@ h2 {
 }
 
 .skill {
+  display: inline-block;
+  margin: 5px;
   padding: 10px;
   background-color: #eaeaea;
   border-radius: 20px;
-  margin-right: 5px;
 }
 
 .image_container .project_image {

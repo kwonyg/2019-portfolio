@@ -5,9 +5,10 @@
       class="modal"
       style="border: 3px solid #C5C5C5;"
       :drag-handle="'.drag-handle'"
-   
       :w="w"
       :h="h"
+      :x="x"
+      :y="y"
       :z="z"
     >
       <div class="drag-handle status_bar">
@@ -40,6 +41,8 @@ export default class WindowModal extends Vue {
   @Prop() public readonly show!: boolean;
   @Prop() public readonly w!: boolean;
   @Prop() public readonly h!: boolean;
+  @Prop() public readonly x!: number;
+  @Prop() public readonly y!: number;
   @Prop() public readonly z!: number;
 
   public clickedWindow() {
