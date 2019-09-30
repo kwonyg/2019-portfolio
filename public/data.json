@@ -1,4 +1,61 @@
 {
+  "projects": [
+    {
+      "id": 0,
+      "title": "퍼펙트 매칭",
+      "img": "DnD.png",
+      "subTitle": "사이드 프로젝트 팀 빌딩 플랫폼",
+      "date": "2019년 07월 ~ 2019년 09월",
+      "role": ["프론트 개발", "프로젝트 기획"],
+      "skills": ["Vue.js", "Vuetify", "SpringBoot", "MySQL"],
+      "url": "https://perfectmatching.netlify.com",
+      "description": "작은 스터디 팀빌딩 조차 어려운 지역개발자들이 사이드 프로젝트 팀원을 쉽게 구할 수 있도록 하는 플랫폼입니다.</br>지역별, 직군별로 프로젝트를 필터링하여 찾을 수 있고, 자신의 기술력을 나타내기 위해 유저와 프로젝트 모델이 기술 태그를 입력할 수 있도록 설계하였습니다.</br>현재는 프로젝트 배포를 위해 조금 더 다듬어 가는 중입니다. "
+    },
+    {
+      "id": 1,
+      "title": "아이언 멘탈",
+      "img": "ironmental.png",
+      "subTitle": "키워드 메일링 서비스",
+      "date": "2019년 05월 ~ 2019년 09월",
+      "role": ["프론트 개발", "디자인"],
+      "skills": ["Vue.js", "MDB", "AWS S3", "Node.js", "Express", "MongoDB"],
+      "url": "https://ironmental.net",
+      "description": "이메일을 통해 그날 공부할 개발 키워드를 구독자에게 매주 보내주는 서비스입니다. 개발용어 및 상식을 '키워드'로 간결하게 정립시켜 보내주고, 사용자가 키워드 내용을 유추하여 키워드 상세 내용을 확인하고 비교 할 수 있도록 기획된 프로젝트입니다. 3명이 팀을 이루어 진행한 프로젝트이며, 역할은 프론트개발을 맡았습니다."
+    },
+    {
+      "id": 2,
+      "title": "TODO LIST",
+      "img": "todo.jpg",
+      "subTitle": "프로그래머스 섬머캠프 2차 개발과제",
+      "date": "2019년 04월 ~ 2019년 05월",
+      "role": ["1인 개발"],
+      "skills": ["Vue.js", "Node.js", "Express", "AWS LightSail"],
+      "url": " https://github.com/KwonYG/TODO-List",
+      "description": "프로그래머스 섬머캠프 2차 개발과제로 제작했던 TODO LIST 입니다. 웹 애플리케이션의 기본 기능에 충실한 프로젝트입니다. 우선순위, 마감기한, 알림노출 등의 CRUD 이외의 기능이 함께 구현되어 있으며, 제출을 위해 AWS Light Sail이라는 서비스를 통해 간단하게 배포하였습니다."
+    },
+    {
+      "id": 3,
+      "title": "부스트 코스 웹 UI 코스 프로젝트",
+      "img": "webUI.png",
+      "subTitle": "부스트 코스 웹 UI 개발 과정",
+      "date": "2019년 02월 ~ 2019년 04월",
+      "role": ["1인 개발"],
+      "skills": ["HTML", "CSS"],
+      "url": "",
+      "description": "부스트 코스 웹 UI 코스 베타테스터로 진행했던 프로젝트입니다. 네이버에 쓰인 UI들을 똑같이 만들어 한 페이지 안에 마크업과 스타일링 되어있는 프로젝트입니다."
+    },
+    {
+      "id": 4,
+      "title": "코딩백서",
+      "img": "codingWhite.jpg",
+      "subTitle": "공개 코드 리뷰사이트",
+      "date": "2019년 9월 ~ 2019년 12월",
+      "role": ["백엔드 개발", "개발 총괄"],
+      "skills": ["HTML", "CSS", "JavaScript", "Spring 4", "MySQL", "JSP"],
+      "url": "https://github.com/KwonYG/CodingWhitepaper",
+      "description": "부스트 코스 웹 UI 코스 베타테스터로 진행했던 프로젝트입니다. 네이버에 쓰인 UI들을 똑같이 만들어 한 페이지 안에 마크업과 스타일링 되어있는 프로젝트입니다."
+    }
+  ],
   "activities": [
     {
       "id": 0,

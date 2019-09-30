@@ -1,12 +1,45 @@
 <template>
   <div class="projects_wrap">
     <ul class="project_list">
-      <li class="list_item">
+      <li class="list_item" v-for="project in projects" :key="project.id">
+        <article class="project_card">
+          <div class="image_container">
+            <img
+              class="project_image"
+              v-lazy="require(`@/assets/projects/${project.img}`)"
+              alt="프로젝트 사진"
+            />
+          </div>
+          <div class="content_container">
+            <div class="content_item">
+              <h1 class="title">{{project.title}}</h1>
+              <div class="sub_title">{{project.subTitle}}</div>
+            </div>
+
+            <div class="content_item due">
+              <div class="info_tittle">제작 기간:</div>
+              {{project.date}}
+            </div>
+            <div class="content_item skills">
+              <div class="info_tittle">사용 기술:</div>
+              <span v-for="skill in project.skills" :key="skill">{{skill}}</span>
+            </div>
+            <div class="content_item url" v-if="project.url !==''">
+              <div class="info_tittle">URL:</div>
+              <a :href="project.url" target="_blank">바로가기</a>
+            </div>
+            <div class="content_item description_container">
+              <div class="info_tittle">설명:</div>
+              <p class="description" v-html="project.description"></p>
+            </div>
+          </div>
+        </article>
+      </li>
+      <!-- <li class="list_item">
         <article class="project_card">
           <div class="image_container">
             <img class="project_image" v-lazy="require(`@/assets/projects/DnD.png`)" alt />
           </div>
-
           <div class="content_container">
             <div class="content_item">
               <h1 class="title">퍼펙트매칭</h1>
@@ -31,14 +64,19 @@
             </div>
           </div>
         </article>
-      </li>
+      </li>-->
     </ul>
   </div>
 </template>
 <script lang="ts">
+import { mapGetters } from "vuex";
 import { Vue, Component } from "vue-property-decorator";
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters({ projects: "getProjects" })
+  }
+})
 export default class ProjectsTemplate extends Vue {}
 </script>
 
@@ -72,7 +110,7 @@ h1 {
 }
 
 .image_container {
-  border: 1px dotted #000;
+  1border: 1px dotted #000;
 }
 
 .content_item {
