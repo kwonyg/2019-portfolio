@@ -172,7 +172,7 @@ export default class HomeView extends Vue {
       this.projectsHeight = 600;
     } else {
       this.projectsWidth = 800;
-      this.projectsHeight = 600;
+      this.projectsHeight = 900;
     }
   }
 

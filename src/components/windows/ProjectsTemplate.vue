@@ -17,19 +17,19 @@
             </div>
 
             <div class="content_item due">
-              <div class="info_tittle">제작 기간:</div>
+              <h2 class="info_tittle">제작 기간:</h2>
               {{project.date}}
             </div>
             <div class="content_item skills">
-              <div class="info_tittle">사용 기술:</div>
-              <span v-for="skill in project.skills" :key="skill">{{skill}}</span>
+              <h2 class="info_tittle">사용 기술:</h2>
+              <span class="skill" v-for="skill in project.skills" :key="skill">{{skill}}</span>
             </div>
             <div class="content_item url" v-if="project.url !==''">
-              <div class="info_tittle">URL:</div>
+              <h2 class="info_tittle">URL:</h2>
               <a :href="project.url" target="_blank">바로가기</a>
             </div>
             <div class="content_item description_container">
-              <div class="info_tittle">설명:</div>
+              <h2 class="info_tittle">설명:</h2>
               <p class="description" v-html="project.description"></p>
             </div>
           </div>
@@ -63,9 +63,15 @@ a {
 }
 
 h1 {
-  margin: 10px 0 0 0;
+  font-size: 1.5em;
+  margin: 10px 0 10px 0;
+}
+h2 {
+  margin-top: 20px;
+  font-size: 0.9em;
 }
 .projects_wrap {
+  font-family: "Gothic A1", sans-serif;
   padding: 20px;
   overflow: scroll;
   overflow-x: hidden;
@@ -87,12 +93,20 @@ h1 {
   margin-bottom: 10px;
 }
 
+.skill {
+  padding: 10px;
+  background-color: #eaeaea;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
 .image_container .project_image {
   width: 100%;
 }
 
 .info_tittle {
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .description {
