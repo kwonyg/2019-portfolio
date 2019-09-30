@@ -16,7 +16,7 @@
     </aside>
     <div class="sub_menu" v-if="showMenu">
       <ul class="sub_menu_list">
-        <li class="list_item sub_menu_item">
+        <li class="list_item sub_menu_item" @click="openMenu('help')">
           <span>도움말</span>
         </li>
         <li class="list_item sub_menu_item">
@@ -59,6 +59,11 @@ export default class AppHeader extends Vue {
     this.currentTime = `${hours < 10 ? `0${hours}` : hours}:${
       minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
+  }
+
+  public openMenu(menuName: string) {
+    bus.$emit("openWindow", menuName);
+    this.closeMenu();
   }
 
   public closeMenu() {

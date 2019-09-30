@@ -32,6 +32,21 @@
     </window-modal>
 
     <window-modal
+      :title="'Help'"
+      :show="helpShow"
+      :w="350"
+      :h="600"
+      :x="20"
+      :y="10"
+      :z="helpZindex"
+      @close="closeWindow"
+    >
+      <template v-slot:content>
+        <help-template></help-template>
+      </template>
+    </window-modal>
+
+    <window-modal
       :title="'Activities'"
       :show="activitiesShow"
       :w="350"
@@ -113,6 +128,7 @@ import ProjectsTemplate from "@/components/windows/ProjectsTemplate.vue";
 import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
 import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
 import GuestbookTemplate from "@/components/windows/GuestbookTemplate.vue";
+import HelpTemplate from "@/components//windows/HelpTemplate.vue";
 
 interface Window {
   width: number;
@@ -127,7 +143,8 @@ interface Window {
     ProjectsTemplate,
     ActivitiesTemplate,
     ContactsTemplate,
-    GuestbookTemplate
+    GuestbookTemplate,
+    HelpTemplate
   }
 })
 export default class HomeView extends Vue {
@@ -145,6 +162,7 @@ export default class HomeView extends Vue {
   public contactsShow: boolean = false;
   public projectsShow: boolean = false;
   public guestbookShow: boolean = false;
+  public helpShow: boolean = true;
 
   // zIndex
   public mostZ: number = 3;
@@ -153,6 +171,7 @@ export default class HomeView extends Vue {
   public contactsZindex: number = 2;
   public projectsZindex: number = 2;
   public guestbookZindex: number = 2;
+  public helpZindex: number = 2;
 
   // Projects Window width, height
   public projectsWidth: number = 0;
@@ -172,6 +191,7 @@ export default class HomeView extends Vue {
 
   public created() {
     bus.$on("calc:zindex", this.calcZindex);
+    bus.$on("openWindow", this.whichWindow);
     this.$store.dispatch("INIT_DATAS");
     this.getViewsize();
     this.setProjectWindowSize();
@@ -180,6 +200,7 @@ export default class HomeView extends Vue {
 
   public beforeDestory() {
     bus.$off("calc:zindex", this.calcZindex);
+    bus.$off("openWindow", this.whichWindow);
   }
 
   public getViewsize() {
@@ -190,7 +211,7 @@ export default class HomeView extends Vue {
   public setProjectWindowSize() {
     if (this.window.width <= 450) {
       this.projectsWidth = 350;
-      this.projectsHeight = 550;
+      this.projectsHeight = this.window.height - 130;
     } else if (this.window.width <= 800) {
       this.projectsWidth = 700;
       this.projectsHeight = this.window.height - 100;
@@ -279,6 +300,9 @@ export default class HomeView extends Vue {
       case "guestbook":
         this.guestbookZindex = this.mostZ;
         return (this.guestbookShow = true);
+      case "help":
+        this.helpZindex = this.mostZ;
+        return (this.helpShow = true);
       default:
         alert("아직..개발...주...웅");
         return null;
@@ -299,6 +323,8 @@ export default class HomeView extends Vue {
         return (this.contactsShow = false);
       case "guestbook":
         return (this.guestbookShow = false);
+      case "help":
+        return (this.helpShow = false);
       default:
         return null;
     }
