@@ -19,12 +19,12 @@
         <li class="list_item sub_menu_item" @click="openMenu('help')">
           <span>도움말</span>
         </li>
-        <li class="list_item sub_menu_item">
+        <!-- <li class="list_item sub_menu_item">
           <span>개발 환경</span>
         </li>
         <li class="list_item sub_menu_item">
           <span>로그아웃</span>
-        </li>
+        </li>-->
       </ul>
     </div>
   </header>
