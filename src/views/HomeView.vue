@@ -36,8 +36,8 @@
       :show="helpShow"
       :w="350"
       :h="600"
-      :x="20"
-      :y="10"
+      :x="0"
+      :y="0"
       :z="helpZindex"
       @close="closeWindow"
     >
@@ -64,7 +64,7 @@
     <window-modal
       :title="'Contacts'"
       :show="contactsShow"
-      :w="370"
+      :w="350"
       :h="200"
       :x="contactsX"
       :y="contactsY"
@@ -79,7 +79,7 @@
     <window-modal
       :title="'Guest Book'"
       :show="guestbookShow"
-      :w="370"
+      :w="350"
       :h="500"
       :x="guestbookX"
       :y="guestbookY"
@@ -171,7 +171,7 @@ export default class HomeView extends Vue {
   public contactsZindex: number = 2;
   public projectsZindex: number = 2;
   public guestbookZindex: number = 2;
-  public helpZindex: number = 2;
+  public helpZindex: number = 1;
 
   // Projects Window width, height
   public projectsWidth: number = 0;
@@ -236,8 +236,8 @@ export default class HomeView extends Vue {
       this.guestbookX = this.window.width / 2;
       this.guestbookY = this.window.height / 5;
     } else {
-      this.aboutmeX = this.window.width / 50;
-      this.aboutmeY = this.window.height / 50;
+      this.aboutmeX = this.window.width / 8;
+      this.aboutmeY = this.window.height / 5;
       this.projectsX = this.window.width / 4;
       this.projectsY = this.window.height / 50;
       this.activitiesX = this.window.width / 10;
@@ -344,6 +344,8 @@ export default class HomeView extends Vue {
         return (this.contactsZindex = this.mostZ);
       case "guestbook":
         return (this.guestbookZindex = this.mostZ);
+      case "help":
+        return (this.helpZindex = this.mostZ);
       default:
         return null;
     }
