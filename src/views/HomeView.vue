@@ -303,6 +303,8 @@ export default class HomeView extends Vue {
       case "help":
         this.helpZindex = this.mostZ;
         return (this.helpShow = true);
+      case "github":
+        return window.open("https://github.com/KwonYG", "_blank");
       default:
         alert("아직..개발...주...웅");
         return null;
