@@ -157,12 +157,12 @@ export default class HomeView extends Vue {
   };
 
   // windows flag
-  public aboutmeShow: boolean = true;
+  public aboutmeShow: boolean = false;
   public activitiesShow: boolean = false;
   public contactsShow: boolean = false;
   public projectsShow: boolean = false;
   public guestbookShow: boolean = false;
-  public helpShow: boolean = true;
+  public helpShow: boolean = false;
 
   // zIndex
   public mostZ: number = 3;

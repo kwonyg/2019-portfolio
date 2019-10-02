@@ -21,10 +21,12 @@
         </li>
         <!-- <li class="list_item sub_menu_item">
           <span>개발 환경</span>
-        </li>
-        <li class="list_item sub_menu_item">
-          <span>로그아웃</span>
         </li>-->
+        <li class="list_item sub_menu_item" @click="showMenu = false">
+          <router-link to="/login">
+            <span>로그아웃</span>
+          </router-link>
+        </li>
       </ul>
     </div>
   </header>
@@ -89,7 +91,12 @@ export default class AppHeader extends Vue {
 header {
   background-color: #dbdbdb;
 }
-
+a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
 ul,
 li {
   margin: 0;
@@ -134,13 +141,14 @@ ul.sub_menu_list {
   border: 1px solid #000;
 }
 
-ul.sub_menu_list .list_item {
+ul.sub_menu_list .list_item span {
   padding-left: 20px;
 }
 
-.sub_menu_item:hover {
+.sub_menu_item:hover,
+a:hover {
   cursor: pointer;
-  color: #fff;
+  color: #fff !important;
   background-color: #2488ff;
 }
 
