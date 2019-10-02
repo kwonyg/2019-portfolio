@@ -157,12 +157,12 @@ export default class HomeView extends Vue {
   };
 
   // windows flag
-  public aboutmeShow: boolean = true;
+  public aboutmeShow: boolean = false;
   public activitiesShow: boolean = false;
   public contactsShow: boolean = false;
   public projectsShow: boolean = false;
   public guestbookShow: boolean = false;
-  public helpShow: boolean = true;
+  public helpShow: boolean = false;
 
   // zIndex
   public mostZ: number = 3;
@@ -303,6 +303,8 @@ export default class HomeView extends Vue {
       case "help":
         this.helpZindex = this.mostZ;
         return (this.helpShow = true);
+      case "github":
+        return window.open("https://github.com/KwonYG", "_blank");
       default:
         alert("아직..개발...주...웅");
         return null;
