@@ -130,12 +130,15 @@ li {
   border-radius: 50%;
 }
 
-.user_container .user_nick {
+.image_container {
+  position: relative;
 }
 
 .loading_spinner {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .image_container .activity_image {

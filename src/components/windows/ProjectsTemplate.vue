@@ -96,9 +96,15 @@ h2 {
   padding: 30px;
 }
 
+.image_container {
+  position: relative;
+}
+
 .loading_spinner {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .content_item {
