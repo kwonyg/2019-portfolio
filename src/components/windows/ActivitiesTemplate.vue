@@ -14,7 +14,13 @@
             <div class="date">{{activity.date}}</div>
           </div>
           <div class="image_container">
-            <img class="activity_image" v-lazy="require(`@/assets/activities/${activity.img}`)" alt />
+            <spinner class="loading_spinner" :loading="loading"></spinner>
+            <img
+              class="activity_image"
+              v-lazy="require(`@/assets/activities/${activity.img}`)"
+              @load="endSpinner"
+              alt
+            />
           </div>
           <div class="banner_container">
             <span class="banner_item heart">
@@ -22,7 +28,7 @@
               <span class="banner_title">likes</span>
             </span>
             <span class="banner_item comment">
-              <img class="banner_image" src="@/assets/comment.svg" alt="댓글   마크" />
+              <img class="banner_image" src="@/assets/comment.svg" alt="댓글 마크" />
               <span class="banner_title">comments</span>
             </span>
           </div>
@@ -49,8 +55,12 @@
 <script lang="ts">
 import { mapGetters } from "vuex";
 import { Vue, Component } from "vue-property-decorator";
+import Spinner from "@/components/Spinner.vue";
 
 @Component({
+  components: {
+    Spinner
+  },
   computed: {
     ...mapGetters({
       activities: "getActivities"
@@ -58,6 +68,8 @@ import { Vue, Component } from "vue-property-decorator";
   }
 })
 export default class AboutmeTemplate extends Vue {
+  loading: boolean = true;
+
   clickMore($event: Event) {
     let target = <HTMLElement>($event.target as HTMLElement).nextElementSibling;
 
@@ -66,6 +78,10 @@ export default class AboutmeTemplate extends Vue {
     } else {
       target.style.display = "none";
     }
+  }
+
+  endSpinner() {
+    this.loading = false;
   }
 }
 </script>
@@ -115,6 +131,11 @@ li {
 }
 
 .user_container .user_nick {
+}
+
+.loading_spinner {
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .image_container .activity_image {

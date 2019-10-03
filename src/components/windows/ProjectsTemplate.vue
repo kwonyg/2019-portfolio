@@ -4,10 +4,12 @@
       <li class="list_item" v-for="project in projects" :key="project.id">
         <article class="project_card">
           <div class="image_container">
+            <spinner class="loading_spinner" :loading="loading"></spinner>
             <img
               class="project_image"
               v-lazy="require(`@/assets/projects/${project.img}`)"
               alt="프로젝트 사진"
+              @load="endSpinner"
             />
           </div>
           <div class="content_container">
@@ -41,13 +43,22 @@
 <script lang="ts">
 import { mapGetters } from "vuex";
 import { Vue, Component } from "vue-property-decorator";
-
+import Spinner from "@/components/Spinner.vue";
 @Component({
+  components: {
+    Spinner
+  },
   computed: {
     ...mapGetters({ projects: "getProjects" })
   }
 })
-export default class ProjectsTemplate extends Vue {}
+export default class ProjectsTemplate extends Vue {
+  loading: boolean = true;
+
+  endSpinner() {
+    this.loading = false;
+  }
+}
 </script>
 
 <style scoped>
@@ -85,8 +96,9 @@ h2 {
   padding: 30px;
 }
 
-.image_container {
-  1border: 1px dotted #000;
+.loading_spinner {
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .content_item {
