@@ -8,10 +8,14 @@ export interface Acitivity {
 
 export interface Project {
   id: number;
-  date: string;
-  img: string;
   title: string;
+  subTitle: string;
+  img: string;
+  date: string;
   description: string;
+  url: string;
+  role: string[];
+  skills: string[];
 }
 
 export interface Message {

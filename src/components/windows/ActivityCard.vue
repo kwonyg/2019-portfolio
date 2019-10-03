@@ -54,7 +54,11 @@ interface Activity {
   description: string;
 }
 
-@Component
+@Component({
+  components: {
+    Spinner
+  }
+})
 export default class ActivityCard extends Vue {
   @Prop() activity!: Acitivity;
   loading: boolean = true;

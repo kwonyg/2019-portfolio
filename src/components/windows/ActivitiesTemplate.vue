@@ -10,12 +10,10 @@
 <script lang="ts">
 import { mapGetters } from "vuex";
 import { Vue, Component } from "vue-property-decorator";
-import Spinner from "@/components/Spinner.vue";
 import ActivityCard from "@/components/windows/ActivityCard.vue";
 
 @Component({
   components: {
-    Spinner,
     ActivityCard
   },
   computed: {
