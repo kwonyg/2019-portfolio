@@ -17,7 +17,7 @@
             <spinner class="loading_spinner" :loading="loading"></spinner>
             <img
               class="activity_image"
-              v-lazy="require(`@/assets/activities/${activity.img}`)"
+              :src="require(`@/assets/activities/${activity.img}`)"
               @load="endSpinner"
               alt
             />

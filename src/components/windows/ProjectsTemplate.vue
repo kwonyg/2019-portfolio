@@ -7,7 +7,7 @@
             <spinner class="loading_spinner" :loading="loading"></spinner>
             <img
               class="project_image"
-              v-lazy="require(`@/assets/projects/${project.img}`)"
+              :src="require(`@/assets/projects/${project.img}`)"
               alt="프로젝트 사진"
               @load="endSpinner"
             />
