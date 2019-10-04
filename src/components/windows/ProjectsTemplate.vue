@@ -8,18 +8,18 @@
   </div>
 </template>
 <script lang="ts">
-import { mapGetters } from "vuex";
-import { Vue, Component } from "vue-property-decorator";
-import Spinner from "@/components/Spinner.vue";
-import ProjectCard from "@/components/windows/ProjectCard.vue";
+import { mapGetters } from 'vuex';
+import { Vue, Component } from 'vue-property-decorator';
+import Spinner from '@/components/Spinner.vue';
+import ProjectCard from '@/components/windows/ProjectCard.vue';
 
 @Component({
   components: {
-    ProjectCard
+    ProjectCard,
   },
   computed: {
-    ...mapGetters({ projects: "getProjects" })
-  }
+    ...mapGetters({ projects: 'getProjects' }),
+  },
 })
 export default class ProjectsTemplate extends Vue {}
 </script>

@@ -15,10 +15,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class Spinner extends Vue {
-  @Prop() loading!: boolean;
+  @Prop() public loading!: boolean;
 }
 </script>
 <style scoped>

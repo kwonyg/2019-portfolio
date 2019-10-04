@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 function initDatas() {
-  return axios.get("/data.json");
+  return axios.get('/data.json');
 }
 
 function getIpAddress() {
-  return axios.get("https://jsonip.com");
+  return axios.get('https://jsonip.com');
 }
 
 export { initDatas, getIpAddress };

@@ -39,8 +39,8 @@
   </article>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import Spinner from "@/components/Spinner.vue";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import Spinner from '@/components/Spinner.vue';
 
 interface Project {
   id: number;
@@ -56,14 +56,14 @@ interface Project {
 
 @Component({
   components: {
-    Spinner
-  }
+    Spinner,
+  },
 })
 export default class ProjectCard extends Vue {
-  @Prop() project!: Project;
-  loading: boolean = true;
+  @Prop() public project!: Project;
+  public loading: boolean = true;
 
-  endSpinner() {
+  public endSpinner() {
     this.loading = false;
   }
 }

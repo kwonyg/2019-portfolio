@@ -8,19 +8,19 @@
   </div>
 </template>
 <script lang="ts">
-import { mapGetters } from "vuex";
-import { Vue, Component } from "vue-property-decorator";
-import ActivityCard from "@/components/windows/ActivityCard.vue";
+import { mapGetters } from 'vuex';
+import { Vue, Component } from 'vue-property-decorator';
+import ActivityCard from '@/components/windows/ActivityCard.vue';
 
 @Component({
   components: {
-    ActivityCard
+    ActivityCard,
   },
   computed: {
     ...mapGetters({
-      activities: "getActivities"
-    })
-  }
+      activities: 'getActivities',
+    }),
+  },
 })
 export default class ActivitiesTemplate extends Vue {}
 </script>

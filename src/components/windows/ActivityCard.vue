@@ -42,9 +42,9 @@
   </div>
 </template>
 <script lang="ts" >
-import { Vue, Component, Prop } from "vue-property-decorator";
-import Spinner from "@/components/Spinner.vue";
-import { Acitivity } from "../../store/store.interface";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import Spinner from '@/components/Spinner.vue';
+import { Acitivity } from '../../store/store.interface';
 
 interface Activity {
   id: number;
@@ -56,24 +56,24 @@ interface Activity {
 
 @Component({
   components: {
-    Spinner
-  }
+    Spinner,
+  },
 })
 export default class ActivityCard extends Vue {
-  @Prop() activity!: Acitivity;
-  loading: boolean = true;
+  @Prop() public activity!: Acitivity;
+  public loading: boolean = true;
 
-  clickMore($event: Event) {
-    let target = <HTMLElement>($event.target as HTMLElement).nextElementSibling;
+  public clickMore($event: Event) {
+    const target = <HTMLElement>($event.target as HTMLElement).nextElementSibling;
 
     if (target.style.display === "none") {
-      target.style.display = "block";
+      target.style.display = 'block';
     } else {
-      target.style.display = "none";
+      target.style.display = 'none';
     }
   }
 
-  endSpinner() {
+  public endSpinner() {
     this.loading = false;
   }
 }
