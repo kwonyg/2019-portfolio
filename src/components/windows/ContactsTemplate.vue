@@ -9,20 +9,20 @@
     <div class="contact_container email_container">
       <a class="contact_link email_link" href="mailto: abc@example.com">
         <img class="contact_image email_image" src="../../assets/mail.svg" alt="이메일" />
-        <span>andamirocll@email.com</span>
+        <span>andamirocll@gmail.com</span>
       </a>
     </div>
   </div>
 </template>
 <script lang="ts">
-import bus from '@/utils/bus';
-import { Vue, Component, Prop } from 'vue-property-decorator';
-const VueDraggableResizable = require('vue-draggable-resizable');
+import bus from "@/utils/bus";
+import { Vue, Component, Prop } from "vue-property-decorator";
+const VueDraggableResizable = require("vue-draggable-resizable");
 
 @Component({
   components: {
-    VueDraggableResizable,
-  },
+    VueDraggableResizable
+  }
 })
 export default class WindowModal extends Vue {
   @Prop() public readonly title!: string;
@@ -30,7 +30,7 @@ export default class WindowModal extends Vue {
   @Prop() public readonly z!: number;
 
   public clickedWindow() {
-    bus.$emit('calc:zindex', this.title);
+    bus.$emit("calc:zindex", this.title);
   }
 }
 </script>
