@@ -2,72 +2,27 @@
   <div class="activities_wrap">
     <ul class="activity_list">
       <li class="list_item" v-for="activity in activities" :key="activity.id">
-        <div class="activity_card">
-          <div class="header">
-            <div class="user_container">
-              <img
-                class="user_image"
-                src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-              />
-              <span class="user_nick">KwonYG</span>
-            </div>
-            <div class="date">{{activity.date}}</div>
-          </div>
-          <div class="image_container">
-            <img class="activity_image" v-lazy="require(`@/assets/activities/${activity.img}`)" alt />
-          </div>
-          <div class="banner_container">
-            <span class="banner_item heart">
-              <img class="banner_image" src="@/assets/heart.svg" alt="좋아요 마크" />
-              <span class="banner_title">likes</span>
-            </span>
-            <span class="banner_item comment">
-              <img class="banner_image" src="@/assets/comment.svg" alt="댓글   마크" />
-              <span class="banner_title">comments</span>
-            </span>
-          </div>
-          <div class="content_container">
-            <div class="title">{{activity.title}}</div>
-            <div class="tag_container">
-              <span class="tag" v-for="tag in activity.tags" :key="tag">#{{tag}}</span>
-            </div>
-            <div class="desription_container">
-              <div class="more_button" @click="clickMore">내용 접기/펼치기▶</div>
-              <p
-                class="description"
-                ref="description"
-                v-html="activity.description"
-                style="display:none"
-              ></p>
-            </div>
-          </div>
-        </div>
+        <activity-card :activity="activity"></activity-card>
       </li>
     </ul>
   </div>
 </template>
 <script lang="ts">
-import { mapGetters } from "vuex";
-import { Vue, Component } from "vue-property-decorator";
+import { mapGetters } from 'vuex';
+import { Vue, Component } from 'vue-property-decorator';
+import ActivityCard from '@/components/windows/ActivityCard.vue';
 
 @Component({
+  components: {
+    ActivityCard,
+  },
   computed: {
     ...mapGetters({
-      activities: "getActivities"
-    })
-  }
+      activities: 'getActivities',
+    }),
+  },
 })
-export default class AboutmeTemplate extends Vue {
-  clickMore($event: Event) {
-    let target = <HTMLElement>($event.target as HTMLElement).nextElementSibling;
-
-    if (target.style.display === "none") {
-      target.style.display = "block";
-    } else {
-      target.style.display = "none";
-    }
-  }
-}
+export default class ActivitiesTemplate extends Vue {}
 </script>
 <style scoped>
 ul,
@@ -82,83 +37,5 @@ li {
   overflow: scroll;
   overflow-x: hidden;
   height: 93%;
-}
-
-.activity_card {
-  border-bottom: 1px solid #000;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-}
-
-.header .date {
-  padding: 8px 0;
-  font-size: 0.9em;
-}
-
-.user_container {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-.user_container .user_image {
-  border: 1px solid #000;
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 50%;
-}
-
-.user_container .user_nick {
-}
-
-.image_container .activity_image {
-  width: 100%;
-  height: auto;
-}
-
-.banner_container {
-  display: flex;
-  padding: 5px;
-}
-
-.banner_container .banner_item {
-  display: flex;
-  margin-right: 10px;
-}
-
-.banner_container .banner_image {
-  margin-right: 3px;
-  width: 20px;
-  height: 20px;
-}
-
-.banner_container .banner_title {
-  font-size: 1em;
-}
-
-.content_container {
-  padding: 10px;
-  font-size: 0.9em;
-}
-
-.content_container .title {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.tag_container {
-  margin-bottom: 10px;
-}
-.tag {
-  margin-right: 2px;
-}
-.more_button:hover {
-  cursor: pointer;
 }
 </style>

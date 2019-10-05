@@ -38,53 +38,53 @@
   </section>
 </template>
 <script lang="ts">
-import { mapGetters } from "vuex";
-import { Vue, Component, Watch } from "vue-property-decorator";
+import { mapGetters } from 'vuex';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 
 @Component({
   computed: {
     ...mapGetters({
-      messages: "getMessages"
-    })
-  }
+      messages: 'getMessages',
+    }),
+  },
 })
 export default class AboutmeTemplate extends Vue {
   public charCount: number = 0;
   public maxCharCount: number = 140;
   public disablePost: boolean = true;
 
-  public name: string = "";
-  public content: string = "";
+  public name: string = '';
+  public content: string = '';
 
-  @Watch("content")
+  @Watch('content')
   public countChars() {
     this.charCount = this.content.length;
   }
 
-  @Watch("name")
-  @Watch("content")
+  @Watch('name')
+  @Watch('content')
   public isFilled() {
-    const nameIsFilled: boolean = this.name !== "";
-    const contentIsFilled: boolean = this.content !== "";
+    const nameIsFilled: boolean = this.name !== '';
+    const contentIsFilled: boolean = this.content !== '';
 
     this.disablePost = !(nameIsFilled && contentIsFilled);
     // return this.name !== "" && this.name !== "";// 안되는 이유: https://mariusschulz.com/blog/the-and-and-or-operators-in-javascript
   }
 
   public created() {
-    this.$store.dispatch("FETCT_MESSAGES");
+    this.$store.dispatch('FETCT_MESSAGES');
   }
 
-  clearData() {
-    this.name = "";
-    this.content = "";
+  public clearData() {
+    this.name = '';
+    this.content = '';
   }
 
   public postMessage() {
     this.$store
-      .dispatch("POST_MESSAGE", {
+      .dispatch('POST_MESSAGE', {
         userName: this.name,
-        content: this.content
+        content: this.content,
       })
       .then(() => {
         this.clearData();

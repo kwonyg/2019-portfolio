@@ -9,7 +9,7 @@
     <div class="contact_container email_container">
       <a class="contact_link email_link" href="mailto: abc@example.com">
         <img class="contact_image email_image" src="../../assets/mail.svg" alt="이메일" />
-        <span>andamirocll@email.com</span>
+        <span>andamirocll@gmail.com</span>
       </a>
     </div>
   </div>
