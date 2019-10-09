@@ -1,6 +1,6 @@
 <template>
   <div class="short_cut" @click="$emit('clickedIcon', title )">
-    <img class="shortcut_img" :src="require(`../assets/${imageUrl}`)" />
+    <img class="shortcut_img" :src="require(`../assets/${imageUrl}`)" alt="아이콘"/>
     <div class="shortcut_title">{{title}}</div>
   </div>
 </template>
