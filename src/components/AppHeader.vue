@@ -32,25 +32,27 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import bus from '@/utils/bus';
+import { Vue, Component } from "vue-property-decorator";
+import bus from "@/utils/bus";
 
 @Component
 export default class AppHeader extends Vue {
-  public currentDate: string = '';
-  public currentTime: string = '';
+  public currentDate: string = "";
+  public currentTime: string = "";
   public showMenu: boolean = false;
 
   public toggleMenu() {
     this.showMenu = !this.showMenu;
   }
 
+  // 모바일 화면에서는 날짜가 안나오게 하기 위해서 Date, Time 분리
   public refreshDate() {
     const date = new Date();
     const month = date.getMonth();
     const clockDate = date.getDate();
 
     this.currentDate = `${month + 1}월 ${clockDate}일 `;
+    setTimeout(this.refreshDate, 1000);
   }
 
   public refreshTime() {
@@ -61,10 +63,11 @@ export default class AppHeader extends Vue {
     this.currentTime = `${hours < 10 ? `0${hours}` : hours}:${
       minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
+    setTimeout(this.refreshTime, 1000);
   }
 
   public openMenu(menuName: string) {
-    bus.$emit('openWindow', menuName);
+    bus.$emit("openWindow", menuName);
     this.closeMenu();
   }
 
@@ -73,16 +76,16 @@ export default class AppHeader extends Vue {
   }
 
   public created() {
-    bus.$on('close:sub_menu', this.closeMenu);
+    bus.$on("close:sub_menu", this.closeMenu);
   }
 
   public beforeDestroy() {
-    bus.$off('close:sub_menu', this.closeMenu);
+    bus.$off("close:sub_menu", this.closeMenu);
   }
 
   public mounted() {
-    setInterval(this.refreshDate, 1000);
-    setInterval(this.refreshTime, 1000);
+    this.refreshDate();
+    this.refreshTime();
   }
 }
 </script>
