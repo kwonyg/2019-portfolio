@@ -5,21 +5,33 @@
         <div class="tip">
           <img class="help_img" src="@/assets/folder.svg" alt />
           <br />
-          <div class="description">아이콘을 '더블 클릭'하셔야 창이 열립니다.</div>
+          <div class="description">
+            아이콘을 '더블 클릭'하셔야 창이 열립니다.
+          </div>
         </div>
       </li>
       <li class="list_item">
         <div class="tip">
-          <img class="help_img" src="@/assets/smartphone.svg" alt="디바이스 사진" />
+          <img
+            class="help_img"
+            src="@/assets/smartphone.svg"
+            alt="디바이스 사진"
+          />
           <br />
-          <div class="description">창 크기는 사이트에 들어왔을 때 기준으로 사용자 디바이스에 알맞게 고정값으로 설정됩니다.</div>
+          <div class="description">
+            창 크기는 사이트에 들어왔을 때 기준으로 사용자 디바이스에 알맞게
+            고정값으로 설정됩니다.
+          </div>
         </div>
       </li>
       <li class="list_item">
         <div class="tip">
           <img class="help_img" src="@/assets/zoom.svg" alt="돋보기 사진" />
           <br />
-          <div class="description">사이트에 들어오고 나서 화면을 이리저리 바꿔봐도 처음 창크기 그대로 유지가 되니 유념해주세요.</div>
+          <div class="description">
+            사이트에 들어오고 나서 화면을 이리저리 바꿔봐도 처음 창크기 그대로
+            유지가 되니 유념해주세요.
+          </div>
         </div>
       </li>
       <li class="list_item">
@@ -46,11 +58,11 @@ const VueDraggableResizable = require('vue-draggable-resizable');
   },
 })
 export default class WindowModal extends Vue {
-  @Prop() public readonly title!: string;
-  @Prop() public readonly show!: boolean;
-  @Prop() public readonly z!: number;
+  @Prop() private readonly title!: string;
+  @Prop() private readonly show!: boolean;
+  @Prop() private readonly z!: number;
 
-  public clickedWindow() {
+  private clickedWindow() {
     bus.$emit('calc:zindex', this.title);
   }
 }

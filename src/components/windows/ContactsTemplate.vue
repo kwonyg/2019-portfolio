@@ -33,11 +33,11 @@ const VueDraggableResizable = require('vue-draggable-resizable');
   },
 })
 export default class WindowModal extends Vue {
-  @Prop() public readonly title!: string;
-  @Prop() public readonly show!: boolean;
-  @Prop() public readonly z!: number;
+  @Prop() private readonly title!: string;
+  @Prop() private readonly show!: boolean;
+  @Prop() private readonly z!: number;
 
-  public clickedWindow() {
+  private clickedWindow() {
     bus.$emit('calc:zindex', this.title);
   }
 }

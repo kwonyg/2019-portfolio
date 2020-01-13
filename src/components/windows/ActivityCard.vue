@@ -67,10 +67,10 @@ interface Activity {
   },
 })
 export default class ActivityCard extends Vue {
-  @Prop() public activity!: Acitivity;
-  public loading: boolean = true;
+  @Prop() private activity!: Acitivity;
+  private loading: boolean = true;
 
-  public clickMore($event: Event) {
+  private clickMore($event: Event) {
     const target = ($event.target as HTMLElement)
       .nextElementSibling as HTMLElement;
     // const target = <HTMLElement>(
@@ -84,7 +84,7 @@ export default class ActivityCard extends Vue {
     }
   }
 
-  public endSpinner() {
+  private endSpinner() {
     this.loading = false;
   }
 }

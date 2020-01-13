@@ -37,16 +37,16 @@ import bus from '@/utils/bus';
 
 @Component
 export default class AppHeader extends Vue {
-  public currentDate: string = '';
-  public currentTime: string = '';
-  public showMenu: boolean = false;
+  private currentDate: string = '';
+  private currentTime: string = '';
+  private showMenu: boolean = false;
 
-  public toggleMenu() {
+  private toggleMenu() {
     this.showMenu = !this.showMenu;
   }
 
   // 모바일 화면에서는 날짜가 안나오게 하기 위해서 Date, Time 분리
-  public refreshDate() {
+  private refreshDate() {
     const date = new Date();
     const month = date.getMonth();
     const clockDate = date.getDate();
@@ -55,7 +55,7 @@ export default class AppHeader extends Vue {
     setTimeout(this.refreshDate, 1000);
   }
 
-  public refreshTime() {
+  private refreshTime() {
     const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -66,24 +66,24 @@ export default class AppHeader extends Vue {
     setTimeout(this.refreshTime, 1000);
   }
 
-  public openMenu(menuName: string) {
+  private openMenu(menuName: string) {
     bus.$emit('openWindow', menuName);
     this.closeMenu();
   }
 
-  public closeMenu() {
+  private closeMenu() {
     this.showMenu = false;
   }
 
-  public created() {
+  private created() {
     bus.$on('close:sub_menu', this.closeMenu);
   }
 
-  public beforeDestroy() {
+  private beforeDestroy() {
     bus.$off('close:sub_menu', this.closeMenu);
   }
 
-  public mounted() {
+  private mounted() {
     this.refreshDate();
     this.refreshTime();
   }

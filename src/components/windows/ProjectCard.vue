@@ -11,23 +11,27 @@
     </div>
     <div class="content_container">
       <div class="content_item">
-        <h1 class="title">{{project.title}}</h1>
-        <div class="sub_title">{{project.subTitle}}</div>
+        <h1 class="title">{{ project.title }}</h1>
+        <div class="sub_title">{{ project.subTitle }}</div>
       </div>
 
       <div class="content_item due">
         <h2 class="info_tittle">제작 기간:</h2>
-        {{project.date}}
+        {{ project.date }}
       </div>
       <div class="role_container">
         <h2 class="info_tittle">역할:</h2>
-        <span class="role" v-for="role in project.role" :key="role">{{role}}</span>
+        <span class="role" v-for="role in project.role" :key="role">{{
+          role
+        }}</span>
       </div>
       <div class="content_item skills">
         <h2 class="info_tittle">사용 기술:</h2>
-        <span class="skill" v-for="skill in project.skills" :key="skill">{{skill}}</span>
+        <span class="skill" v-for="skill in project.skills" :key="skill">{{
+          skill
+        }}</span>
       </div>
-      <div class="content_item url" v-if="project.url !==''">
+      <div class="content_item url" v-if="project.url !== ''">
         <h2 class="info_tittle">URL:</h2>
         <a :href="project.url" target="_blank">바로가기</a>
       </div>
@@ -60,10 +64,10 @@ interface Project {
   },
 })
 export default class ProjectCard extends Vue {
-  @Prop() public project!: Project;
-  public loading: boolean = true;
+  @Prop() private project!: Project;
+  private loading: boolean = true;
 
-  public endSpinner() {
+  private endSpinner() {
     this.loading = false;
   }
 }

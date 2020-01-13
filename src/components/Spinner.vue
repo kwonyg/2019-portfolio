@@ -18,7 +18,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class Spinner extends Vue {
-  @Prop() public loading!: boolean;
+  @Prop() private loading!: boolean;
 }
 </script>
 <style scoped>
@@ -34,7 +34,7 @@ export default class Spinner extends Vue {
   animation: lds-spinner 1.2s linear infinite;
 }
 .lds-spinner div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   top: 3px;

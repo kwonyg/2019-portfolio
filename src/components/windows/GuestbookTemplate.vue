@@ -67,21 +67,21 @@ import { Vue, Component, Watch } from 'vue-property-decorator';
   },
 })
 export default class AboutmeTemplate extends Vue {
-  public charCount: number = 0;
-  public maxCharCount: number = 140;
-  public disablePost: boolean = true;
+  private charCount: number = 0;
+  private maxCharCount: number = 140;
+  private disablePost: boolean = true;
 
-  public name: string = '';
-  public content: string = '';
+  private name: string = '';
+  private content: string = '';
 
   @Watch('content')
-  public countChars() {
+  private countChars() {
     this.charCount = this.content.length;
   }
 
   @Watch('name')
   @Watch('content')
-  public isFilled() {
+  private isFilled() {
     const nameIsFilled: boolean = this.name !== '';
     const contentIsFilled: boolean = this.content !== '';
 
@@ -90,16 +90,16 @@ export default class AboutmeTemplate extends Vue {
     // 안되는 이유: https://mariusschulz.com/blog/the-and-and-or-operators-in-javascript
   }
 
-  public created() {
+  private created() {
     this.$store.dispatch('FETCT_MESSAGES');
   }
 
-  public clearData() {
+  private clearData() {
     this.name = '';
     this.content = '';
   }
 
-  public postMessage() {
+  private postMessage() {
     this.$store
       .dispatch('POST_MESSAGE', {
         userName: this.name,
@@ -110,7 +110,7 @@ export default class AboutmeTemplate extends Vue {
       });
   }
 
-  public calcDate(date: Date) {
+  private calcDate(date: Date) {
     const year = date.getFullYear();
     const month = date.getMonth();
     const clockDate = date.getDate();
