@@ -15,7 +15,9 @@
           />
           <div>권 영 근</div>
         </div>
-        <router-link tag="button" class="login_button" to="/home">로그인</router-link>
+        <router-link tag="button" class="login_button" to="/home"
+          >로그인</router-link
+        >
       </div>
     </section>
   </transition>
@@ -84,7 +86,7 @@ h1.section_title {
 }
 
 .login_button {
-  font-family: "DungGeunMo", monospace;
+  font-family: 'DungGeunMo', monospace;
   width: 200px;
   height: 30px;
   margin-bottom: 20px;

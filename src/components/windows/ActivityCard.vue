@@ -8,7 +8,7 @@
         />
         <span class="user_nick">KwonYG</span>
       </div>
-      <div class="date">{{activity.date}}</div>
+      <div class="date">{{ activity.date }}</div>
     </div>
     <div class="image_container">
       <spinner class="loading_spinner" :loading="loading"></spinner>
@@ -30,18 +30,25 @@
       </span>
     </div>
     <div class="content_container">
-      <div class="title">{{activity.title}}</div>
+      <div class="title">{{ activity.title }}</div>
       <div class="tag_container">
-        <span class="tag" v-for="tag in activity.tags" :key="tag">#{{tag}}</span>
+        <span class="tag" v-for="tag in activity.tags" :key="tag"
+          >#{{ tag }}</span
+        >
       </div>
       <div class="desription_container">
         <div class="more_button" @click="clickMore">내용 접기/펼치기▶</div>
-        <p class="description" ref="description" v-html="activity.description" style="display:none"></p>
+        <p
+          class="description"
+          ref="description"
+          v-html="activity.description"
+          style="display:none"
+        ></p>
       </div>
     </div>
   </div>
 </template>
-<script lang="ts" >
+<script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Spinner from '@/components/Spinner.vue';
 import { Acitivity } from '../../store/store.interface';
@@ -64,9 +71,13 @@ export default class ActivityCard extends Vue {
   public loading: boolean = true;
 
   public clickMore($event: Event) {
-    const target = <HTMLElement>($event.target as HTMLElement).nextElementSibling;
+    const target = ($event.target as HTMLElement)
+      .nextElementSibling as HTMLElement;
+    // const target = <HTMLElement>(
+    //   ($event.target as HTMLElement).nextElementSibling
+    // );
 
-    if (target.style.display === "none") {
+    if (target.style.display === 'none') {
       target.style.display = 'block';
     } else {
       target.style.display = 'none';

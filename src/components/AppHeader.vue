@@ -10,8 +10,8 @@
     </nav>
     <aside class="side_display">
       <span class="display_item clock">
-        <span class="current_date">{{currentDate}}</span>
-        <span class="current_time">{{currentTime}}</span>
+        <span class="current_date">{{ currentDate }}</span>
+        <span class="current_time">{{ currentTime }}</span>
       </span>
     </aside>
     <div class="sub_menu" v-if="showMenu">
@@ -32,13 +32,13 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import bus from "@/utils/bus";
+import { Vue, Component } from 'vue-property-decorator';
+import bus from '@/utils/bus';
 
 @Component
 export default class AppHeader extends Vue {
-  public currentDate: string = "";
-  public currentTime: string = "";
+  public currentDate: string = '';
+  public currentTime: string = '';
   public showMenu: boolean = false;
 
   public toggleMenu() {
@@ -67,7 +67,7 @@ export default class AppHeader extends Vue {
   }
 
   public openMenu(menuName: string) {
-    bus.$emit("openWindow", menuName);
+    bus.$emit('openWindow', menuName);
     this.closeMenu();
   }
 
@@ -76,11 +76,11 @@ export default class AppHeader extends Vue {
   }
 
   public created() {
-    bus.$on("close:sub_menu", this.closeMenu);
+    bus.$on('close:sub_menu', this.closeMenu);
   }
 
   public beforeDestroy() {
-    bus.$off("close:sub_menu", this.closeMenu);
+    bus.$off('close:sub_menu', this.closeMenu);
   }
 
   public mounted() {

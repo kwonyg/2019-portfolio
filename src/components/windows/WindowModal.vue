@@ -16,9 +16,9 @@
           class="close_img"
           src="../../assets/close.svg"
           alt="닫기 이미지"
-          @click="$emit('close',title)"
+          @click="$emit('close', title)"
         />
-        <span class="title">{{title}}</span>
+        <span class="title">{{ title }}</span>
       </div>
       <div class="content_container">
         <slot name="content"></slot>

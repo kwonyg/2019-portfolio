@@ -75,7 +75,11 @@ const store: StoreOptions<State> = {
       return DB.collection('guestBook')
         .orderBy('createDate', 'desc')
         .onSnapshot((snapshot) => {
-          const data: any = []; // 타입설정 불가,  https://stackoverflow.com/questions/51606198/typescript-interface-conformance-with-firestore-queries
+          /**
+           *  타입설정 불가,
+           * https://stackoverflow.com/questions/51606198/typescript-interface-conformance-with-firestore-queries
+           */
+          const data: any = [];
           snapshot.forEach((doc) => {
             data.push(doc.data());
           });

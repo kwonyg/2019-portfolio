@@ -2,13 +2,21 @@
   <div class="contact_wrap">
     <div class="contact_container phone_container">
       <a class="contact_link phone_link" href="tel:010-9217-2117">
-        <img class="contact_image phone_image" src="../../assets/phone.svg" alt="전화" />
+        <img
+          class="contact_image phone_image"
+          src="../../assets/phone.svg"
+          alt="전화"
+        />
         <span>010-9217-2117</span>
       </a>
     </div>
     <div class="contact_container email_container">
       <a class="contact_link email_link" href="mailto: abc@example.com">
-        <img class="contact_image email_image" src="../../assets/mail.svg" alt="이메일" />
+        <img
+          class="contact_image email_image"
+          src="../../assets/mail.svg"
+          alt="이메일"
+        />
         <span>andamirocll@gmail.com</span>
       </a>
     </div>

@@ -1,5 +1,9 @@
 <template>
-  <section ref="home_section" class="home_section" @click="deActivate($event,0)">
+  <section
+    ref="home_section"
+    class="home_section"
+    @click="deActivate($event, 0)"
+  >
     <window-modal
       :title="'About Me'"
       ref="aboutme"
@@ -93,42 +97,66 @@
 
     <div class="shortcut_container">
       <ul class="shortcut_list">
-        <li class="list_item" :class="{ active : active === 'aboutme' }">
-          <short-cut :imageUrl="'man.svg'" :title="'About Me'" @clickedIcon="activate"></short-cut>
+        <li class="list_item" :class="{ active: active === 'aboutme' }">
+          <short-cut
+            :imageUrl="'man.svg'"
+            :title="'About Me'"
+            @clickedIcon="activate"
+          ></short-cut>
         </li>
-        <li class="list_item" :class="{ active : active === 'projects' }">
-          <short-cut :imageUrl="'folder.svg'" :title="'Projects'" @clickedIcon="activate"></short-cut>
+        <li class="list_item" :class="{ active: active === 'projects' }">
+          <short-cut
+            :imageUrl="'folder.svg'"
+            :title="'Projects'"
+            @clickedIcon="activate"
+          ></short-cut>
         </li>
-        <li class="list_item" :class="{ active : active === 'activities' }">
-          <short-cut :imageUrl="'sns.svg'" :title="'Activities'" @clickedIcon="activate"></short-cut>
+        <li class="list_item" :class="{ active: active === 'activities' }">
+          <short-cut
+            :imageUrl="'sns.svg'"
+            :title="'Activities'"
+            @clickedIcon="activate"
+          ></short-cut>
         </li>
-        <li class="list_item" :class="{ active : active === 'contacts' }">
-          <short-cut :imageUrl="'phone-call.svg'" :title="'Contacts'" @clickedIcon="activate"></short-cut>
+        <li class="list_item" :class="{ active: active === 'contacts' }">
+          <short-cut
+            :imageUrl="'phone-call.svg'"
+            :title="'Contacts'"
+            @clickedIcon="activate"
+          ></short-cut>
         </li>
-        <li class="list_item" :class="{ active : active == 'github' }">
-          <short-cut :imageUrl="'github.png'" :title="'GitHub'" @clickedIcon="activate"></short-cut>
+        <li class="list_item" :class="{ active: active == 'github' }">
+          <short-cut
+            :imageUrl="'github.png'"
+            :title="'GitHub'"
+            @clickedIcon="activate"
+          ></short-cut>
         </li>
       </ul>
       <ul class="shortcut_list">
-        <li class="list_item" :class="{ active : active === 'guestbook' }">
-          <short-cut :imageUrl="'web.svg'" :title="'Guest Book'" @clickedIcon="activate"></short-cut>
+        <li class="list_item" :class="{ active: active === 'guestbook' }">
+          <short-cut
+            :imageUrl="'web.svg'"
+            :title="'Guest Book'"
+            @clickedIcon="activate"
+          ></short-cut>
         </li>
       </ul>
     </div>
   </section>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from "vue-property-decorator";
-import bus from "@/utils/bus";
-import ShortCut from "@/components/ShortCut.vue";
+import { Vue, Component, Watch } from 'vue-property-decorator';
+import bus from '@/utils/bus';
+import ShortCut from '@/components/ShortCut.vue';
 
-import WindowModal from "@/components/windows/WindowModal.vue";
-import AboutmeTemplate from "@/components/windows/AboutmeTemplate.vue";
-import ProjectsTemplate from "@/components/windows/ProjectsTemplate.vue";
-import ActivitiesTemplate from "@/components/windows/ActivitiesTemplate.vue";
-import ContactsTemplate from "@/components/windows/ContactsTemplate.vue";
-import GuestbookTemplate from "@/components/windows/GuestbookTemplate.vue";
-import HelpTemplate from "@/components//windows/HelpTemplate.vue";
+import WindowModal from '@/components/windows/WindowModal.vue';
+import AboutmeTemplate from '@/components/windows/AboutmeTemplate.vue';
+import ProjectsTemplate from '@/components/windows/ProjectsTemplate.vue';
+import ActivitiesTemplate from '@/components/windows/ActivitiesTemplate.vue';
+import ContactsTemplate from '@/components/windows/ContactsTemplate.vue';
+import GuestbookTemplate from '@/components/windows/GuestbookTemplate.vue';
+import HelpTemplate from '@/components//windows/HelpTemplate.vue';
 
 interface Window {
   width: number;
@@ -144,16 +172,16 @@ interface Window {
     ActivitiesTemplate,
     ContactsTemplate,
     GuestbookTemplate,
-    HelpTemplate
-  }
+    HelpTemplate,
+  },
 })
 export default class HomeView extends Vue {
-  public active: string = "";
+  public active: string = '';
   public clickCount: number = 0;
 
   public window: Window = {
     width: 0,
-    height: 0
+    height: 0,
   };
 
   // windows flag
@@ -192,17 +220,17 @@ export default class HomeView extends Vue {
   public helpY: number = 0;
 
   public created() {
-    bus.$on("calc:zindex", this.calcZindex);
-    bus.$on("openWindow", this.whichWindow);
-    this.$store.dispatch("INIT_DATAS");
+    bus.$on('calc:zindex', this.calcZindex);
+    bus.$on('openWindow', this.whichWindow);
+    this.$store.dispatch('INIT_DATAS');
     this.getViewsize();
     this.setProjectWindowSize();
     this.setWindowPositions();
   }
 
   public beforeDestory() {
-    bus.$off("calc:zindex", this.calcZindex);
-    bus.$off("openWindow", this.whichWindow);
+    bus.$off('calc:zindex', this.calcZindex);
+    bus.$off('openWindow', this.whichWindow);
   }
 
   public getViewsize() {
@@ -254,28 +282,22 @@ export default class HomeView extends Vue {
   }
 
   public deActivate($event: Event) {
-    if (($event.target as HTMLElement).className === "home_section") {
-      console.log("deActivate");
-      this.active = "";
+    if (($event.target as HTMLElement).className === 'home_section') {
+      this.active = '';
     }
-    bus.$emit("close:sub_menu");
+    bus.$emit('close:sub_menu');
   }
 
   public activate(title: string) {
-    console.log("activate!");
-    title = title.replace(/(\s*)/g, "").toLowerCase();
-    console.log(title);
+    title = title.replace(/(\s*)/g, '').toLowerCase();
     this.active = title;
+
     this.clickCount++;
     if (this.clickCount === 1) {
-      // the first click in .2s
       const self = this;
-      setTimeout(function() {
-        switch (
-          self.clickCount // check the event type
-        ) {
+      setTimeout(() => {
+        switch (self.clickCount) {
           case 1:
-            console.log("oneClick"); // self.active = elNum;
             break;
           default:
             self.whichWindow(title);
@@ -288,48 +310,47 @@ export default class HomeView extends Vue {
 
   public whichWindow(fileName: string) {
     switch (fileName) {
-      case "aboutme":
-        console.log(this.$refs.aboutme);
+      case 'aboutme':
         this.aboutmeZindex = this.mostZ;
         return (this.aboutmeShow = true);
-      case "projects":
+      case 'projects':
         this.projectsZindex = this.mostZ;
         return (this.projectsShow = true);
-      case "activities":
+      case 'activities':
         this.activitiesZindex = this.mostZ;
         return (this.activitiesShow = true);
-      case "contacts":
+      case 'contacts':
         this.contactsZindex = this.mostZ;
         return (this.contactsShow = true);
-      case "guestbook":
+      case 'guestbook':
         this.guestbookZindex = this.mostZ;
         return (this.guestbookShow = true);
-      case "help":
+      case 'help':
         this.helpZindex = this.mostZ;
         return (this.helpShow = true);
-      case "github":
-        return window.open("https://github.com/KwonYG", "_blank");
+      case 'github':
+        return window.open('https://github.com/KwonYG', '_blank');
       default:
-        alert("아직..개발...주...웅");
+        alert('아직..개발...주...웅');
         return null;
     }
   }
 
   public closeWindow(fileName: string) {
-    fileName = fileName.replace(/(\s*)/g, "").toLowerCase();
+    fileName = fileName.replace(/(\s*)/g, '').toLowerCase();
 
     switch (fileName) {
-      case "aboutme":
+      case 'aboutme':
         return (this.aboutmeShow = false);
-      case "projects":
+      case 'projects':
         return (this.projectsShow = false);
-      case "activities":
+      case 'activities':
         return (this.activitiesShow = false);
-      case "contacts":
+      case 'contacts':
         return (this.contactsShow = false);
-      case "guestbook":
+      case 'guestbook':
         return (this.guestbookShow = false);
-      case "help":
+      case 'help':
         return (this.helpShow = false);
       default:
         return null;
@@ -337,20 +358,20 @@ export default class HomeView extends Vue {
   }
 
   public calcZindex(title: string) {
-    title = title.replace(/(\s*)/g, "").toLowerCase();
+    title = title.replace(/(\s*)/g, '').toLowerCase();
     this.mostZ++;
     switch (title) {
-      case "aboutme":
+      case 'aboutme':
         return (this.aboutmeZindex = this.mostZ);
-      case "projects":
+      case 'projects':
         return (this.projectsZindex = this.mostZ);
-      case "activities":
+      case 'activities':
         return (this.activitiesZindex = this.mostZ);
-      case "contacts":
+      case 'contacts':
         return (this.contactsZindex = this.mostZ);
-      case "guestbook":
+      case 'guestbook':
         return (this.guestbookZindex = this.mostZ);
-      case "help":
+      case 'help':
         return (this.helpZindex = this.mostZ);
       default:
         return null;

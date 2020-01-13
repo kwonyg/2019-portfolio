@@ -4,7 +4,13 @@
       <form @submit.prevent>
         <label for="name">Name</label>
         <br />
-        <input v-model="name" type="text" class="name_input" id="name" autocomplete="off" />
+        <input
+          v-model="name"
+          type="text"
+          class="name_input"
+          id="name"
+          autocomplete="off"
+        />
         <br />
         <label for="message">Message</label>
         <textarea
@@ -17,20 +23,32 @@
           rows="10"
         ></textarea>
         <div class="post_container">
-          <button class="submit_button" :disabled="disablePost" @click="postMessage">Post</button>
-          <span class="char_count">{{charCount}}/{{maxCharCount}}</span>
+          <button
+            class="submit_button"
+            :disabled="disablePost"
+            @click="postMessage"
+          >
+            Post
+          </button>
+          <span class="char_count">{{ charCount }}/{{ maxCharCount }}</span>
         </div>
       </form>
     </div>
     <div class="message_list_container">
       <ul class="message_list">
-        <li class="list_item message" v-for="message in messages" :key="message.id">
+        <li
+          class="list_item message"
+          v-for="message in messages"
+          :key="message.id"
+        >
           <div class="message_info">
-            <span class="user_name">{{message.userName}}</span>
-            <span class="create_date">{{ calcDate(message.createDate.toDate())}}</span>
+            <span class="user_name">{{ message.userName }}</span>
+            <span class="create_date">{{
+              calcDate(message.createDate.toDate())
+            }}</span>
           </div>
           <div class="message_content">
-            <p>{{message.content}}</p>
+            <p>{{ message.content }}</p>
           </div>
         </li>
       </ul>
@@ -68,7 +86,8 @@ export default class AboutmeTemplate extends Vue {
     const contentIsFilled: boolean = this.content !== '';
 
     this.disablePost = !(nameIsFilled && contentIsFilled);
-    // return this.name !== "" && this.name !== "";// 안되는 이유: https://mariusschulz.com/blog/the-and-and-or-operators-in-javascript
+    // return this.name !== "" && this.name !== "";
+    // 안되는 이유: https://mariusschulz.com/blog/the-and-and-or-operators-in-javascript
   }
 
   public created() {
