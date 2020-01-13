@@ -176,50 +176,50 @@ interface Window {
   },
 })
 export default class HomeView extends Vue {
-  public active: string = '';
-  public clickCount: number = 0;
+  private active: string = '';
+  private clickCount: number = 0;
 
-  public window: Window = {
+  private window: Window = {
     width: 0,
     height: 0,
   };
 
   // windows flag
-  public aboutmeShow: boolean = false;
-  public activitiesShow: boolean = false;
-  public contactsShow: boolean = false;
-  public projectsShow: boolean = false;
-  public guestbookShow: boolean = false;
-  public helpShow: boolean = true;
+  private aboutmeShow: boolean = false;
+  private activitiesShow: boolean = false;
+  private contactsShow: boolean = false;
+  private projectsShow: boolean = false;
+  private guestbookShow: boolean = false;
+  private helpShow: boolean = true;
 
   // zIndex
-  public mostZ: number = 3;
-  public aboutmeZindex: number = 2;
-  public activitiesZindex: number = 2;
-  public contactsZindex: number = 2;
-  public projectsZindex: number = 2;
-  public guestbookZindex: number = 2;
-  public helpZindex: number = 1;
+  private mostZ: number = 3;
+  private aboutmeZindex: number = 2;
+  private activitiesZindex: number = 2;
+  private contactsZindex: number = 2;
+  private projectsZindex: number = 2;
+  private guestbookZindex: number = 2;
+  private helpZindex: number = 1;
 
   // Projects Window width, height
-  public projectsWidth: number = 0;
-  public projectsHeight: number = 0;
+  private projectsWidth: number = 0;
+  private projectsHeight: number = 0;
 
   // Modal positions
-  public aboutmeX: number = 0;
-  public aboutmeY: number = 0;
-  public projectsX: number = 0;
-  public projectsY: number = 0;
-  public activitiesX: number = 0;
-  public activitiesY: number = 0;
-  public contactsX: number = 0;
-  public contactsY: number = 0;
-  public guestbookX: number = 0;
-  public guestbookY: number = 0;
-  public helpX: number = 0;
-  public helpY: number = 0;
+  private aboutmeX: number = 0;
+  private aboutmeY: number = 0;
+  private projectsX: number = 0;
+  private projectsY: number = 0;
+  private activitiesX: number = 0;
+  private activitiesY: number = 0;
+  private contactsX: number = 0;
+  private contactsY: number = 0;
+  private guestbookX: number = 0;
+  private guestbookY: number = 0;
+  private helpX: number = 0;
+  private helpY: number = 0;
 
-  public created() {
+  private created() {
     bus.$on('calc:zindex', this.calcZindex);
     bus.$on('openWindow', this.whichWindow);
     this.$store.dispatch('INIT_DATAS');
@@ -228,17 +228,17 @@ export default class HomeView extends Vue {
     this.setWindowPositions();
   }
 
-  public beforeDestory() {
+  private beforeDestory() {
     bus.$off('calc:zindex', this.calcZindex);
     bus.$off('openWindow', this.whichWindow);
   }
 
-  public getViewsize() {
+  private getViewsize() {
     this.window.width = window.innerWidth;
     this.window.height = window.innerHeight;
   }
 
-  public setProjectWindowSize() {
+  private setProjectWindowSize() {
     if (this.window.width <= 450) {
       this.projectsWidth = 350;
       this.projectsHeight = this.window.height - 130;
@@ -251,7 +251,7 @@ export default class HomeView extends Vue {
     }
   }
 
-  public setWindowPositions() {
+  private setWindowPositions() {
     if (this.window.width <= 450) {
       return;
     } else if (this.window.width <= 800) {
@@ -281,14 +281,14 @@ export default class HomeView extends Vue {
     }
   }
 
-  public deActivate($event: Event) {
+  private deActivate($event: Event) {
     if (($event.target as HTMLElement).className === 'home_section') {
       this.active = '';
     }
     bus.$emit('close:sub_menu');
   }
 
-  public activate(title: string) {
+  private activate(title: string) {
     title = title.replace(/(\s*)/g, '').toLowerCase();
     this.active = title;
 
@@ -308,7 +308,7 @@ export default class HomeView extends Vue {
     }
   }
 
-  public whichWindow(fileName: string) {
+  private whichWindow(fileName: string) {
     switch (fileName) {
       case 'aboutme':
         this.aboutmeZindex = this.mostZ;
@@ -336,7 +336,7 @@ export default class HomeView extends Vue {
     }
   }
 
-  public closeWindow(fileName: string) {
+  private closeWindow(fileName: string) {
     fileName = fileName.replace(/(\s*)/g, '').toLowerCase();
 
     switch (fileName) {
@@ -357,7 +357,7 @@ export default class HomeView extends Vue {
     }
   }
 
-  public calcZindex(title: string) {
+  private calcZindex(title: string) {
     title = title.replace(/(\s*)/g, '').toLowerCase();
     this.mostZ++;
     switch (title) {
