@@ -330,7 +330,7 @@ export default class HomeView extends Vue {
     };
 
     const actions: { [key: string]: () => void } = {
-      aboutme: () => action(this, 'aboutmeZindex', 'aboutemeShow'),
+      aboutme: () => action(this, 'aboutmeZindex', 'aboutmeShow'),
       projects: () => action(this, 'projectsZindex', 'projectsShow'),
       activities: () => action(this, 'activitiesZindex', 'activitiesShow'),
       contacts: () => action(this, 'contactsZindex', 'contactsShow'),
