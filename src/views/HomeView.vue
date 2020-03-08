@@ -148,8 +148,15 @@
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import bus from '@/utils/bus';
+import {
+  SMALL_USER_DEVICE_WIDTH,
+  MEDIUM_USER_DEVICE_WIDTH,
+  SMALL_PROJECT_WINDOW_WIDTH,
+  MEDIUM_PROJECT_WINDOW_WIDTH,
+  LARGE_PROJECT_WINDOW_WIDTH,
+  DOUBLE_CLICK_TIME_OUT,
+} from '../constants';
 import ShortCut from '@/components/ShortCut.vue';
-
 import WindowModal from '@/components/windows/WindowModal.vue';
 import AboutmeTemplate from '@/components/windows/AboutmeTemplate.vue';
 import ProjectsTemplate from '@/components/windows/ProjectsTemplate.vue';
@@ -239,22 +246,22 @@ export default class HomeView extends Vue {
   }
 
   private setProjectWindowSize() {
-    if (this.window.width <= 450) {
-      this.projectsWidth = 350;
+    if (this.window.width <= SMALL_USER_DEVICE_WIDTH) {
+      this.projectsWidth = SMALL_PROJECT_WINDOW_WIDTH;
       this.projectsHeight = this.window.height - 130;
-    } else if (this.window.width <= 800) {
-      this.projectsWidth = 700;
+    } else if (this.window.width <= MEDIUM_USER_DEVICE_WIDTH) {
+      this.projectsWidth = MEDIUM_PROJECT_WINDOW_WIDTH;
       this.projectsHeight = this.window.height - 100;
     } else {
-      this.projectsWidth = 800;
+      this.projectsWidth = LARGE_PROJECT_WINDOW_WIDTH;
       this.projectsHeight = this.window.height - 100;
     }
   }
 
   private setWindowPositions() {
-    if (this.window.width <= 450) {
+    if (this.window.width <= SMALL_USER_DEVICE_WIDTH) {
       return;
-    } else if (this.window.width <= 800) {
+    } else if (this.window.width <= MEDIUM_USER_DEVICE_WIDTH) {
       this.aboutmeX = this.window.width / 50;
       this.aboutmeY = this.window.height / 50;
       this.projectsX = this.window.width / 15;
@@ -304,78 +311,75 @@ export default class HomeView extends Vue {
             self.mostZ++;
         }
         self.clickCount = 0; // reset the first click
-      }, 200); // wait 0.2s
+      }, DOUBLE_CLICK_TIME_OUT); // wait 0.2s
     }
   }
 
   private whichWindow(fileName: string) {
-    switch (fileName) {
-      case 'aboutme':
-        this.aboutmeZindex = this.mostZ;
-        return (this.aboutmeShow = true);
-      case 'projects':
-        this.projectsZindex = this.mostZ;
-        return (this.projectsShow = true);
-      case 'activities':
-        this.activitiesZindex = this.mostZ;
-        return (this.activitiesShow = true);
-      case 'contacts':
-        this.contactsZindex = this.mostZ;
-        return (this.contactsShow = true);
-      case 'guestbook':
-        this.guestbookZindex = this.mostZ;
-        return (this.guestbookShow = true);
-      case 'help':
-        this.helpZindex = this.mostZ;
-        return (this.helpShow = true);
-      case 'github':
-        return window.open('https://github.com/KwonYG', '_blank');
-      default:
+    interface Action<T> {
+      (context: T, targetZindex: string, targetShow: string): void;
+    }
+
+    const action: Action<{ [key: string]: any }> = (
+      context: { [key: string]: any }, // Vue의 인스턴스 내부 멤버들 타입이 any로 되어있음
+      targetZindex: string,
+      targetShow: string,
+    ): void => {
+      context[targetZindex] = context.mostZ;
+      context[targetShow] = true;
+    };
+
+    const actions: { [key: string]: () => void } = {
+      aboutme: () => action(this, 'aboutmeZindex', 'aboutemeShow'),
+      projects: () => action(this, 'projectsZindex', 'projectsShow'),
+      activities: () => action(this, 'activitiesZindex', 'activitiesShow'),
+      contacts: () => action(this, 'contactsZindex', 'contactsShow'),
+      guestbook: () => action(this, 'guestbookZindex', 'guestbookShow'),
+      help: () => action(this, 'helpZindex', 'helpShow'),
+      github: () => window.open('https://github.com/KwonYG', '_blank'),
+      default: () => {
         alert('아직..개발...주...웅');
         return null;
-    }
+      },
+    };
+
+    const doAction = actions[fileName];
+    doAction();
   }
 
   private closeWindow(fileName: string) {
     fileName = fileName.replace(/(\s*)/g, '').toLowerCase();
 
-    switch (fileName) {
-      case 'aboutme':
-        return (this.aboutmeShow = false);
-      case 'projects':
-        return (this.projectsShow = false);
-      case 'activities':
-        return (this.activitiesShow = false);
-      case 'contacts':
-        return (this.contactsShow = false);
-      case 'guestbook':
-        return (this.guestbookShow = false);
-      case 'help':
-        return (this.helpShow = false);
-      default:
-        return null;
-    }
+    const actions: { [key: string]: () => void } = {
+      aboutme: () => (this.aboutmeShow = false),
+      projects: () => (this.projectsShow = false),
+      activities: () => (this.activitiesShow = false),
+      contacts: () => (this.contactsShow = false),
+      guestbook: () => (this.guestbookShow = false),
+      help: () => (this.helpShow = false),
+      default: () => null,
+    };
+
+    const doAction = actions[fileName];
+    doAction();
   }
 
   private calcZindex(title: string) {
     title = title.replace(/(\s*)/g, '').toLowerCase();
     this.mostZ++;
-    switch (title) {
-      case 'aboutme':
-        return (this.aboutmeZindex = this.mostZ);
-      case 'projects':
-        return (this.projectsZindex = this.mostZ);
-      case 'activities':
-        return (this.activitiesZindex = this.mostZ);
-      case 'contacts':
-        return (this.contactsZindex = this.mostZ);
-      case 'guestbook':
-        return (this.guestbookZindex = this.mostZ);
-      case 'help':
-        return (this.helpZindex = this.mostZ);
-      default:
-        return null;
-    }
+
+    const actions: { [key: string]: () => void } = {
+      aboutme: () => (this.aboutmeZindex = this.mostZ),
+      projects: () => (this.projectsZindex = this.mostZ),
+      activities: () => (this.activitiesZindex = this.mostZ),
+      contacts: () => (this.contactsZindex = this.mostZ),
+      guestbook: () => (this.guestbookZindex = this.mostZ),
+      help: () => (this.helpZindex = this.mostZ),
+      default: () => null,
+    };
+
+    const doAction = actions[title];
+    doAction();
   }
 }
 </script>
@@ -400,7 +404,6 @@ section.home_section .shortcut_container {
 }
 
 ul.shortcut_list {
-  1display: flex;
   margin-top: 30px;
   height: 70px;
 }
@@ -409,7 +412,6 @@ ul.shortcut_list li.list_item {
   cursor: pointer;
   padding: 5px;
   margin-bottom: 20px;
-  1margin-right: 25px;
 }
 
 li.list_item.active {
@@ -428,21 +430,5 @@ li.list_item.active {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767px) {
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991px) {
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199px) {
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
 }
 </style>
