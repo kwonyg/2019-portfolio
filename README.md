@@ -4,9 +4,9 @@
 
 ![](./images/vue_ts.png)
 
-Vue.js + TypeScript 로 진행하고 있는 포트폴리오 프로젝트입니다. 현재 **개발진행중**이며 타입스크립트에 아직 익숙치않아 코드에 어색한 부분이 존재 할 수 있습니다.
+Vue.js + TypeScript 로 만든 포트폴리오 프로젝트입니다. 
 
-## 배포(현재 개발중, 완성 X)
+## 배포
 
 - [kwonyg.me](https://kwonyg.me/)
 
