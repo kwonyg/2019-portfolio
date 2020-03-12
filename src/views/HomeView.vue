@@ -1,9 +1,5 @@
 <template>
-  <section
-    ref="home_section"
-    class="home_section"
-    @click="deActivate($event, 0)"
-  >
+  <section ref="home_section" class="home_section" @click="deActivate($event, 0)">
     <window-modal
       :title="'About Me'"
       ref="aboutme"
@@ -98,48 +94,24 @@
     <div class="shortcut_container">
       <ul class="shortcut_list">
         <li class="list_item" :class="{ active: active === 'aboutme' }">
-          <short-cut
-            :imageUrl="'man.svg'"
-            :title="'About Me'"
-            @clickedIcon="activate"
-          ></short-cut>
+          <short-cut :imageUrl="'man.svg'" :title="'About Me'" @clickedIcon="activate"></short-cut>
         </li>
         <li class="list_item" :class="{ active: active === 'projects' }">
-          <short-cut
-            :imageUrl="'folder.svg'"
-            :title="'Projects'"
-            @clickedIcon="activate"
-          ></short-cut>
+          <short-cut :imageUrl="'folder.svg'" :title="'Projects'" @clickedIcon="activate"></short-cut>
         </li>
         <li class="list_item" :class="{ active: active === 'activities' }">
-          <short-cut
-            :imageUrl="'sns.svg'"
-            :title="'Activities'"
-            @clickedIcon="activate"
-          ></short-cut>
+          <short-cut :imageUrl="'sns.svg'" :title="'Activities'" @clickedIcon="activate"></short-cut>
         </li>
         <li class="list_item" :class="{ active: active === 'contacts' }">
-          <short-cut
-            :imageUrl="'phone-call.svg'"
-            :title="'Contacts'"
-            @clickedIcon="activate"
-          ></short-cut>
+          <short-cut :imageUrl="'phone-call.svg'" :title="'Contacts'" @clickedIcon="activate"></short-cut>
         </li>
         <li class="list_item" :class="{ active: active == 'github' }">
-          <short-cut
-            :imageUrl="'github.png'"
-            :title="'GitHub'"
-            @clickedIcon="activate"
-          ></short-cut>
+          <short-cut :imageUrl="'github.png'" :title="'GitHub'" @clickedIcon="activate"></short-cut>
         </li>
       </ul>
       <ul class="shortcut_list">
         <li class="list_item" :class="{ active: active === 'guestbook' }">
-          <short-cut
-            :imageUrl="'web.svg'"
-            :title="'Guest Book'"
-            @clickedIcon="activate"
-          ></short-cut>
+          <short-cut :imageUrl="'web.svg'" :title="'Guest Book'" @clickedIcon="activate"></short-cut>
         </li>
       </ul>
     </div>
@@ -412,6 +384,7 @@ ul.shortcut_list li.list_item {
   cursor: pointer;
   padding: 5px;
   margin-bottom: 20px;
+  border: 1px dotted transparent;
 }
 
 li.list_item.active {
