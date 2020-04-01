@@ -12,6 +12,7 @@
     "ordered-imports": false,
     "quotemark": [true, "single"],
     "ter-arrow-parens": [2, "as-needed"],
-    "whitespace": false
+    "whitespace": false,
+    "no-require-imports": false
   }
 }

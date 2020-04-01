@@ -1,24 +1,18 @@
 <template>
-  <transition name="fade">
-    <section class="login_section">
-      <div class="login_container">
-        <div class="status_bar">
-          <span class="title">Login</span>
-        </div>
-        <div class="section_title_container">
-          <h1 class="section_title">로그인</h1>
-        </div>
-        <div class="info_container">
-          <img
-            class="my_image"
-            src="//upload.wikimedia.org/wikipedia/commons/thumb/5/50/Albert_Einstein_%28Nobel%29.png/100px-Albert_Einstein_%28Nobel%29.png"
-          />
-          <div>권 영 근</div>
-        </div>
-        <router-link tag="button" class="login_button" to="/home">로그인</router-link>
+  <section class="error_section">
+    <div class="error_container">
+      <div class="status_bar">
+        <span class="title">404 Error</span>
       </div>
-    </section>
-  </transition>
+      <div class="section_title_container">
+        <h1 class="section_title">404 Error</h1>
+      </div>
+      <div class="info_container">
+        <div>We couldn't find this page :(</div>
+      </div>
+      <router-link tag="button" class="goto_login_button" to="/login">Go to login</router-link>
+    </div>
+  </section>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
@@ -28,20 +22,11 @@ export default class LoginView extends Vue {}
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
 h1.section_title {
-  margin-left: 20px;
+  text-align: center;
 }
 
-.login_container {
+.error_container {
   position: absolute;
   width: 50%;
   border: 3px solid #c5c5c5;
@@ -74,16 +59,7 @@ h1.section_title {
   margin-bottom: 20px;
 }
 
-.my_image {
-  border: 1px solid #000;
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 50%;
-}
-
-.login_button {
+.goto_login_button {
   font-family: 'DungGeunMo', monospace;
   width: 200px;
   height: 30px;
@@ -94,7 +70,7 @@ h1.section_title {
 }
 
 @media (max-width: 575px) {
-  .login_container {
+  .error_container {
     width: 90%;
   }
 }
